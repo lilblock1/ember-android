@@ -21,15 +21,20 @@ not to Minecraft game compatibility.
 | Original Java fixture → DEX, min API 29 | Conversion and selected execution passed on S25+; desktop AWT remains absent |
 | Official 1.20.4 public metadata | Downloaded JSON only, version metadata SHA-1 matched manifest |
 | Physical device | S25+ / SM-S936U / Android 15 API 35 / ARM64 |
-| Real Microsoft browser login / refresh/logout | Not run: own application registration absent |
+| Real Microsoft browser login / refresh/logout | Not run on phone; own registration and exact callback are now verified in Azure |
 | Xbox/XSTS/Minecraft entitlement/profile flow | Staged implementation and mock tests pass; live approval/contract unverified |
 | Real Minecraft client launch / gameplay / save / multiplayer | Not run; no execution engine exists |
-| GitHub Actions | Workflow supplied; not run remotely, no repository selected |
+| GitHub Actions | Passed on Ubuntu: [run 40156947017](https://github.com/lilblock1/ember-android/actions/runs/40156947017), commit d2caafd3e8b4eebbed131e56705121b79fbde472; APK/instrumentation assembly, host tests and lint; physical-device tests remain separate |
 
 Evidence summaries live in `docs/evidence/`. No proprietary game files were fetched or
 executed. The public metadata and original synthetic fixture are not gameplay evidence.
 The C++ test was compiled and executed directly on the Windows host with Zig 0.14.1's
-C++ toolchain. The portable CMake/CTest workflow is supplied for CI, not claimed as locally run.
+C++ toolchain. The portable CMake/CTest workflow passed in GitHub Actions; it is not claimed as locally run.
+
+The initial remote workflow failed during SDK setup because the setup action requested
+the retired `tools` package. Explicitly selecting `platform-tools` fixed setup, and the
+subsequent run completed successfully. CI does not run Microsoft sign-in, ownership
+verification or the real Minecraft client.
 
 ## Build environment findings
 

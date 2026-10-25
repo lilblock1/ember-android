@@ -16,5 +16,6 @@ from display presentation; subsequent device tests and the visible readback prob
 Pending: live Microsoft browser/account flow with this project's own registration and API
 approval; lifecycle/context loss; LWJGL input callbacks; actual client/main menu; playable
 world and save/reload. Back up worlds before future imports/upgrades; credential tests and
-failed launches must never delete worlds. Device access is now available, while registration,
-approval, owned-client inventory and remaining runtime/graphics engineering still block play.
+failed launches must never delete worlds. Device access and the own Microsoft registration
+are now available. Services approval, owned-client inventory and remaining runtime/graphics
+engineering still block play. Generic Microsoft login can be tested before Services approval.

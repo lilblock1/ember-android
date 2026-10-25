@@ -5,7 +5,10 @@ token → XSTS → Minecraft Services token → entitlement evidence → Java pr
 The service chain is original code, compared with Amethyst and Microsoft's documentation.
 See [the reference review](AMETHYST_AUTH_REVIEW.md). No live account-services calls have run.
 
-The project has no registered application yet. The default APK keeps live sign-in disabled.
+Ember's own application is registered and its Mojang API request has been submitted;
+approval remains pending. See [registration status](REGISTRATION_STATUS.md).
+The locally configured 0.2.2 APK enables generic Microsoft sign-in for testing.
+Unconfigured public/CI builds keep live sign-in disabled.
 Generic Microsoft sign-in needs an own public-client registration. Xbox/Minecraft calls
 also need approval for that ID and confirmed mobile scopes. A local approval reference is
 an owner audit record, not permission that code grants itself; servers enforce access.
@@ -84,4 +87,5 @@ AppAuth logging is suppressed with a pinned 0.11.1 internal adapter; re-audit on
 Nine mocked service-chain tests pass. The Keystore encryption/tamper/delete test passed
 on the S25+ / Android 15. Real browser login, consent/cancellation, refresh/revocation,
 live Xbox/Minecraft responses, process death during login and account switching remain
-untested until the own registration and required approval are supplied.
+untested. Generic Microsoft phone login can now be tested with the configured APK;
+live Xbox/Minecraft tests still require the pending API approval and confirmed scopes.

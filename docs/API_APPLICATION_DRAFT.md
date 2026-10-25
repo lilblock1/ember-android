@@ -1,8 +1,14 @@
-# Ember — API application draft (not submitted)
+# Ember — submitted API application text
+
+Submitted 2026-10-24; the form confirmed receipt. Approval is pending.
 
 Application name: Ember
 
 Request type: New AppID for Approval
+
+Application (client) ID: `6a1a3aa5-6dc6-48de-836d-af462ed06b2f`
+
+Directory (tenant) ID: `d06c0e58-e193-4fb5-a823-a37cb6c133e9`
 
 Associated website: https://github.com/lilblock1/ember-android
 
@@ -25,14 +31,14 @@ ownership rechecks. We also request guidance on permitted local compatibility/tr
 techniques and any offline-use restrictions. No existing launcher client ID is reused.
 Access approval and applicable licensing permissions are separate requirements.
 
-## Missing submission details
+## Submission status
 
-The actual client ID, tenant ID and matching owner contact must be confirmed before
-submission. No app registration or API approval exists yet. The owner
-must review the EULA and Usage Guidelines and provide their own attestation.
+The request included the owner's matching contact email and their EULA/Usage Guidelines
+attestation, with explicit authorization to submit. Private contact information is omitted
+from this public copy. No approval reference or approved scopes have been received.
 
 Official entry point: https://aka.ms/AppRegInfo
 
 The browser version of the official article links to https://aka.ms/mce-reviewappid.
-The linked AppID Review form was inspected on 2026-10-24. A prepared draft is not an
+The linked AppID Review form was inspected on 2026-10-24. A submission receipt is not an
 approval, and no credentials or private owner details belong in this public document.

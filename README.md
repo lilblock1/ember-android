@@ -67,8 +67,9 @@ Select and prove a legally permissible Java bytecode execution architecture, the
 the version-specific Java/desktop API and LWJGL/native ABI bridges. The C++ surface test
 does not satisfy this gate. No runtime has been selected as production-ready.
 
-The project owner also needs their own public-client registration, confirmation of Minecraft
-Services authorization and the current entitlement/subscription contract. See the concrete
+Ember's public-client registration is complete and its Mojang API request is submitted;
+see [registration status](docs/REGISTRATION_STATUS.md). Minecraft Services approval and
+the current entitlement/subscription contract remain pending. See the concrete
 approval record template in `docs/API_APPROVAL_RECORD.example.md`.
 
 Release signing must use an externally supplied keystore and CI secrets; debug keys are

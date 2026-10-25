@@ -4,7 +4,7 @@
 |---|---|---|
 | 1 Feasibility | Partial | Original DEX/JNI and LWJGL/EGL subset tests pass on S25+; real client and AOT remain unresolved |
 | 2 Foundation | Partial physical validation | App installed/started and visible EGL readback passed on S25+; full lifecycle and inputs remain to test |
-| 3 Authentication | Partial | Browser PKCE and staged Xbox/XSTS/Minecraft chain; nine mock tests and physical Keystore test pass; own registration/approval and live login pending |
+| 3 Authentication | Partial | Own native public-client registration and callback verified; Mojang request submitted; nine mock tests and physical Keystore test pass; Services approval and phone login pending |
 | 4 Ownership | Blocked | Current approved Services contract and project approval missing; no grant issuer |
 | 5 Installer | Partial primitives only | Path/integrity policy tests; no proprietary downloads, resolver or installation transaction |
 | 6 Execution | Unimplemented | No production Java execution strategy, LWJGL bridge or GL translator |

@@ -6,8 +6,8 @@ android {
         applicationId = "dev.andes.androidjavaport"
         minSdk = 29
         targetSdk = 35
-        versionCode = 3
-        versionName = "0.2.1-research"
+        versionCode = 4
+        versionName = "0.2.2-research"
         ndk { abiFilters += "arm64-v8a" }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
