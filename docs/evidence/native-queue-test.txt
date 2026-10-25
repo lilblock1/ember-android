@@ -1,0 +1,1 @@
+PASS: bounded queue, finite coordinates, lifecycle reset, concurrent producer/consumer

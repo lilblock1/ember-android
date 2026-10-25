@@ -1,0 +1,8 @@
+{
+  "fixture": "tests/fixtures/CompatibilityFixture.java",
+  "classfile_major": 61,
+  "dex_size_bytes": 1520,
+  "dex_sha256": "58f86c5af895fa9334975bc941a0638837daf5998ec62e0afdb9f30ab5164252",
+  "executed_on_android": true,
+  "limitation": "DEX conversion does not supply java.awt or a JNI implementation and does not prove game compatibility."
+}

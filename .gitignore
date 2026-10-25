@@ -1,0 +1,13 @@
+.gradle/
+.kotlin/
+**/build/
+**/.cxx/
+local.properties
+auth.local.properties
+*.jks
+*.keystore
+.idea/
+captures/
+game-data/
+__pycache__/
+*.pyc

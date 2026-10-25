@@ -1,0 +1,26 @@
+[
+  {
+    "suite": "dev.andes.core.AuthorizationBoundaryTest",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "cases": [
+      "rejectsExpiredOrClockRollbackResponses",
+      "acceptsBoundedMatchingRequest",
+      "rejectsMissingStateAndInjectedResponses"
+    ]
+  },
+  {
+    "suite": "dev.andes.core.SecurityBoundaryTest",
+    "tests": 5,
+    "failures": 0,
+    "errors": 0,
+    "cases": [
+      "microsoftLoginAloneNeverGrantsInstall",
+      "logoutRejectsLateRefreshAndOldAccountCallbacks",
+      "rejectsArchiveAndWindowsTraversal",
+      "grantsExpireAndCannotCrossAccounts",
+      "rejectsTruncatedAndCorruptedArtifacts"
+    ]
+  }
+]

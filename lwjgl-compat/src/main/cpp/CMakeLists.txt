@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.22.1)
+project(andes_glfw LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 20)
+add_library(andes_glfw SHARED egl_bridge.cpp)
+target_link_libraries(andes_glfw PRIVATE EGL GLESv3 android)
+target_compile_options(andes_glfw PRIVATE -Wall -Wextra -Werror)
+target_link_options(andes_glfw PRIVATE --driver-mode=g++)

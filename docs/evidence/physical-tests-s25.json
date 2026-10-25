@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-24",
+  "device_model": "SM-S936U",
+  "android": "15",
+  "api": 35,
+  "abi": "arm64-v8a",
+  "gpu_from_visible_context": "Adreno (TM) 830",
+  "visible_pixel_rgb": [
+    64,
+    128,
+    191
+  ],
+  "tests": [
+    {
+      "module": "authentication",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "cases": [
+        "encryptedRoundTripTamperDetectionAndLogout"
+      ]
+    },
+    {
+      "module": "compatibility-lab",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "cases": [
+        "originalJava17DexReflectionAndRegisteredJni",
+        "conversionDoesNotSupplyDesktopJavaApis"
+      ]
+    },
+    {
+      "module": "lwjgl-compat",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "cases": [
+        "upstreamCompiledDexRendersAndReadsActualGlesPixel",
+        "foreignThreadAndStaleWindowHandlesAreRejected"
+      ]
+    }
+  ],
+  "minecraft_client_executed": false,
+  "live_microsoft_login_tested": false,
+  "initial_failure_and_fix": "Pbuffer swap-interval rejection; pbuffer flush separated from window presentation before the passing rerun."
+}

@@ -1,0 +1,1013 @@
+# PROJECT: Minecraft Java Edition — True Native Android Port
+ 
+## 1. Primary Objective
+ 
+Develop a genuine, high-performance Android port of Minecraft Java Edition that allows users to authenticate using their official Microsoft account, verifies ownership of Minecraft Java Edition, downloads the official game files from Mojang's servers, and runs the game locally on Android.
+ 
+The goal is to deliver the authentic Minecraft Java Edition experience with native Android integration, excellent performance, and full mobile usability.
+ 
+**This is NOT intended to be:**
+ 
+- A PojavLauncher clone.
+- A rebranded existing Minecraft launcher.
+- A Java desktop launcher disguised as a native application.
+- An emulator or virtual machine.
+- A cloud gaming or remote streaming application.
+- A cracked or pirated Minecraft client.
+- A recreation of Minecraft using unrelated gameplay mechanics.
+
+ 
+The goal is a real Android-native execution and compatibility solution for legitimately owned Minecraft Java Edition files.
+ 
+Do not claim that a native port is working until the real Minecraft client has successfully launched and been tested on a physical Android device.
+ 
+## 2. Required User Experience
+ 
+The complete application must eventually support this process:
+ 
+1. User installs the Android APK.
+2. User opens the application.
+3. User selects "Sign in with Microsoft."
+4. Official Microsoft authentication opens.
+5. The user completes authentication.
+6. The application authenticates with Minecraft Services.
+7. The application checks whether the user owns Minecraft Java Edition.
+8. If ownership is confirmed, installation becomes available.
+9. The user selects a Minecraft version.
+10. The application downloads the original Minecraft files from Mojang-approved sources.
+11. The application verifies every required downloaded file.
+12. The native compatibility system prepares the game.
+13. The user launches Minecraft Java Edition.
+14. Minecraft runs locally on Android.
+15. The user can play, create worlds, connect to Java servers, and configure controls.
+
+ 
+No proprietary Minecraft game content may be downloaded before successful entitlement verification.
+ 
+Show clear status messages throughout the installation process.
+ 
+## 3. Technology Stack
+ 
+Target platform:
+ 
+- Android 10 and newer, initially.
+- ARM64 as the primary architecture.
+- Modern Qualcomm Snapdragon, MediaTek, Exynos, and compatible chipsets.
+
+ 
+Application technologies:
+ 
+- Kotlin for Android interfaces.
+- Jetpack Compose for the launcher UI.
+- C++ for native performance-sensitive components.
+- Android NDK.
+- JNI where required.
+- Gradle.
+- CMake.
+- Vulkan graphics API where viable.
+- OpenGL ES compatibility backend.
+- Android-native input and audio systems.
+- Android Keystore-backed credential security.
+- GitHub Actions for automated builds.
+
+ 
+Maintain clean separation between the Android application, native compatibility engine, Minecraft installation manager, account services, renderer, and input system.
+ 
+## 4. Microsoft Account Authentication
+ 
+Build a secure, legitimate Microsoft authentication system.
+ 
+Requirements:
+ 
+- Official Microsoft login through the system browser.
+- OAuth 2.0 Authorization Code Flow with PKCE.
+- Correct application registration and redirect handling.
+- Xbox Live authentication integration where authorized.
+- Xbox XSTS authentication where required.
+- Minecraft Services authentication.
+- Minecraft profile retrieval.
+- Secure authentication token handling.
+- Token refresh when supported.
+- Persistent signed-in sessions.
+- Account switching.
+- Logout and local credential removal.
+- Clear error messages.
+- Authentication cancellation handling.
+- Network timeout handling.
+- Recovery from expired or revoked authentication.
+
+ 
+Never ask users to enter their Microsoft passwords directly into the application.
+ 
+Store sensitive credentials with Android Keystore-backed encryption.
+ 
+Do not expose authentication tokens in logs, analytics, crash reports, or downloadable diagnostic files.
+ 
+Before implementing the integration, verify that the application is authorized to use the required Microsoft and Minecraft authentication APIs.
+ 
+Never bypass required API approvals.
+ 
+## 5. Mandatory Minecraft Java Edition Ownership Verification
+ 
+After authentication, the application must verify legitimate Minecraft Java Edition entitlement.
+ 
+Investigate the current official Minecraft Services API specifications.
+ 
+Relevant existing endpoints include:
+ 
+GET https://api.minecraftservices.com/entitlements/mcstore
+ 
+GET https://api.minecraftservices.com/minecraft/profile
+ 
+Do not assume these endpoints or their response structures will remain unchanged.
+ 
+Validate both the relevant entitlements and the account profile according to current official requirements.
+ 
+Requirements:
+ 
+- Correctly detect Java Edition ownership.
+- Distinguish supported subscription entitlements from permanent licenses.
+- Handle expired subscriptions.
+- Handle Microsoft accounts without Minecraft ownership.
+- Handle Xbox privacy and family restrictions.
+- Handle unavailable Minecraft Services.
+- Handle invalid or expired credentials.
+- Distinguish network errors from actual missing ownership.
+- Prevent unauthorized installation.
+- Recheck ownership when required.
+
+ 
+Successful Microsoft login alone must never be treated as proof of Minecraft Java Edition ownership.
+ 
+If the user does not own the game, show a clear explanation and provide a link to the official Minecraft purchase page.
+ 
+Do not implement cracked-mode authentication or license bypasses.
+ 
+## 6. Official Minecraft Download Manager
+ 
+Only allow game installation after successful ownership verification.
+ 
+Retrieve the official Minecraft Java Edition version manifest from a documented Mojang endpoint, such as:
+ 
+https://piston-meta.mojang.com/mc/game/version_manifest_v2.json
+ 
+Use the manifest to discover the correct version metadata and installation files.
+ 
+Support:
+ 
+- Stable releases.
+- Older supported releases.
+- Snapshots.
+- Multiple installed game versions.
+- Separate per-version installation metadata.
+- Official Minecraft client downloads.
+- Required libraries.
+- Assets and resources.
+- Version-specific dependencies.
+- Installation progress.
+- Download speed indicators.
+- Download cancellation.
+- Resumable downloads where supported.
+- Retry handling.
+- Missing-file detection.
+- Corrupted-file repair.
+- File integrity validation.
+- Safe installation rollback.
+- Version uninstallation.
+
+ 
+Download only the files required for the selected version and chosen compatible execution architecture.
+ 
+Use content-addressed storage to share identical assets between versions when possible.
+ 
+Verify hashes against trusted official version metadata.
+ 
+Never execute or load incomplete, corrupted, or untrusted downloaded components.
+ 
+Protect against path traversal and malicious archive extraction.
+ 
+Do not host proprietary Minecraft downloads on a separate unofficial server.
+ 
+## 7. Native ARM64 Minecraft Execution Engine
+ 
+This is the most important technical component.
+ 
+Research and implement a genuine Android-focused execution solution for the legitimately downloaded Minecraft Java Edition client.
+ 
+Investigate:
+ 
+- Ahead-of-time compilation of Java bytecode into ARM64 code.
+- Android-compatible Java runtime execution strategies.
+- Translation of desktop-dependent interfaces.
+- Native C++ components for platform-sensitive workloads.
+- Android-compatible LWJGL replacements or adaptations.
+- Android-native graphics context management.
+- Android-native audio and input integration.
+- Native thread scheduling.
+- Native memory management.
+- Android application lifecycle integration.
+
+ 
+Clearly distinguish native compilation from Java runtime execution.
+ 
+Do not describe a bundled JVM as a completely native Minecraft port.
+ 
+Do not simply embed PojavLauncher or another existing launcher and rename it.
+ 
+Research each technical approach, its feasibility, licensing implications, performance, compatibility, and long-term maintainability.
+ 
+If an approach cannot support the unmodified Minecraft client, explain the limitation and investigate alternatives.
+ 
+Do not claim that downloading a Minecraft JAR is equivalent to porting Minecraft.
+ 
+A complete native implementation may require compatibility components, legally permitted binary translation or runtime technology, and significant platform-specific engineering.
+ 
+Document what actually runs as native machine code and what does not.
+ 
+## 8. Native Graphics and Rendering System
+ 
+Develop an Android-oriented rendering backend.
+ 
+Prioritize Vulkan where practical.
+ 
+Provide OpenGL ES compatibility for devices and features where Vulkan is unavailable or unsuitable.
+ 
+Investigate translation of Minecraft's desktop OpenGL rendering requirements without breaking graphical correctness.
+ 
+Implement:
+ 
+- ARM64-compatible rendering interfaces.
+- GPU detection.
+- Rendering backend selection.
+- Chunk mesh optimization.
+- Multithreaded chunk preparation.
+- Frustum culling.
+- Occlusion culling where beneficial.
+- Reduced draw calls.
+- Texture atlases.
+- Efficient texture uploads.
+- Shader caching.
+- Frame pacing.
+- Adjustable rendering resolution.
+- Dynamic resolution scaling.
+- Render-distance adjustment.
+- VSync.
+- Fullscreen display support.
+- High-refresh-rate display support.
+- GPU memory budgeting.
+- Robust graphics-context recovery.
+
+ 
+Consider Android Game SDK frame pacing facilities such as Swappy.
+ 
+Preserve Minecraft Java Edition rendering behavior as closely as possible.
+ 
+Do not advertise shader compatibility before verifying individual implementations.
+ 
+## 9. Automatic Device Performance Optimization
+ 
+Implement a device-aware performance management system.
+ 
+At application startup, inspect available Android hardware information and supported capabilities.
+ 
+Detect:
+ 
+- CPU architecture and available cores.
+- Supported GPU features.
+- Available application memory.
+- Device display refresh rate.
+- Graphics API support.
+- Supported texture formats.
+- Thermal state where available.
+- Power-saving status.
+- Available storage.
+
+ 
+Create automatic graphics presets.
+ 
+**Battery Saver Mode**
+ 
+- Reduce unnecessary CPU and GPU activity.
+- Lower frame-rate target.
+- Reduce rendering resolution where appropriate.
+- Reduce simulation and render workloads where configurable.
+- Prioritize battery efficiency.
+
+ 
+**Balanced Mode**
+ 
+- Balance visual quality and performance.
+- Target stable frame pacing.
+- Use moderate memory and rendering budgets.
+- Adapt to thermal limitations.
+
+ 
+**Maximum Performance Mode**
+ 
+- Prioritize rendering throughput.
+- Use available CPU and GPU capacity efficiently.
+- Permit higher frame-rate targets.
+- Reduce avoidable CPU/GPU synchronization.
+- Maintain safe thermal behavior.
+
+ 
+**Custom Mode**
+ 
+- Let advanced users control individual settings.
+
+ 
+Include an optional built-in benchmark that measures frame timing and suggests appropriate settings.
+ 
+Do not guarantee particular frame rates without real-device testing.
+ 
+## 10. Smart Thermal and Battery Management
+ 
+Integrate Android thermal and performance facilities where supported.
+ 
+Requirements:
+ 
+- Detect significant thermal throttling.
+- Adjust optional graphical workloads.
+- Avoid excessive background CPU usage.
+- Suspend unnecessary work when minimized.
+- Respect Android lifecycle transitions.
+- Minimize unnecessary wake locks.
+- Avoid excessive storage writes.
+- Limit background downloading according to user preferences and Android restrictions.
+- Provide battery-friendly frame caps.
+- Reduce unnecessary polling.
+
+ 
+Investigate the Android Dynamic Performance Framework for supported devices.
+ 
+Never attempt to override Android's device safety or thermal protection mechanisms.
+ 
+## 11. Complete Mobile Controls
+ 
+Create a customizable Android input system.
+ 
+Touchscreen controls:
+ 
+- Movement joystick.
+- Camera swipe region.
+- Jump button.
+- Sprint button.
+- Sneak button.
+- Attack button.
+- Mining controls.
+- Use/interact button.
+- Hotbar selection.
+- Inventory access.
+- Chat.
+- Pause menu.
+- Configurable sensitivity.
+- Hold and toggle behaviors.
+- Adjustable layouts.
+
+ 
+Controller features:
+ 
+- Bluetooth controller support.
+- USB controller support.
+- Xbox-style controller compatibility.
+- PlayStation-style controller compatibility.
+- Button remapping.
+- Analog sensitivity.
+- Adjustable dead zones.
+- Separate menu controls.
+
+ 
+Keyboard and mouse:
+ 
+- Bluetooth keyboard support.
+- USB keyboard support.
+- Mouse support.
+- Pointer capture where available.
+- Custom key bindings.
+
+ 
+Additional options:
+ 
+- Gyroscope aiming.
+- Left-handed layouts.
+- Accessibility control presets.
+- On-screen control opacity adjustment.
+- Button resizing.
+- Automatic input-method switching.
+- Import and export of control profiles.
+
+ 
+Controls must work correctly in gameplay, inventories, chat screens, and menus.
+ 
+## 12. Minecraft Java Edition Compatibility
+ 
+The long-term objective is to preserve authentic Java Edition behavior.
+ 
+Target:
+ 
+- Survival mode.
+- Creative mode.
+- Single-player worlds.
+- Minecraft Java Edition world generation.
+- Blocks and items.
+- Mobs and entities.
+- Crafting.
+- Inventories.
+- Redstone.
+- Combat.
+- Enchanting.
+- Commands.
+- Villagers.
+- Farming.
+- World saves.
+- Java Edition resource packs.
+- Datapacks.
+- Multiplayer.
+
+ 
+Preserve the behavior of the official Java Edition client wherever technically possible.
+ 
+Do not silently replace Java Edition with Bedrock Edition or an unrelated voxel engine.
+ 
+Use clearly defined version-specific compatibility testing.
+ 
+## 13. Multiplayer Support
+ 
+Provide real Minecraft Java Edition multiplayer connectivity.
+ 
+Requirements:
+ 
+- Java server list.
+- Add and remove servers.
+- Server address and port configuration.
+- Online-mode authentication.
+- Secure session handling.
+- Microsoft-authenticated player profiles.
+- Compatible Java Edition network protocol.
+- Connection error reporting.
+- Network timeout handling.
+- Server compatibility warnings.
+
+ 
+Do not bypass server authentication or authorization requirements.
+ 
+Do not claim that multiplayer is supported until tested against real compatible Java Edition servers.
+ 
+## 14. Mod Loader Support
+ 
+Develop modding functionality after the base game is reliably playable.
+ 
+Research support for:
+ 
+1. Fabric.
+2. Quilt.
+3. NeoForge.
+4. Forge.
+
+ 
+Begin with Fabric because the initial compatibility goal should remain manageable.
+ 
+Provide:
+ 
+- Mod installation manager.
+- Mod enable/disable controls.
+- Dependency checking.
+- Version compatibility warnings.
+- Mod profiles.
+- Mod-specific crash diagnostics.
+- Conflict detection where feasible.
+- Mod isolation between Minecraft installations.
+
+ 
+Investigate Sodium and Iris compatibility separately.
+ 
+Understand that arbitrary Java mods may depend on desktop-specific libraries, JVM behavior, native binaries, or unsupported graphics features.
+ 
+Never claim universal mod compatibility until it has been demonstrated.
+ 
+## 15. Shader and Resource Pack Support
+ 
+Implement:
+ 
+- Resource pack manager.
+- Resource pack import.
+- Resource pack activation.
+- Pack ordering.
+- Pack compatibility validation.
+- Shader configuration interface.
+- Shader compatibility warnings.
+- Shader preset management.
+
+ 
+Research desktop Minecraft shader compatibility with Android Vulkan and OpenGL ES.
+ 
+Do not assume a desktop OpenGL shader will run directly on mobile GPUs.
+ 
+If shader translation is required, treat it as a distinct development project.
+ 
+## 16. World Management and Backups
+ 
+Create a native Android world manager.
+ 
+Features:
+ 
+- World listing.
+- Create world.
+- Delete world.
+- Rename world.
+- Import existing Java worlds.
+- Export worlds.
+- World backups.
+- World size information.
+- Per-version save isolation where appropriate.
+- World version compatibility checks.
+- Warning before opening worlds in newer versions.
+- Automatic backup before world upgrades.
+
+ 
+Use Android's Storage Access Framework for user-selected imports and exports.
+ 
+Avoid requesting broad filesystem permissions where unnecessary.
+ 
+Never modify an existing world without an appropriate backup or user authorization.
+ 
+Test world saves and recovery after unexpected application termination.
+ 
+## 17. Modern Android Application Design
+ 
+Build a polished, responsive Android interface.
+ 
+Screens:
+ 
+- Welcome screen.
+- Microsoft sign-in screen.
+- Account information.
+- Ownership verification.
+- Minecraft version selector.
+- Installation manager.
+- Main Play screen.
+- World manager.
+- Multiplayer servers.
+- Graphics settings.
+- Performance settings.
+- Controller settings.
+- Touchscreen layout editor.
+- Mod manager.
+- Resource pack manager.
+- Storage manager.
+- Diagnostics.
+- About and licenses.
+
+ 
+Support:
+ 
+- Dark mode.
+- Light mode.
+- Responsive phone and tablet layouts.
+- Landscape mode.
+- Appropriate fullscreen behavior.
+- Smooth interface animations.
+- Loading indicators.
+- Clear error messages.
+- Accessibility improvements.
+- Screen-reader labels where applicable.
+
+ 
+The application should look and behave like a modern Android gaming application.
+ 
+## 18. Performance Monitoring
+ 
+Create a built-in performance dashboard.
+ 
+Display:
+ 
+- Current FPS.
+- Average FPS.
+- Frame-time statistics.
+- Memory consumption.
+- Available memory.
+- Renderer in use.
+- Graphics API.
+- Device GPU information.
+- CPU usage where measurable.
+- Thermal warnings.
+- Chunk-loading information where instrumentation permits.
+
+ 
+Support an optional performance overlay during gameplay.
+ 
+Collect diagnostic information locally by default.
+ 
+Do not transmit device or account information without informed user consent.
+ 
+## 19. Crash Diagnostics and Recovery
+ 
+Implement reliable failure recovery.
+ 
+Features:
+ 
+- Crash-log collection.
+- Local log viewer.
+- Share/export crash reports.
+- Safe-mode startup.
+- Disable incompatible optional components.
+- Recover from incomplete installations.
+- Detect missing files.
+- Repair damaged installations.
+- Preserve worlds during repairs.
+- Restore last working configuration.
+- Identify relevant compatibility errors.
+
+ 
+Sanitize exported logs to remove access tokens and sensitive account information.
+ 
+Never delete user worlds automatically because the game fails to launch.
+ 
+## 20. Native Compatibility Research and Device Testing
+ 
+Establish a physical-device testing matrix.
+ 
+Include representative devices with:
+ 
+- Qualcomm Adreno graphics.
+- ARM Mali graphics.
+- Different memory capacities.
+- Different Android versions.
+- Different refresh rates.
+
+ 
+Test:
+ 
+- Startup.
+- Microsoft authentication.
+- Ownership validation.
+- Downloads.
+- Installation integrity.
+- Game initialization.
+- Graphics rendering.
+- Touchscreen input.
+- Controllers.
+- Audio.
+- Single-player gameplay.
+- World saving.
+- Multiplayer connections.
+- Background and foreground transitions.
+- Thermal behavior.
+- Low-memory recovery.
+
+ 
+Maintain a public compatibility table based on actual testing.
+ 
+Do not invent device benchmarks or claim that a test passed without evidence.
+ 
+## 21. Security and Licensing
+ 
+This application must respect Microsoft and Mojang's intellectual property, account security, and licensing rules.
+ 
+Requirements:
+ 
+- Users must legitimately own or otherwise have valid access to Minecraft Java Edition.
+- Game files must be retrieved from authorized sources.
+- The distributed APK must not embed unauthorized Minecraft binaries or assets.
+- The public repository must not contain proprietary game files without permission.
+- Ownership checks must not be bypassed.
+- Credentials must be securely managed.
+- Applicable API permissions must be obtained.
+- Official authentication flows must be respected.
+- Third-party software licenses must be documented.
+- Downloads must be integrity-checked.
+- The application must clearly identify itself as an unofficial third-party project.
+
+ 
+Importantly, verifying ownership does not by itself grant permission to redistribute modified Minecraft binaries.
+ 
+Research whether the planned native execution, translation, and modification techniques are permitted before implementing or distributing them.
+ 
+If proper authorization or technical feasibility is missing, document that blocker and do not claim that the implementation is complete.
+ 
+## 22. Offline Play
+ 
+After successful authentication and game installation, investigate support for offline single-player play.
+ 
+Requirements:
+ 
+- Respect licensing restrictions.
+- Preserve downloaded local world data.
+- Do not unnecessarily require permanent internet access for local functionality.
+- Do not bypass authentication requirements.
+- Clearly identify which actions require an internet connection.
+
+ 
+Implement offline mode only to the extent officially permitted.
+ 
+## 23. Updates and Version Management
+ 
+Support separate update mechanisms.
+ 
+**Application updates**
+ 
+- Native compatibility engine updates.
+- Launcher interface updates.
+- Rendering improvements.
+- Input fixes.
+- Security patches.
+
+ 
+**Minecraft installations**
+ 
+- New Minecraft versions.
+- Snapshots.
+- Historical installations.
+- Version-specific dependency updates.
+- Corrupted installation repair.
+
+ 
+Prevent application updates from deleting installed Minecraft versions or user worlds.
+ 
+Use atomic update operations and rollback where feasible.
+ 
+## 24. GitHub Repository and Automated Building
+ 
+Create a well-organized GitHub repository.
+ 
+Suggested structure:
+ 
+/app
+ 
+/android-ui
+ 
+/authentication
+ 
+/ownership-verification
+ 
+/minecraft-installer
+ 
+/native-engine
+ 
+/rendering
+ 
+/input
+ 
+/audio
+ 
+/mod-support
+ 
+/world-manager
+ 
+/diagnostics
+ 
+/tests
+ 
+/docs
+ 
+/.github/workflows
+ 
+Implement GitHub Actions workflows for:
+ 
+- Android APK compilation.
+- Native C++ compilation.
+- Unit testing.
+- Static analysis.
+- Dependency checks.
+- Download manager tests.
+- Authentication mock tests.
+- Ownership validation tests.
+- Release artifact generation.
+
+ 
+Use encrypted GitHub secrets for sensitive build credentials.
+ 
+Never commit Microsoft application secrets, signing keys, access tokens, or proprietary Minecraft client files.
+ 
+Provide reproducible debug builds and documented release-signing procedures.
+ 
+## 25. Development Rules
+ 
+Follow these rules throughout the entire project:
+ 
+1. Write actual working code.
+2. Do not produce only mockups or pseudocode.
+3. Build incrementally.
+4. Test each feature after implementation.
+5. Fix compilation errors before expanding functionality.
+6. Do not invent test results.
+7. Do not claim real-game compatibility based only on a voxel demonstration.
+8. Do not replace the requested native port with an existing launcher.
+9. Clearly report native and non-native components.
+10. Preserve original Minecraft game files wherever possible.
+11. Respect licensing and API requirements.
+12. Keep the project modular.
+13. Provide meaningful error reporting.
+14. Document technical limitations.
+15. Provide working APK artifacts whenever the build environment allows.
+16. Prioritize genuine game execution over cosmetic features.
+17. Track completed, partially implemented, and unimplemented functionality.
+18. Keep user data and Minecraft worlds safe.
+19. Never bypass ownership verification.
+20. Validate behavior on actual Android hardware.
+
+ 
+## 26. Complete Development Roadmap
+ 
+### Phase 1 — Technical Feasibility
+ 
+Research whether the legally obtained Minecraft Java Edition client can be executed using the proposed native Android architecture.
+ 
+Investigate Java bytecode execution, ARM64 compilation, desktop library dependencies, LWJGL compatibility, graphics translation, Microsoft API access, and licensing.
+ 
+Build an isolated proof of concept demonstrating the most difficult execution components.
+ 
+Deliver:
+ 
+- Architecture specification.
+- Technical feasibility report.
+- Licensing and API access assessment.
+- Proof-of-concept tests.
+- Identified implementation blockers.
+
+ 
+### Phase 2 — Android Foundation
+ 
+Create the full Android Studio project.
+ 
+Implement:
+ 
+- Kotlin application.
+- Native C++ module.
+- Gradle and CMake.
+- Main interface.
+- Settings storage.
+- Native rendering surface.
+- Input handling.
+- Basic diagnostics.
+- GitHub Actions build workflow.
+
+ 
+Produce a working debug APK.
+ 
+### Phase 3 — Microsoft Authentication
+ 
+Implement official Microsoft sign-in and required Minecraft authentication stages.
+ 
+Test successful login, failures, cancellation, expired tokens, logout, and account switching.
+ 
+### Phase 4 — Ownership Verification
+ 
+Implement actual Minecraft Java Edition entitlement and profile validation.
+ 
+Prevent the installation manager from accessing proprietary game downloads without successful verification.
+ 
+### Phase 5 — Official Game Installer
+ 
+Implement:
+ 
+- Version manifest discovery.
+- Version selection.
+- Secure downloads.
+- Dependency resolution.
+- Asset installation.
+- Progress reporting.
+- Hash verification.
+- Repair functionality.
+- Installation rollback.
+
+ 
+### Phase 6 — Native Minecraft Execution
+ 
+Integrate the chosen legally permissible native execution architecture with the downloaded Minecraft Java Edition client.
+ 
+The first target is successfully reaching the actual Minecraft Java Edition main menu on a physical ARM64 Android device.
+ 
+This is a critical project milestone.
+ 
+### Phase 7 — Playable Minecraft
+ 
+Implement and validate:
+ 
+- Rendering.
+- Controls.
+- Audio.
+- World creation.
+- World loading.
+- Player movement.
+- Inventory interaction.
+- World saving.
+
+ 
+The milestone is a real playable Java Edition world.
+ 
+### Phase 8 — Performance Optimization
+ 
+Add:
+ 
+- Native graphics optimizations.
+- Frame pacing.
+- GPU-specific adjustments.
+- Multithreaded workload improvements.
+- Automatic settings.
+- Battery profiles.
+- Thermal management.
+- Performance monitoring.
+
+ 
+Test against real-device benchmarks.
+ 
+### Phase 9 — Advanced Compatibility
+ 
+Add and test:
+ 
+- Multiplayer.
+- Resource packs.
+- Datapacks.
+- World import/export.
+- Historical Minecraft versions.
+- Keyboard and mouse improvements.
+- Gamepad improvements.
+
+ 
+### Phase 10 — Mod and Shader Research
+ 
+Investigate and incrementally develop:
+ 
+- Fabric.
+- Quilt.
+- NeoForge.
+- Forge.
+- Sodium compatibility.
+- Iris compatibility.
+- Shader translation.
+
+ 
+Do not delay the first playable release solely to support advanced modding.
+ 
+### Phase 11 — Reliability and Security
+ 
+Implement:
+ 
+- Crash recovery.
+- Installation repair.
+- Safe mode.
+- Backup systems.
+- Token security auditing.
+- Download verification.
+- Device compatibility testing.
+- Data preservation testing.
+
+ 
+### Phase 12 — Release
+ 
+Produce:
+ 
+- Working Android APK.
+- Complete source code.
+- GitHub Actions build workflows.
+- Installation instructions.
+- Supported Android versions.
+- Device compatibility information.
+- Known limitations.
+- Release notes.
+
+ 
+Do not advertise functionality that remains experimental.
+ 
+## 27. Mandatory First Playable Milestone
+ 
+Before expanding into modding and advanced features, demonstrate all six requirements:
+ 
+- &#91; &#93; Microsoft sign-in works on a physical Android phone.
+- &#91; &#93; Java Edition ownership is correctly verified.
+- &#91; &#93; Official Minecraft game files download and pass integrity checks.
+- &#91; &#93; A selected Minecraft Java Edition version reaches its real main menu.
+- &#91; &#93; A real single-player world loads, runs, and saves correctly.
+- &#91; &#93; Touchscreen input and rendering work on a real ARM64 Android device.
+
+ 
+Only mark these items complete after successful tests.
+ 
+## 28. Final Goal
+ 
+Create a truly Android-focused implementation of Minecraft Java Edition that:
+ 
+- Requires legitimate Microsoft authentication.
+- Verifies actual Minecraft Java Edition ownership.
+- Downloads official Minecraft files after successful verification.
+- Runs the game locally on ARM64 Android hardware.
+- Uses an optimized native Android graphics and input integration.
+- Preserves authentic Java Edition gameplay.
+- Supports real Java Edition multiplayer.
+- Provides mobile-friendly controls.
+- Offers configurable performance optimizations.
+- Protects worlds and user accounts.
+- Eventually supports compatible mods and shaders.
+- Can be built reproducibly into an Android APK.
+
+ 
+Do not change the project's goal into making a generic Minecraft-style game or a rebranded Java launcher.
+ 
+**START DEVELOPMENT NOW.**
+ 
+First, evaluate the feasibility of native Minecraft client execution and required API permissions. Then create the Android foundation and Microsoft authentication modules.
+ 
+Continue through the milestones with real code, builds, tests, and documented results.
+ 
+Prioritize obtaining one legitimately downloaded Minecraft Java Edition release running and playable on a real Android device before expanding into optional features.

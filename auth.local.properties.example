@@ -1,0 +1,12 @@
+# Copy to auth.local.properties only after registering your own native public client.
+# These are identifiers/evidence, never client secrets. Do not borrow another app ID.
+microsoft.clientId=
+microsoft.registrationReference=
+# Exact registered native redirect: dev.andes.androidjavaport://oauth2redirect
+# The Microsoft-only integration requests openid profile offline_access.
+# Setting these properties does NOT authorize Xbox/Minecraft APIs or enable installation.
+# Only after the owner has actual approval for THIS client ID and confirms mobile scopes:
+minecraft.approvalReference=
+minecraft.oauthScopes=
+# The Services chain stays disabled unless both fields and the own registration are present.
+# Scopes must include the approved XboxLive.signin scope; no confidential client secret is used.

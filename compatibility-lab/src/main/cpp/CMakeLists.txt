@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.22.1)
+project(runtime_boundary LANGUAGES CXX)
+add_library(runtime_boundary SHARED fixture_bridge.cpp)
+target_compile_options(runtime_boundary PRIVATE -Wall -Wextra -Werror)
+target_link_options(runtime_boundary PRIVATE --driver-mode=g++)

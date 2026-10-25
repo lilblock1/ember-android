@@ -1,0 +1,10 @@
+{
+  "native_entries": [
+    "lib/arm64-v8a/libandes_glfw.so",
+    "lib/arm64-v8a/libandes_probe.so",
+    "lib/arm64-v8a/libandroidx.graphics.path.so"
+  ],
+  "elf_machine": "AArch64 (183)",
+  "minecraft_client_bundled": false,
+  "jvm_bundled": false
+}

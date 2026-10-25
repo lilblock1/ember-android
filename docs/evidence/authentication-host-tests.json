@@ -1,0 +1,19 @@
+[
+  {
+    "suite": "dev.andes.authentication.MinecraftServicesClientTest",
+    "tests": 9,
+    "failures": 0,
+    "errors": 0,
+    "cases": [
+      "restrictionsAndApiDenialRemainDistinct",
+      "cancellationAfterExchangePreventsLaterServiceCalls",
+      "networkAndThrottleErrorsNeverBecomeMissingOwnership",
+      "unknownEntitlementSchemaDoesNotMeanMissingOwnership",
+      "malformedProfileAndLifetimeFailClosed",
+      "noProfileNeverCreatesDemoIdentity",
+      "profileDoesNotSkipEntitlementRetrieval",
+      "exactServiceChainUsesV2RpsPrefixAndNeverEquatesProfileWithOwnership",
+      "noApprovalPerformsZeroNetworkRequests"
+    ]
+  }
+]

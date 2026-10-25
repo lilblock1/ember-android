@@ -1,0 +1,14 @@
+[
+  {
+    "suite": "dev.andes.lwjgl.AbiAndPolicyTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "cases": [
+      "desktopGlIsRejectedBeforeAnyNativeLoading",
+      "publicLwjglMethodsMatchReal332Descriptors",
+      "unsupportedContextAndMonitorRequestsFailClosed",
+      "nativeReadbackCannotWriteBeyondJavaBuffers"
+    ]
+  }
+]

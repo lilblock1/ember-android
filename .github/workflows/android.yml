@@ -1,0 +1,48 @@
+name: Android foundation
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+      - run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0' 'ndk;27.2.12479018' 'cmake;3.22.1'
+      - run: chmod +x gradlew
+      - run: ./gradlew :core:test :authentication:testDebugUnitTest :lwjgl-compat:testDebugUnitTest :app:assembleDebug :authentication:assembleDebugAndroidTest :compatibility-lab:assembleDebugAndroidTest :lwjgl-compat:assembleDebugAndroidTest :app:lintDebug --no-daemon
+      - run: python -m unittest discover -s tests -v
+      - run: cmake -S native-engine/src/main/cpp -B build/native-host && cmake --build build/native-host && ctest --test-dir build/native-host --output-on-failure
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android-arm64-foundation-debug
+          path: app/build/outputs/apk/debug/*.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: runtime-boundary-instrumentation
+          path: compatibility-lab/build/outputs/apk/androidTest/debug/*.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lwjgl-boundary-instrumentation
+          path: lwjgl-compat/build/outputs/apk/androidTest/debug/*.apk
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-reports
+          path: |
+            **/build/reports/
+            **/build/test-results/
+  dependency-review:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/dependency-review-action@v4
