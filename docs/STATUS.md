@@ -4,7 +4,7 @@
 |---|---|---|
 | 1 Feasibility | Partial | Original DEX/JNI and LWJGL/EGL subset tests pass on S25+; real client and AOT remain unresolved |
 | 2 Foundation | Partial physical validation | App installed/started and visible EGL readback passed on S25+; full lifecycle and inputs remain to test |
-| 3 Authentication | Partial | Own registration/callback verified; generic Microsoft sign-in observed on S25+; owner reports API approval; Xbox/Minecraft connection test pending |
+| 3 Authentication | Partial physical validation | Microsoft and Xbox/XSTS/Minecraft profile connection observed on S25+; owner reports API approval; cancellation, refresh/revocation and process-death cases remain |
 | 4 Ownership | Blocked | Current entitlement/subscription contract and validated license adapter remain missing; no grant issuer |
 | 5 Installer | Partial primitives only | Path/integrity policy tests; no proprietary downloads, resolver or installation transaction |
 | 6 Execution | Unimplemented | No production Java execution strategy, LWJGL bridge or GL translator |

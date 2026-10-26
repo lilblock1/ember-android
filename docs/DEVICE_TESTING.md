@@ -16,7 +16,11 @@ from display presentation; subsequent device tests and the visible readback prob
 Generic Microsoft connected state was observed on this phone on 2026-10-26. See
 evidence/microsoft-login-s25.json. This does not verify an Xbox/Minecraft session or ownership.
 
-Pending: Xbox/Minecraft connection, consent cancellation, refresh/logout/revocation;
+The Xbox/XSTS/Minecraft profile connection also succeeded on 2026-10-26. See
+evidence/minecraft-login-s25.json. Entitlement evidence was retrieved but is not yet
+interpreted as a validated license/subscription grant.
+
+Pending: consent cancellation, refresh/logout/revocation;
 lifecycle/context loss; LWJGL input callbacks; actual client/main menu; playable
 world and save/reload. Back up worlds before future imports/upgrades; credential tests and
 failed launches must never delete worlds. Device access and the own Microsoft registration

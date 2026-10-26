@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-26",
+  "device_model": "SM-S936U",
+  "android": "15",
+  "app_version": "0.2.3-research",
+  "evidence_type": "Fresh physical-device screenshot showing the app's successful Minecraft profile connection state",
+  "completed_service_stages": ["XBOX", "XSTS", "MINECRAFT", "ENTITLEMENTS", "PROFILE"],
+  "stage_evidence": "The observed connected state is reached only after all five service stages return successfully and the session is saved in TokenVault.",
+  "oauth_scope_requested": "XboxLive.signin",
+  "profile_connected": true,
+  "profile_identifiers_recorded": false,
+  "tokens_or_service_bodies_recorded": false,
+  "ownership_verified": false,
+  "proprietary_game_downloaded": false,
+  "minecraft_client_executed": false,
+  "refresh_logout_revocation_tested": false
+}

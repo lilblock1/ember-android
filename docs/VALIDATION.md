@@ -22,7 +22,7 @@ not to Minecraft game compatibility.
 | Official 1.20.4 public metadata | Downloaded JSON only, version metadata SHA-1 matched manifest |
 | Physical device | S25+ / SM-S936U / Android 15 API 35 / ARM64 |
 | Real Microsoft phone sign-in | Connected state observed on S25+ on 2026-10-26; refresh/logout/revocation not yet tested |
-| Xbox/XSTS/Minecraft entitlement/profile flow | Owner reports approval; local connection enabled; live results and ownership contract remain unverified |
+| Xbox/XSTS/Minecraft entitlement/profile flow | Passed connection on S25+ on 2026-10-26: Minecraft profile connected state observed after all five stages; ownership interpretation remains unverified |
 | Real Minecraft client launch / gameplay / save / multiplayer | Not run; no execution engine exists |
 | GitHub Actions | Passed on Ubuntu: [run 40156947017](https://github.com/lilblock1/ember-android/actions/runs/40156947017), commit d2caafd3e8b4eebbed131e56705121b79fbde472; APK/instrumentation assembly, host tests and lint; physical-device tests remain separate |
 

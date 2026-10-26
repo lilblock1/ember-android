@@ -16,3 +16,7 @@ execution are not yet implemented. These controls are not unlocked by Microsoft 
 
 Public/CI builds do not include the local approval configuration. This change does not add
 a graphics translator, runtime, game downloader, or Minecraft binaries.
+
+Physical result: the S25+ displayed Minecraft profile connected after the fresh Xbox
+consent flow. All five service stages completed; the screenshot contains no token.
+Public evidence omits the profile name and ID. Ownership remains unverified.

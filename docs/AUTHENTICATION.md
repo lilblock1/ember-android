@@ -89,7 +89,8 @@ AppAuth logging is suppressed with a pinned 0.11.1 internal adapter; re-audit on
 
 Eleven mocked service-chain/consent-policy tests pass. The Keystore encryption/tamper/delete
 test passed on S25+ / Android 15. Generic Microsoft connected state was observed on the
-phone on 2026-10-26. Xbox/Minecraft responses, cancellation, refresh/revocation, process
-death during login and account switching still need their own live tests. The current
+phone on 2026-10-26. The Xbox/XSTS/Minecraft profile connection then succeeded on the
+same phone; see evidence/minecraft-login-s25.json. Cancellation, refresh/revocation,
+process death during login and account switching still need their own live tests. The current
 minimal Xbox connection does not request offline permission. The owner approval record
 does not override any provider denial or establish an entitlement contract.

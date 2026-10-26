@@ -17,6 +17,11 @@ Registered/submitted 2026-10-24; status updated 2026-10-26.
 - Minimal Xbox scope selected from Microsoft's published protocol: `XboxLive.signin`.
   No offline Xbox scope is requested for this connection test. The approval reply's
   scope details and current entitlement/profile contract have not been supplied.
+- Live connection test on 2026-10-26: the S25+ displayed Minecraft profile connected.
+  That state follows successful Xbox, XSTS, Minecraft token, entitlement-evidence and
+  profile requests. No profile identifiers, tokens or raw service bodies are published.
+  This confirms the minimal scope works for this registration/account at test time;
+  it does not establish permanent/subscription ownership or a general API contract.
 
 The locally configured 0.2.3 APK enables the account service chain using the owner's
 approval attestation as its local audit reference. Microsoft and Minecraft servers still

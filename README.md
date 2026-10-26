@@ -13,7 +13,7 @@ remaining ownership, download and real-game milestones are unverified.
 - C++ JNI / GLES 3 surface probe, touch events, bounded native input queue and lifecycle suspension.
 - Browser PKCE plus an approval-gated Xbox/XSTS/Minecraft Services chain. The project's
   own registration is configured locally, the owner reports approval, and generic Microsoft
-  sign-in has worked on S25+. Live Xbox/Minecraft testing and ownership validation are separate.
+  and Xbox/XSTS/Minecraft profile sign-in have worked on S25+. Ownership validation remains separate.
 - AES-256-GCM credential storage using non-exportable Android Keystore keys, refresh support,
   local logout and protection against stale asynchronous session results.
 - Installation policy, path traversal rejection and streaming size/SHA-1 verification utilities.
