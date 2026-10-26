@@ -4,14 +4,16 @@ Independent, unofficial project. Not approved by or associated with Mojang or Mi
 
 **This is an Android foundation, not a working Minecraft port.** No Minecraft client,
 assets, JVM, PojavLauncher code or game reimplementation is included. Install and Play
-are disabled. All six first-playable requirements remain unverified.
+are disabled. Generic Microsoft sign-in has been observed on the physical S25+; the
+remaining ownership, download and real-game milestones are unverified.
 
 ## Implemented
 
 - Android 10+, ARM64 Kotlin / Compose app with persistent appearance settings and device diagnostics.
 - C++ JNI / GLES 3 surface probe, touch events, bounded native input queue and lifecycle suspension.
-- Browser PKCE plus an approval-gated Xbox/XSTS/Minecraft Services chain. Own registration
-  and approval remain required; no live account login is claimed.
+- Browser PKCE plus an approval-gated Xbox/XSTS/Minecraft Services chain. The project's
+  own registration is configured locally, the owner reports approval, and generic Microsoft
+  sign-in has worked on S25+. Live Xbox/Minecraft testing and ownership validation are separate.
 - AES-256-GCM credential storage using non-exportable Android Keystore keys, refresh support,
   local logout and protection against stale asynchronous session results.
 - Installation policy, path traversal rejection and streaming size/SHA-1 verification utilities.
@@ -67,9 +69,9 @@ Select and prove a legally permissible Java bytecode execution architecture, the
 the version-specific Java/desktop API and LWJGL/native ABI bridges. The C++ surface test
 does not satisfy this gate. No runtime has been selected as production-ready.
 
-Ember's public-client registration is complete and its Mojang API request is submitted;
-see [registration status](docs/REGISTRATION_STATUS.md). Minecraft Services approval and
-the current entitlement/subscription contract remain pending. See the concrete
+Ember's public-client registration is complete and the owner reports Mojang approval;
+see [registration status](docs/REGISTRATION_STATUS.md) for the evidence limits. The current
+entitlement/subscription contract and validated ownership adapter remain unresolved. See the concrete
 approval record template in `docs/API_APPROVAL_RECORD.example.md`.
 
 Release signing must use an externally supplied keystore and CI secrets; debug keys are

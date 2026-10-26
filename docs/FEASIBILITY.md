@@ -61,19 +61,21 @@ Microsoft documents native/mobile authorization code + PKCE. The foundation uses
 a public-client flow and no client secret. Register an app and the exact redirect before
 using it. Source: [Microsoft protocol documentation](https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-auth-code-flow).
 
-No project client ID, registration record or written Minecraft API approval was provided.
-Authorization is therefore **unverified**, not implicitly granted by public documentation.
+Update 2026-10-26: Ember now has its own registered public-client ID and the owner reports
+Minecraft API approval. The written reference has not been supplied. See REGISTRATION_STATUS.md.
+Public documentation itself does not grant approval; provider authorization remains enforced.
 Xbox website sign-in documentation describes provisioning and U-token/XSTS stages, but a
 confidential website sample is not an Android public-client authorization grant. Source:
 [Xbox service sign-in](https://learn.microsoft.com/en-us/gaming/gdk/docs/services/fundamentals/s2s-auth-calls/service-authentication/live-website-authentication).
 
-The linked [Minecraft application information URL](https://aka.ms/AppRegInfo) could not be
-read successfully during this review; the related support page returned no substantive
-guidance. No authoritative current endpoint/schema documentation sufficient to validate
+The linked [Minecraft application information URL](https://aka.ms/AppRegInfo) was subsequently
+read in the browser, and the official review form was submitted. No authoritative current
+endpoint/schema documentation sufficient to validate
 permanent vs subscription Java ownership was obtained. Do not infer a contract from
 community reports or hard-code entitlement names as proof. Obtain current guidance from
 Minecraft support for this project's own client ID. The staged Xbox/Minecraft adapters now
-exist and pass nine mock tests; live use remains disabled pending approval.
+exist and pass eleven mock/policy tests. The local build now enables a minimal connection
+test under the owner's approval attestation; this does not unlock installation or play.
 
 The EULA permits certain original modifications/tools and restricts distribution of game
 software or modified game versions. It also requires authorized download sources. Ownership

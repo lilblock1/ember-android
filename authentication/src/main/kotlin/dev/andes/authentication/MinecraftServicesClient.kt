@@ -64,6 +64,8 @@ internal class HttpsServicesTransport : ServicesTransport {
 
 internal class ServicesApproval(val clientId: String, private val registrationReference: String,
     private val approvalReference: String, val scopes: List<String>) {
+    fun acceptsGrantedScopes(granted: String): Boolean = enabled &&
+        granted.split(Regex("\\s+")).any { it.equals("XboxLive.signin", true) }
     val enabled: Boolean get() = clientId.matches(Regex("[a-fA-F0-9]{8}(-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}")) &&
         registrationReference.isNotBlank() && approvalReference.isNotBlank() &&
         scopes.any { it.equals("XboxLive.signin", true) } && scopes.all { scope ->

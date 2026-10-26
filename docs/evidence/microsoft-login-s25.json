@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-26",
+  "device_model": "SM-S936U",
+  "android": "15",
+  "app_version": "0.2.2-research",
+  "evidence_type": "Physical app state observed in a fresh device screenshot",
+  "observed_status": "Microsoft connected",
+  "microsoft_sign_in_observed": true,
+  "xbox_minecraft_services_tested": false,
+  "ownership_verified": false,
+  "refresh_logout_revocation_tested": false,
+  "minecraft_client_executed": false
+}

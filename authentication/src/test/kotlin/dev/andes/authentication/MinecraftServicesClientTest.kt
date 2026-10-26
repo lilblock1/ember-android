@@ -26,6 +26,24 @@ class MinecraftServicesClientTest {
     }
     private fun reason(result: ServicesResult) = (result as ServicesResult.Failed).reason
 
+    @Test fun microsoftOnlySessionCannotBeReusedAsXboxConsent() {
+        assertFalse(approval.acceptsGrantedScopes("openid profile offline_access"))
+        assertFalse(approval.acceptsGrantedScopes("XboxLive.signin.extra"))
+        assertFalse(approval.acceptsGrantedScopes(""))
+        assertTrue(approval.acceptsGrantedScopes("xboxlive.signin"))
+        assertTrue(approval.acceptsGrantedScopes("XboxLive.signin\tXboxLive.offline_access"))
+    }
+
+    @Test fun unsupportedScopeConfigurationMakesNoServiceCalls() {
+        val fake = Fake()
+        val invalid = ServicesApproval(approval.clientId, "registered", "owner approval",
+            listOf("XboxLive.signin", "unapproved.scope"))
+        assertFalse(invalid.acceptsGrantedScopes("XboxLive.signin"))
+        assertEquals(ServicesFailure.APPROVAL_REQUIRED,
+            reason(MinecraftServicesClient(fake).authenticate("fake-ms", invalid)))
+        assertTrue(fake.requests.isEmpty())
+    }
+
     @Test fun noApprovalPerformsZeroNetworkRequests() {
         val fake = Fake()
         val missing = ServicesApproval(approval.clientId, "registered", "", approval.scopes)

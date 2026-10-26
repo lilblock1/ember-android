@@ -13,9 +13,12 @@ claim follows from these component tests.
 Initial offscreen swap-interval failure was fixed by separating pbuffer flush behavior
 from display presentation; subsequent device tests and the visible readback probe passed.
 
-Pending: live Microsoft browser/account flow with this project's own registration and API
-approval; lifecycle/context loss; LWJGL input callbacks; actual client/main menu; playable
+Generic Microsoft connected state was observed on this phone on 2026-10-26. See
+evidence/microsoft-login-s25.json. This does not verify an Xbox/Minecraft session or ownership.
+
+Pending: Xbox/Minecraft connection, consent cancellation, refresh/logout/revocation;
+lifecycle/context loss; LWJGL input callbacks; actual client/main menu; playable
 world and save/reload. Back up worlds before future imports/upgrades; credential tests and
 failed launches must never delete worlds. Device access and the own Microsoft registration
-are now available. Services approval, owned-client inventory and remaining runtime/graphics
-engineering still block play. Generic Microsoft login can be tested before Services approval.
+are now available, and the owner reports Services approval. Validated ownership, owned-client
+inventory and remaining runtime/graphics engineering still block play.

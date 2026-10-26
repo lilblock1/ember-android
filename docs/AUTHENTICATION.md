@@ -3,11 +3,14 @@
 Implemented: system-browser Microsoft authorization code + S256 PKCE → Xbox Live user
 token → XSTS → Minecraft Services token → entitlement evidence → Java profile.
 The service chain is original code, compared with Amethyst and Microsoft's documentation.
-See [the reference review](AMETHYST_AUTH_REVIEW.md). No live account-services calls have run.
+See [the reference review](AMETHYST_AUTH_REVIEW.md). Generic Microsoft sign-in was observed
+on S25+; Xbox/Minecraft service calls are a separate connection test.
 
-Ember's own application is registered and its Mojang API request has been submitted;
-approval remains pending. See [registration status](REGISTRATION_STATUS.md).
-The locally configured 0.2.2 APK enables generic Microsoft sign-in for testing.
+Ember's own application is registered. The owner reported Mojang approval on 2026-10-26;
+the written reference has not been supplied. See [registration status](REGISTRATION_STATUS.md).
+The locally configured 0.2.3 APK enables the service connection using that recorded
+attestation and requests only `XboxLive.signin`, selected from Microsoft's protocol docs.
+Existing Microsoft-only sessions must explicitly reauthorize before Xbox token exchange.
 Unconfigured public/CI builds keep live sign-in disabled.
 Generic Microsoft sign-in needs an own public-client registration. Xbox/Minecraft calls
 also need approval for that ID and confirmed mobile scopes. A local approval reference is
@@ -84,8 +87,9 @@ AppAuth logging is suppressed with a pinned 0.11.1 internal adapter; re-audit on
 
 ## Actual tests
 
-Nine mocked service-chain tests pass. The Keystore encryption/tamper/delete test passed
-on the S25+ / Android 15. Real browser login, consent/cancellation, refresh/revocation,
-live Xbox/Minecraft responses, process death during login and account switching remain
-untested. Generic Microsoft phone login can now be tested with the configured APK;
-live Xbox/Minecraft tests still require the pending API approval and confirmed scopes.
+Eleven mocked service-chain/consent-policy tests pass. The Keystore encryption/tamper/delete
+test passed on S25+ / Android 15. Generic Microsoft connected state was observed on the
+phone on 2026-10-26. Xbox/Minecraft responses, cancellation, refresh/revocation, process
+death during login and account switching still need their own live tests. The current
+minimal Xbox connection does not request offline permission. The owner approval record
+does not override any provider denial or establish an entitlement contract.

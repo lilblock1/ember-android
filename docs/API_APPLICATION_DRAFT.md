@@ -1,6 +1,7 @@
 # Ember — submitted API application text
 
-Submitted 2026-10-24; the form confirmed receipt. Approval is pending.
+Submitted 2026-10-24; the form confirmed receipt. The owner reported approval on
+2026-10-26; see REGISTRATION_STATUS.md for the evidence limits.
 
 Application name: Ember
 

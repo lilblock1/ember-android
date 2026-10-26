@@ -18,7 +18,8 @@ import java.net.URL
 
 data class AccountStatus(val signedIn: Boolean = false, val busy: Boolean = false,
     val message: String = "Microsoft account not connected. Minecraft ownership is unverified.",
-    val minecraft: String = "Minecraft Services is waiting for this project's API approval.")
+    val minecraft: String = "Minecraft account not connected. Ownership is unverified.",
+    val needsMinecraftSignIn: Boolean = false)
 
 /** Browser PKCE plus an approval-gated Xbox/XSTS/Minecraft Services chain. */
 class MicrosoftAccount(context: Context) {
@@ -31,8 +32,9 @@ class MicrosoftAccount(context: Context) {
         BuildConfig.SERVICES_APPROVAL_REFERENCE, BuildConfig.SERVICES_OAUTH_SCOPES.split(' ').filter { it.isNotBlank() })
     private val epoch = SessionEpoch()
     private var authState = AuthState()
-    private val mutable = MutableStateFlow(AccountStatus())
+    private val mutable = MutableStateFlow(signedOutStatus())
     val status = mutable.asStateFlow()
+    val servicesAccessEnabled: Boolean get() = approval.enabled
     val configured: Boolean get() = BuildConfig.CLIENT_ID.matches(Regex("[a-fA-F0-9]{8}(-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}")) &&
         BuildConfig.REGISTRATION_REFERENCE.isNotBlank()
     private val service = AuthorizationService(context, AppAuthConfiguration.Builder()
@@ -47,7 +49,7 @@ class MicrosoftAccount(context: Context) {
         try {
             if (!flags.getBoolean("disabled", false)) credentials.read()?.let { authState = AuthState.jsonDeserialize(it) }
             if (authState.isAuthorized && authState.lastAuthorizationResponse?.request?.clientId == BuildConfig.CLIENT_ID) {
-                mutable.value = AccountStatus(true, message = "Microsoft session restored. Java Edition ownership is unverified.")
+                mutable.value = connectedStatus(authState)
             } else if (authState.isAuthorized) logout()
         } catch (_: Exception) {
             runCatching { credentials.clear() }
@@ -56,6 +58,24 @@ class MicrosoftAccount(context: Context) {
             authState = AuthState()
             mutable.value = AccountStatus(message = "Credential storage is unavailable or changed. Sign in again.")
         }
+    }
+
+    private fun grantedScopes(candidate: AuthState): String = candidate.lastTokenResponse?.scope
+        ?: candidate.lastAuthorizationResponse?.request?.scope.orEmpty()
+
+    private fun signedOutStatus(message: String = "Microsoft account not connected. Minecraft ownership is unverified.") =
+        AccountStatus(message = message, minecraft = if (approval.enabled)
+            "Minecraft account connection is available. Sign in with Microsoft."
+        else "Minecraft Services is not configured for this build.")
+
+    private fun connectedStatus(candidate: AuthState): AccountStatus {
+        val needsConsent = approval.enabled && !approval.acceptsGrantedScopes(grantedScopes(candidate))
+        return AccountStatus(true, message = "Microsoft connected. Java Edition ownership is unverified.",
+            minecraft = when {
+                !approval.enabled -> "Minecraft Services is not configured for this build."
+                needsConsent -> "Your current Microsoft session has no Xbox permission. Tap Connect Minecraft account to authorize it."
+                else -> "Minecraft account connection is ready to check. Ownership is unverified."
+            }, needsMinecraftSignIn = needsConsent)
     }
 
     @Synchronized fun begin(): Intent? {
@@ -157,7 +177,7 @@ class MicrosoftAccount(context: Context) {
             credentials.write(candidate.jsonSerializeString())
             check(flags.edit().putBoolean("disabled", false).commit())
             authState = candidate
-            mutable.value = AccountStatus(true, message = "Microsoft connected. Minecraft API approval and ownership verification are still required.")
+            mutable.value = connectedStatus(candidate)
             startMinecraftServices(candidate)
         } catch (_: Exception) {
             logout()
@@ -167,9 +187,9 @@ class MicrosoftAccount(context: Context) {
 
     private fun startMinecraftServices(candidate: AuthState) {
         if (!approval.enabled) return
-        val scopes = candidate.lastTokenResponse?.scope ?: candidate.lastAuthorizationResponse?.request?.scope.orEmpty()
-        if (!scopes.split(' ').any { it.equals("XboxLive.signin", true) }) {
-            mutable.value = status.value.copy(minecraft = "Sign in again with the project's approved Xbox scopes.")
+        if (!approval.acceptsGrantedScopes(grantedScopes(candidate))) {
+            mutable.value = status.value.copy(needsMinecraftSignIn = true,
+                minecraft = "Your current Microsoft session has no Xbox permission. Tap Connect Minecraft account to authorize it.")
             return
         }
         val access = candidate.accessToken ?: return
@@ -228,7 +248,7 @@ class MicrosoftAccount(context: Context) {
         val removedMinecraft = runCatching { minecraftCredentials.clear() }.isSuccess
         val cleared = disabled && removedAccount && removedPending && removedMinecraft
         flags.edit().putBoolean("cleanup-failed", !cleared).commit()
-        mutable.value = AccountStatus(message = if (cleared) "Local session removed. Your browser may still be signed in to Microsoft."
+        mutable.value = signedOutStatus(message = if (cleared) "Local session removed. Your browser may still be signed in to Microsoft."
             else "Session disabled. Credential cleanup failed; clear this app's storage before signing in again.")
     }
 

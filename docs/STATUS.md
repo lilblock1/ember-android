@@ -4,8 +4,8 @@
 |---|---|---|
 | 1 Feasibility | Partial | Original DEX/JNI and LWJGL/EGL subset tests pass on S25+; real client and AOT remain unresolved |
 | 2 Foundation | Partial physical validation | App installed/started and visible EGL readback passed on S25+; full lifecycle and inputs remain to test |
-| 3 Authentication | Partial | Own native public-client registration and callback verified; Mojang request submitted; nine mock tests and physical Keystore test pass; Services approval and phone login pending |
-| 4 Ownership | Blocked | Current approved Services contract and project approval missing; no grant issuer |
+| 3 Authentication | Partial | Own registration/callback verified; generic Microsoft sign-in observed on S25+; owner reports API approval; Xbox/Minecraft connection test pending |
+| 4 Ownership | Blocked | Current entitlement/subscription contract and validated license adapter remain missing; no grant issuer |
 | 5 Installer | Partial primitives only | Path/integrity policy tests; no proprietary downloads, resolver or installation transaction |
 | 6 Execution | Unimplemented | No production Java execution strategy, LWJGL bridge or GL translator |
 | 7 Playability | Unimplemented | No real client, worlds, gameplay, audio or saving |
@@ -15,9 +15,9 @@
 | 11 Reliability | Partial | Credential handling and policy primitives; game recovery/backups pending |
 | 12 Release | Research foundation only | Debug artifact if build succeeds; no playable release |
 
-## First playable — none verified
+## First playable — partial
 
-- [ ] Microsoft sign-in works on a physical Android phone.
+- [x] Generic Microsoft sign-in works on a physical Android phone (S25+, observed 2026-10-26; not Xbox/Minecraft ownership).
 - [ ] Java Edition ownership is correctly verified.
 - [ ] Official Minecraft game files download and pass integrity checks.
 - [ ] A selected client reaches its real main menu.

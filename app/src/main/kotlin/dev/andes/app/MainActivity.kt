@@ -48,9 +48,15 @@ class MainActivity : ComponentActivity() {
                                         try { authorization.launch(intent) } catch (_: Exception) { account.complete(null) }
                                     }
                                 }, enabled = !state.busy) {
-                                    Text(if (state.signedIn) "Switch Microsoft account" else "Sign in with Microsoft")
+                                    Text(when {
+                                        state.needsMinecraftSignIn -> "Connect Minecraft account"
+                                        state.signedIn -> "Switch Microsoft account"
+                                        else -> "Sign in with Microsoft"
+                                    })
                                 }
-                                if (state.signedIn) OutlinedButton(onClick = account::refresh, enabled = !state.busy) { Text("Check Microsoft session") }
+                                if (state.signedIn) OutlinedButton(onClick = account::refresh, enabled = !state.busy) {
+                                    Text(if (account.servicesAccessEnabled) "Check Minecraft connection" else "Check Microsoft session")
+                                }
                                 OutlinedButton(onClick = account::logout) { Text("Remove local session / cancel sign-in") }
                                 Text("Microsoft sign-in does not verify game ownership.", style = MaterialTheme.typography.bodySmall)
                             }
@@ -58,7 +64,7 @@ class MainActivity : ComponentActivity() {
                         Card(Modifier.fillMaxWidth()) {
                             Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                                 Text("Minecraft installation", style = MaterialTheme.typography.titleLarge)
-                                Text(MinecraftInstallationService().installationBlocker())
+                                Text(MinecraftInstallationService(account.servicesAccessEnabled).installationBlocker())
                                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                                     Button(onClick = {}, enabled = false) { Text("Install") }
                                     Button(onClick = {}, enabled = false) { Text("Play") }

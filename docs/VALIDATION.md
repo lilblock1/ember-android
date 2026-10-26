@@ -8,7 +8,7 @@ not to Minecraft game compatibility.
 | Android ARM64 C++ compile / APK assembly | Passed |
 | Core JVM security tests | 8 passed, 0 failed |
 | Python audit tests | 5 passed, 0 failed; Java 17 fixture and descriptor inventory |
-| Authentication service-chain mocks | 9 passed, 0 failed; no live API requests |
+| Authentication service-chain and consent-policy mocks | 11 passed, 0 failed on 2026-10-26; old Microsoft-only consent cannot authorize Xbox exchange |
 | LWJGL ABI/policy host tests | 4 passed, 0 failed; compares against upstream 3.3.2 |
 | C++ input queue host executable | Passed: bounded queue, invalid/finite coordinates, lifecycle reset, concurrent producer/consumer |
 | Android lint | 0 errors, 7 warnings: six pinned dependency update notices and ARM64-only ChromeOS ABI warning |
@@ -21,8 +21,8 @@ not to Minecraft game compatibility.
 | Original Java fixture → DEX, min API 29 | Conversion and selected execution passed on S25+; desktop AWT remains absent |
 | Official 1.20.4 public metadata | Downloaded JSON only, version metadata SHA-1 matched manifest |
 | Physical device | S25+ / SM-S936U / Android 15 API 35 / ARM64 |
-| Real Microsoft browser login / refresh/logout | Not run on phone; own registration and exact callback are now verified in Azure |
-| Xbox/XSTS/Minecraft entitlement/profile flow | Staged implementation and mock tests pass; live approval/contract unverified |
+| Real Microsoft phone sign-in | Connected state observed on S25+ on 2026-10-26; refresh/logout/revocation not yet tested |
+| Xbox/XSTS/Minecraft entitlement/profile flow | Owner reports approval; local connection enabled; live results and ownership contract remain unverified |
 | Real Minecraft client launch / gameplay / save / multiplayer | Not run; no execution engine exists |
 | GitHub Actions | Passed on Ubuntu: [run 40156947017](https://github.com/lilblock1/ember-android/actions/runs/40156947017), commit d2caafd3e8b4eebbed131e56705121b79fbde472; APK/instrumentation assembly, host tests and lint; physical-device tests remain separate |
 

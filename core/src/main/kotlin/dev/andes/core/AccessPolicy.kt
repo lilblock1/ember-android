@@ -27,10 +27,12 @@ class InstallAccessPolicy {
 }
 
 /** Deliberately exposes no game download operation while the Services contract is unverified. */
-class MinecraftInstallationService {
-    val status: OwnershipStatus = OwnershipStatus.ApprovalRequired
+class MinecraftInstallationService(private val serviceConnectionConfigured: Boolean = false) {
+    val status: OwnershipStatus = if (serviceConnectionConfigured) OwnershipStatus.Unverified else OwnershipStatus.ApprovalRequired
     fun installationBlocker(): String =
-        "Minecraft API approval and a validated entitlement adapter are required. No game files have been downloaded."
+        if (serviceConnectionConfigured)
+            "Installation is not implemented yet. Java Edition ownership must be verified before game files can be downloaded."
+        else "Minecraft API approval and a validated entitlement adapter are required. No game files have been downloaded."
 }
 
 /** In-flight credential work must never restore a session after logout/account switching. */
