@@ -1,0 +1,36 @@
+{
+  "libraries": [
+    {
+      "name": "com.mojang:logging:1.1.1",
+      "sha1": "832b8e6674a9b325a5175a3a6267dfaf34c85139",
+      "size": 15343
+    },
+    {
+      "name": "net.sf.jopt-simple:jopt-simple:5.0.4",
+      "sha1": "4fdac2fbe92dfad86aa6e9301736f6b4342a3f5c",
+      "size": 78146
+    },
+    {
+      "name": "org.apache.logging.log4j:log4j-api:2.19.0",
+      "sha1": "ea1b37f38c327596b216542bc636cfdc0b8036fa",
+      "size": 317566
+    },
+    {
+      "name": "org.apache.logging.log4j:log4j-core:2.19.0",
+      "sha1": "3b6eeb4de4c49c0fe38a4ee27188ff5fee44d0bb",
+      "size": 1864386
+    },
+    {
+      "name": "org.apache.logging.log4j:log4j-slf4j2-impl:2.19.0",
+      "sha1": "5c04bfdd63ce9dceb2e284b81e96b6a70010ee10",
+      "size": 27721
+    },
+    {
+      "name": "org.slf4j:slf4j-api:2.0.7",
+      "sha1": "41eb7184ea9d556f23e18b5cb99cad1f8581fc00",
+      "size": 63635
+    }
+  ],
+  "integrityVerified": true,
+  "completeGameDependencies": false
+}

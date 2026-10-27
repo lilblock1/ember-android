@@ -1,0 +1,30 @@
+{
+  "version": "1.20.4",
+  "originalClientSha1": "fd19469fed4a4b4c15b2d5133985f0e3e7816a8a",
+  "freshOwnershipVerified": true,
+  "translation": "D8 to DEX; ART runtime, not native AOT",
+  "dexFiles": [
+    {
+      "file": "classes.dex",
+      "bytes": 7938624,
+      "sha256": "60c662fbb607ac9324fef90442bdd60bcda053fee8e1995311b53684387b05a5"
+    },
+    {
+      "file": "classes2.dex",
+      "bytes": 7560580,
+      "sha256": "907211bb3fca5edbe8d595cbca16505bd321abb2fed301ac378770c19b2e9ffe"
+    },
+    {
+      "file": "classes3.dex",
+      "bytes": 1981816,
+      "sha256": "8274d02be04f8084beac700fd36a8446254fec38e9d3de735189821c7a08eb01"
+    }
+  ],
+  "mainClassInitialized": true,
+  "failureType": "NoClassDefFoundError",
+  "missingClass": "com\/google\/common\/base\/Ticker",
+  "mainMethodInvoked": true,
+  "mainEntryObserved": true,
+  "mainMenuReached": false,
+  "playable": false
+}

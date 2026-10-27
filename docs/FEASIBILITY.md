@@ -68,14 +68,11 @@ Xbox website sign-in documentation describes provisioning and U-token/XSTS stage
 confidential website sample is not an Android public-client authorization grant. Source:
 [Xbox service sign-in](https://learn.microsoft.com/en-us/gaming/gdk/docs/services/fundamentals/s2s-auth-calls/service-authentication/live-website-authentication).
 
-The linked [Minecraft application information URL](https://aka.ms/AppRegInfo) was subsequently
-read in the browser, and the official review form was submitted. No authoritative current
-endpoint/schema documentation sufficient to validate
-permanent vs subscription Java ownership was obtained. Do not infer a contract from
-community reports or hard-code entitlement names as proof. Obtain current guidance from
-Minecraft support for this project's own client ID. The staged Xbox/Minecraft adapters now
-exist and pass eleven mock/policy tests. The local build now enables a minimal connection
-test under the owner's approval attestation; this does not unlock installation or play.
+The official AppID review was submitted and the owner reports approval. The observed
+purchased-license response is now verified cryptographically against the publisher's launcher
+public key, a fresh challenge, token account and same-token profile. The physical test passed.
+See [OWNERSHIP.md](OWNERSHIP.md) for provenance, exact scope and unsupported subscriptions.
+No provider schema specification or written approval reference is claimed to have been received.
 
 The EULA permits certain original modifications/tools and restricts distribution of game
 software or modified game versions. It also requires authorized download sources. Ownership
@@ -95,3 +92,19 @@ distributing translated/modified binaries. Sources: [current EULA](https://www.m
    context loss and input before passing them to the real client.
 5. Launch that client to its actual main menu and world on physical hardware with logs and
    saves as evidence. Keep every first-playable box unchecked until each test passes.
+
+## 0.3.0 actual-client experiment
+
+Original 1.20.4 client (24,445,539 bytes) downloaded on the entitled S25+ and matched
+Mojang SHA-1 fd19469fed4a4b4c15b2d5133985f0e3e7816a8a. All 7,787 classes use classfile
+major 61. D8 converted the original client and six verified logging/argument dependencies
+into three private DEX files. On the phone, the real Main class initialized and the main
+entry was observed in the exception stack. Invocation with no credentials/arguments then
+stopped at com/google/common/base/Ticker, an unresolved Guava dependency.
+This is managed ART execution, not a native AOT port, and no main menu was reached.
+
+Static audit after the shader/VBO/VAO adapter extension still finds 249 missing declarations
+among 292 directly referenced LWJGL members. Missing Java libraries are only the next failure;
+fixing Guava will not supply desktop Java APIs, native memory, OpenAL, GLFW callbacks,
+desktop OpenGL/GLSL translation, resources or a production execution architecture.
+Game bytecode and translated DEX remain private and are never in public artifacts.

@@ -1,0 +1,24 @@
+{
+  "version": "1.20.4",
+  "originalClientSha1": "fd19469fed4a4b4c15b2d5133985f0e3e7816a8a",
+  "freshOwnershipVerified": true,
+  "translation": "D8 to DEX; ART runtime, not native AOT",
+  "dexFiles": [
+    {
+      "file": "classes.dex",
+      "bytes": 7690992,
+      "sha256": "30a9fd01b8e1f37ab621fed0079d83a16d403f49ff1bad2f0389be6801d4fd02"
+    },
+    {
+      "file": "classes2.dex",
+      "bytes": 7685048,
+      "sha256": "7f9182ce4f3d1e83e110c5073c56073334a4f25ac82e2c3aeb3b87195c28da60"
+    }
+  ],
+  "mainClassInitialized": false,
+  "failureType": "NoClassDefFoundError",
+  "missingClass": "com\/mojang\/logging\/LogUtils",
+  "mainMethodInvoked": false,
+  "mainMenuReached": false,
+  "playable": false
+}

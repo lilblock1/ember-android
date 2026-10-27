@@ -1,0 +1,15 @@
+{
+  "observedAt": "2026-10-27T00:08:55.413206Z",
+  "device": "Samsung Galaxy S25+ SM-S936U",
+  "androidApi": 35,
+  "javaPurchaseOwnershipVerified": true,
+  "licenseSignatureAlgorithm": "RS256",
+  "licenseNonceAndAccountBound": true,
+  "version": "1.20.4",
+  "clientBytes": 24445539,
+  "officialClientSha1": "fd19469fed4a4b4c15b2d5133985f0e3e7816a8a",
+  "clientIntegrityVerified": true,
+  "clientExecuted": false,
+  "fullGameInstalled": false,
+  "sessionPreserved": true
+}

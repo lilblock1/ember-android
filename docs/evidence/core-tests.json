@@ -11,6 +11,26 @@
     ]
   },
   {
+    "suite": "dev.andes.core.JavaOwnershipVerifierTest",
+    "tests": 12,
+    "failures": 0,
+    "errors": 0,
+    "cases": [
+      "rejectsDifferentAccountOrProfile",
+      "rejectsUnrecognizedKeysAndAlgorithmDowngrade",
+      "rejectsReplayedAndSubstitutedNonce",
+      "rejectsWrongSignature",
+      "rejectsUnsignedOuterTamperingAndPartialServiceFailure",
+      "mcPurchaseIsSupportedAndErrorsAreSanitized",
+      "rejectsExpiredFutureOrStaleEvidence",
+      "grantsOnlyTenMinutesForMatchingPurchasedJavaAndProfile",
+      "missingGrantPreventsAnyDownloadOrFilesystemChange",
+      "tokenExpiryBoundsGrant",
+      "rejectsBedrockAndIncompleteJavaLicenses",
+      "rejectsUnvalidatedSubscriptionsAndUnknownSchema"
+    ]
+  },
+  {
     "suite": "dev.andes.core.SecurityBoundaryTest",
     "tests": 5,
     "failures": 0,

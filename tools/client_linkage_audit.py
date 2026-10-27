@@ -72,7 +72,8 @@ def main():
     if digest.hexdigest() != metadata["sha1"]: raise ValueError("Client hash does not match official selected version")
     report = linkage(client, declarations(args.shim_classes))
     report.update(version=args.version, official_client_sha1=metadata["sha1"],
-                  ownership_verified=False, client_executed=False, proprietary_downloads_performed=False)
+                  ownership_verified=False, client_executed=False, proprietary_downloads_performed=False,
+                  ownership_note="This read-only audit does not establish ownership. See separate device evidence when available.")
     pathlib.Path(args.output).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
 
 

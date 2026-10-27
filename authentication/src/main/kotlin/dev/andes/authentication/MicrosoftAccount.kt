@@ -3,6 +3,12 @@ package dev.andes.authentication
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import dev.andes.core.InstallGrant
+import dev.andes.core.OfficialClientInstaller
+import java.io.File
+import java.io.IOException
+import java.time.Instant
+import java.util.UUID
 import dev.andes.core.SessionEpoch
 import dev.andes.core.AuthorizationBoundary
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,10 +25,14 @@ import java.net.URL
 data class AccountStatus(val signedIn: Boolean = false, val busy: Boolean = false,
     val message: String = "Microsoft account not connected. Minecraft ownership is unverified.",
     val minecraft: String = "Minecraft account not connected. Ownership is unverified.",
-    val needsMinecraftSignIn: Boolean = false)
+    val needsMinecraftSignIn: Boolean = false, val ownershipVerified: Boolean = false,
+    val clientDownloaded: Boolean = false, val downloadProgress: String = "")
 
 /** Browser PKCE plus an approval-gated Xbox/XSTS/Minecraft Services chain. */
 class MicrosoftAccount(context: Context) {
+    private val clientDirectory = File(context.filesDir, "research-client")
+    private var installGrant: InstallGrant? = null
+    private var activeSession = UUID.randomUUID()
     private val flags = context.getSharedPreferences("session-control", Context.MODE_PRIVATE)
     private val credentials = TokenVault(context, "account")
     private val pending = TokenVault(context, "pending-auth")
@@ -50,6 +60,7 @@ class MicrosoftAccount(context: Context) {
             if (!flags.getBoolean("disabled", false)) credentials.read()?.let { authState = AuthState.jsonDeserialize(it) }
             if (authState.isAuthorized && authState.lastAuthorizationResponse?.request?.clientId == BuildConfig.CLIENT_ID) {
                 mutable.value = connectedStatus(authState)
+                if (approval.enabled && !mutable.value.needsMinecraftSignIn && minecraftCredentials.read() != null) verifyOwnership()
             } else if (authState.isAuthorized) logout()
         } catch (_: Exception) {
             runCatching { credentials.clear() }
@@ -70,7 +81,7 @@ class MicrosoftAccount(context: Context) {
 
     private fun connectedStatus(candidate: AuthState): AccountStatus {
         val needsConsent = approval.enabled && !approval.acceptsGrantedScopes(grantedScopes(candidate))
-        return AccountStatus(true, message = "Microsoft connected. Java Edition ownership is unverified.",
+        return AccountStatus(true, message = "Microsoft connected. Java ownership is checked separately below.",
             minecraft = when {
                 !approval.enabled -> "Minecraft Services is not configured for this build."
                 needsConsent -> "Your current Microsoft session has no Xbox permission. Tap Connect Minecraft account to authorize it."
@@ -89,12 +100,14 @@ class MicrosoftAccount(context: Context) {
             return null
         }
         epoch.invalidate()
+        installGrant = null
+        activeSession = UUID.randomUUID()
         if (runCatching { minecraftCredentials.clear() }.isFailure) {
             flags.edit().putBoolean("cleanup-failed", true).commit()
             mutable.value = status.value.copy(message = "Could not clear previous Minecraft session. Clear app storage before switching accounts.")
             return null
         }
-        mutable.value = status.value.copy(minecraft = "Minecraft ownership is unverified.")
+        mutable.value = status.value.copy(minecraft = "Minecraft ownership is unverified.", ownershipVerified = false, clientDownloaded = false, downloadProgress = "")
         val configuration = AuthorizationServiceConfiguration(
             Uri.parse("https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize"),
             Uri.parse("https://login.microsoftonline.com/consumers/oauth2/v2.0/token"))
@@ -120,6 +133,8 @@ class MicrosoftAccount(context: Context) {
         val consumed = runCatching { pending.clear() }.isSuccess
         if (!consumed) {
             epoch.invalidate()
+            installGrant = null
+            activeSession = UUID.randomUUID()
             flags.edit().putBoolean("cleanup-failed", true).commit()
             mutable.value = status.value.copy(busy = false, message = "Could not securely consume sign-in state. Clear this app's storage before signing in again.")
             return
@@ -214,7 +229,8 @@ class MicrosoftAccount(context: Context) {
                         try {
                             minecraftCredentials.write(result.session.encryptedPayload(BuildConfig.CLIENT_ID))
                             mutable.value = status.value.copy(busy = false,
-                                minecraft = "Minecraft profile connected: ${result.session.profileName}. Java license/subscription validation still needs the approved API contract; installation remains blocked.")
+                                minecraft = "Minecraft profile connected: ${result.session.profileName}. Checking Java ownership...", ownershipVerified = false)
+                            verifyOwnership()
                         } catch (_: Exception) {
                             logout()
                             mutable.value = AccountStatus(message = "Could not protect Minecraft credentials. Session removed.")
@@ -224,6 +240,86 @@ class MicrosoftAccount(context: Context) {
                 }
             }
         }
+    }
+
+    @Synchronized fun verifyOwnership() {
+        if (status.value.busy || !status.value.signedIn) return
+        val ticket = epoch.current()
+        installGrant = null
+        mutable.value = status.value.copy(busy = true, ownershipVerified = false,
+            minecraft = "Verifying signed Java purchase license and profile...")
+        background.launch {
+            try {
+                val session = JSONObject(requireNotNull(minecraftCredentials.read()))
+                val grant = MinecraftOwnershipClient().verify(session, activeSession, approval)
+                synchronized(this@MicrosoftAccount) {
+                    if (epoch.isCurrent(ticket)) {
+                        installGrant = grant
+                        mutable.value = status.value.copy(busy = false, ownershipVerified = true,
+                            minecraft = "Java Edition purchase ownership verified. Signed license and account profile match.")
+                    }
+                }
+            } catch (failure: Exception) {
+                synchronized(this@MicrosoftAccount) {
+                    if (epoch.isCurrent(ticket)) mutable.value = status.value.copy(busy = false, ownershipVerified = false,
+                        minecraft = ownershipFailure(failure))
+                }
+            }
+        }
+    }
+
+    /** Always rechecks online ownership before acquiring any proprietary client bytes. */
+    @Synchronized fun downloadResearchClient() {
+        if (status.value.busy || !status.value.signedIn) return
+        val ticket = epoch.current()
+        val sessionId = activeSession
+        installGrant = null
+        mutable.value = status.value.copy(busy = true, ownershipVerified = false,
+            downloadProgress = "Rechecking ownership before official client download...")
+        background.launch {
+            try {
+                val session = JSONObject(requireNotNull(minecraftCredentials.read()))
+                val grant = MinecraftOwnershipClient().verify(session, sessionId, approval)
+                synchronized(this@MicrosoftAccount) {
+                    check(epoch.isCurrent(ticket))
+                    installGrant = grant
+                    mutable.value = status.value.copy(ownershipVerified = true,
+                        minecraft = "Java Edition purchase ownership verified.")
+                }
+                var lastPercent = -1
+                OfficialClientInstaller(clientDirectory).downloadResearchClient(
+                    { synchronized(this@MicrosoftAccount) { installGrant } }, sessionId,
+                    { epoch.isCurrent(ticket) }) { received, size ->
+                    val percent = (received * 100 / size).toInt()
+                    if (percent != lastPercent) synchronized(this@MicrosoftAccount) {
+                        lastPercent = percent
+                        if (epoch.isCurrent(ticket)) mutable.value = status.value.copy(downloadProgress = "Official 1.20.4 client: $percent% ... checking integrity before committing.")
+                    }
+                }
+                synchronized(this@MicrosoftAccount) {
+                    if (epoch.isCurrent(ticket)) mutable.value = status.value.copy(downloadProgress = "Verifying initialization dependencies from Mojang...")
+                }
+                OfficialClientInstaller(clientDirectory).downloadInitializationLibraries(
+                    { synchronized(this@MicrosoftAccount) { installGrant } }, sessionId, { epoch.isCurrent(ticket) })
+                synchronized(this@MicrosoftAccount) {
+                    if (epoch.isCurrent(ticket)) mutable.value = status.value.copy(busy = false, clientDownloaded = true,
+                        downloadProgress = "Original Minecraft 1.20.4 client downloaded and SHA-1 verified. Initialization dependencies verified. Other libraries, assets and execution support remain incomplete.")
+                }
+            } catch (failure: Exception) {
+                synchronized(this@MicrosoftAccount) {
+                    if (epoch.isCurrent(ticket)) mutable.value = status.value.copy(busy = false,
+                        downloadProgress = if (failure is IOException) "Download or ownership service connection failed. Existing files were preserved; retry when connected."
+                            else "Download stopped. Ownership, cancellation, metadata or integrity checks did not pass.",
+                        minecraft = if (failure is OwnershipCheckFailure) failure.reason else status.value.minecraft)
+                }
+            }
+        }
+    }
+
+    private fun ownershipFailure(failure: Exception): String = when (failure) {
+        is OwnershipCheckFailure -> failure.reason
+        is IOException -> "Ownership service could not be reached. This is not a missing-license result. Retry when connected."
+        else -> "Java ownership could not be verified. The signed response was invalid, expired or unsupported. Subscription-only access is not supported yet."
     }
 
     private fun failureMessage(reason: ServicesFailure) = when (reason) {
@@ -241,6 +337,8 @@ class MicrosoftAccount(context: Context) {
 
     @Synchronized fun logout() {
         epoch.invalidate()
+        installGrant = null
+        activeSession = UUID.randomUUID()
         authState = AuthState()
         val disabled = flags.edit().putBoolean("disabled", true).commit()
         val removedAccount = runCatching { credentials.clear() }.isSuccess

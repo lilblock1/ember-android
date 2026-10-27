@@ -3,11 +3,11 @@ package dev.andes.core
 import java.time.Instant
 import java.util.UUID
 
-/** No production grant issuer exists until an approved, validated Services adapter exists. */
+/** Issued only after signed purchased Java entitlements and same-token profile validation. */
 class InstallGrant internal constructor(
     internal val sessionId: UUID,
     internal val profileId: UUID,
-    internal val validUntil: Instant,
+    val validUntil: Instant,
 )
 
 sealed interface OwnershipStatus {

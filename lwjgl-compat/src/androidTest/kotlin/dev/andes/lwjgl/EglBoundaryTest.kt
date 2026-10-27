@@ -13,6 +13,10 @@ class EglBoundaryTest {
         assertTrue(result.contains("Pixel verified:"))
         assertTrue(result.contains("OpenGL ES"))
     }
+    @Test fun upstreamCompiledShaderVboVaoDrawsActualPixel() {
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        assertEquals("Shader/VBO/VAO pixel verified: 255,0,0", AndroidGlfw.runShaderFixture(context))
+    }
     @Test fun foreignThreadAndStaleWindowHandlesAreRejected() {
         assertTrue(GLFW.glfwInit())
         try {

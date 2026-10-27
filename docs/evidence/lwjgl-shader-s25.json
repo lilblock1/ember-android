@@ -1,0 +1,13 @@
+{
+  "observedLocalDate": "2026-10-26",
+  "device": "Samsung Galaxy S25+ SM-S936U",
+  "androidApi": 35,
+  "passed": [
+    "upstreamCompiledShaderVboVaoDrawsActualPixel",
+    "upstreamCompiledDexRendersAndReadsActualGlesPixel",
+    "foreignThreadAndStaleWindowHandlesAreRejected"
+  ],
+  "count": 3,
+  "minecraftRenderingVerified": false,
+  "shaderLanguage": "original GLSL ES 3.00 fixture; no desktop shader translation"
+}

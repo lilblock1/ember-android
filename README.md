@@ -2,10 +2,11 @@
 
 Independent, unofficial project. Not approved by or associated with Mojang or Microsoft.
 
-**This is an Android foundation, not a working Minecraft port.** No Minecraft client,
-assets, JVM, PojavLauncher code or game reimplementation is included. Install and Play
-are disabled. Generic Microsoft sign-in has been observed on the physical S25+; the
-remaining ownership, download and real-game milestones are unverified.
+**Research build, not a playable Minecraft port.** Microsoft/Minecraft account connection,
+signed purchased Java ownership verification and the official 1.20.4 client download passed
+on the physical S25+. Its real Java entry point was invoked in an isolated ART/DEX probe;
+it stopped at a missing Guava dependency. The main menu, worlds and gameplay do not work.
+No game content, JVM or PojavLauncher code is bundled in APKs/source.
 
 ## Implemented
 
@@ -16,8 +17,10 @@ remaining ownership, download and real-game milestones are unverified.
   and Xbox/XSTS/Minecraft profile sign-in have worked on S25+. Ownership validation remains separate.
 - AES-256-GCM credential storage using non-exportable Android Keystore keys, refresh support,
   local logout and protection against stale asynchronous session results.
-- Installation policy, path traversal rejection and streaming size/SHA-1 verification utilities.
-  There is no live proprietary downloader or entitlement grant issuer.
+- Signed purchased-license verification, fresh nonce/account/profile binding and short-lived
+  memory-only installation grants. [Contract and key provenance](docs/OWNERSHIP.md).
+- Ownership-gated official original client and six initialization-library downloads, metadata
+  chaining, size/SHA-1 validation, private staging and atomic commit. This is not a full installer.
 - Read-only classfile/JNI audit and public version-metadata audit; tests and GitHub Actions.
 - Separate original Java 17 DEX/reflection/JNI instrumentation experiment for ARM64 devices.
   See [runtime lab](docs/RUNTIME_LAB.md); both tests passed on S25+ / Android 15.
@@ -37,14 +40,14 @@ baseline versions, not a claim that they are the newest available.
 1. Open this directory in Android Studio, or set `ANDROID_HOME` to your SDK directory.
 2. Install `platforms;android-35`, `build-tools;35.0.0`, `ndk;27.2.12479018`, `cmake;3.22.1`.
 3. Run `./gradlew :core:test :app:assembleDebug :app:lintDebug` (Windows: `gradlew.bat`).
-4. APK: `app/build/outputs/apk/debug/app-debug.apk`. It contains only the foundation/probe.
+4. APK: `app/build/outputs/apk/debug/app-debug.apk`. Proprietary content is never packaged.
 5. `adb install -r <apk>` on an ARM64 device. Review [device testing](docs/DEVICE_TESTING.md).
 
 On Windows, use a short workspace/SDK path if Ninja encounters the 260-character limit.
 An optional `-PnativeBuildDir=<short-path>` selects a separate CMake staging directory.
 
 No Microsoft configuration is needed to build or use the platform probe. Live OAuth is
-an optional developer setup; successful Microsoft authentication cannot unlock installation.
+an optional developer setup; Microsoft authentication alone cannot unlock downloads.
 
 ## Tests and research tools
 
@@ -56,12 +59,12 @@ cmake --build build/native-host
 ctest --test-dir build/native-host --output-on-failure
 python tools/metadata_audit.py --version 1.20.4 --output build/metadata-audit.json
 python tools/classfile_audit.py /path/to/already-owned-client.jar --output build/classfile-audit.json
-./gradlew :authentication:connectedDebugAndroidTest
+./gradlew :authentication:assembleDebugAndroidTest
 ```
 
 `JAVA_HOME/bin` must be on PATH for the Python fixture test. The metadata tool fetches
 only public Mojang JSON and checks the version metadata hash. The classfile tool never
-executes a JAR. Do not commit local game files or account data.
+executes a JAR. Do not commit local game files or account data. Build instrumentation APKs and run them manually when preserving a signed-in session: Gradle connected tests may uninstall target apps.
 
 ## Next execution gate
 
@@ -70,8 +73,8 @@ the version-specific Java/desktop API and LWJGL/native ABI bridges. The C++ surf
 does not satisfy this gate. No runtime has been selected as production-ready.
 
 Ember's public-client registration is complete and the owner reports Mojang approval;
-see [registration status](docs/REGISTRATION_STATUS.md) for the evidence limits. The current
-entitlement/subscription contract and validated ownership adapter remain unresolved. See the concrete
+see [registration status](docs/REGISTRATION_STATUS.md) for the evidence limits. The purchased-license
+adapter is implemented and physically tested; subscriptions remain unsupported. See the concrete
 approval record template in `docs/API_APPROVAL_RECORD.example.md`.
 
 Release signing must use an externally supplied keystore and CI secrets; debug keys are

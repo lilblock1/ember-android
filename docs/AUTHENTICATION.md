@@ -8,7 +8,7 @@ on S25+; Xbox/Minecraft service calls are a separate connection test.
 
 Ember's own application is registered. The owner reported Mojang approval on 2026-10-26;
 the written reference has not been supplied. See [registration status](REGISTRATION_STATUS.md).
-The locally configured 0.2.3 APK enables the service connection using that recorded
+The locally configured 0.3.0 APK enables the service connection using that recorded
 attestation and requests only `XboxLive.signin`, selected from Microsoft's protocol docs.
 Existing Microsoft-only sessions must explicitly reauthorize before Xbox token exchange.
 Unconfigured public/CI builds keep live sign-in disabled.
@@ -60,11 +60,13 @@ The Xbox example is for websites/confidential clients; its client-secret step is
 
 ## Ownership remains a separate gate
 
-Entitlement evidence and the Java profile are both requested. A profile never skips the
-entitlement request. Empty items, signed payloads and subscription entitlements are not
-guessed into installation rights. Signed entitlement payloads are not decoded and trusted
-without an approved contract/signature policy. Unknown schemas mean unverified, not missing
-ownership. There is no demo identity, offline/cracked account, grant issuer or game downloader.
+The observed purchased Java contract is now implemented: a fresh signed license challenge,
+matching same-token Java profile, time/account binding and memory-only ten-minute grant.
+It passed on S25+, followed by original-client integrity verification. See
+[ownership contract and pinned public-key provenance](OWNERSHIP.md). A profile or generic
+Microsoft sign-in alone still grants nothing. Unknown/subscription-only responses fail closed.
+The provider's written contract/reference remains an audit need; it is not fabricated from
+these tests. There is no cracked/demo account or persisted offline authorization.
 
 ## Credentials, cancellation and errors
 
@@ -94,3 +96,6 @@ same phone; see evidence/minecraft-login-s25.json. Cancellation, refresh/revocat
 process death during login and account switching still need their own live tests. The current
 minimal Xbox connection does not request offline permission. The owner approval record
 does not override any provider denial or establish an entitlement contract.
+
+The 0.3.0 update adds twelve signed-ownership/installer policy host tests and an opt-in
+real purchased-license/client-download test on S25+. See OWNERSHIP.md and the device evidence.

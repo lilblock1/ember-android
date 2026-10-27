@@ -13,7 +13,7 @@ class AbiAndPolicyTest {
     @Test fun publicLwjglMethodsMatchReal332Descriptors() {
         val paths = requireNotNull(System.getProperty("lwjgl.reference.classpath")).split(File.pathSeparator).map { File(it).toURI().toURL() }
         URLClassLoader(paths.toTypedArray(), ClassLoader.getSystemClassLoader().parent).use { upstream ->
-            for (name in listOf("org.lwjgl.glfw.GLFW", "org.lwjgl.opengl.GL11", "org.lwjgl.opengl.GL11C")) {
+            for (name in listOf("org.lwjgl.glfw.GLFW", "org.lwjgl.opengl.GL11", "org.lwjgl.opengl.GL11C", "org.lwjgl.opengl.GL15", "org.lwjgl.opengl.GL20", "org.lwjgl.opengl.GL30")) {
                 val shim = Class.forName(name, false, javaClass.classLoader)
                 val reference = Class.forName(name, false, upstream)
                 for (method in shim.declaredMethods.filter { Modifier.isPublic(it.modifiers) && !it.name.startsWith("android") }) {
@@ -23,6 +23,11 @@ class AbiAndPolicyTest {
                 }
             }
         }
+    }
+    @Test fun desktopShaderAndInvalidBufferArgumentsFailBeforeNativeAccess() {
+        assertThrows(UnsupportedOperationException::class.java) { org.lwjgl.opengl.GL20.glShaderSource(1,"#version 150\nvoid main(){}") }
+        assertThrows(IllegalArgumentException::class.java) { org.lwjgl.opengl.GL15.glBufferData(1,ByteBuffer.allocate(4),1) }
+        assertThrows(IllegalArgumentException::class.java) { org.lwjgl.opengl.GL20.glVertexAttribPointer(0,2,0,false,0,Long.MAX_VALUE) }
     }
     @Test fun desktopGlIsRejectedBeforeAnyNativeLoading() {
         GLFW.glfwDefaultWindowHints()

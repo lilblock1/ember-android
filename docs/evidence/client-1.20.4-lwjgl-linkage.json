@@ -1,0 +1,2055 @@
+{
+  "lwjgl_references": [
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/BufferUtils",
+      "name": "createByteBuffer",
+      "descriptor": "(I)Ljava/nio/ByteBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/PointerBuffer",
+      "name": "address0",
+      "descriptor": "()J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/PointerBuffer",
+      "name": "get",
+      "descriptor": "()J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/PointerBuffer",
+      "name": "get",
+      "descriptor": "(I)J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/PointerBuffer",
+      "name": "getFloatBuffer",
+      "descriptor": "(II)Ljava/nio/FloatBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/PointerBuffer",
+      "name": "getPointerBuffer",
+      "descriptor": "(I)Lorg/lwjgl/PointerBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/PointerBuffer",
+      "name": "limit",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/PointerBuffer",
+      "name": "put",
+      "descriptor": "(Ljava/nio/ByteBuffer;)Lorg/lwjgl/PointerBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/Version",
+      "name": "getVersion",
+      "descriptor": "()Ljava/lang/String;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/Callbacks",
+      "name": "glfwFreeCallbacks",
+      "descriptor": "(J)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwCreateWindow",
+      "descriptor": "(IILjava/lang/CharSequence;JJ)J",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwDefaultWindowHints",
+      "descriptor": "()V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwDestroyWindow",
+      "descriptor": "(J)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwGetClipboardString",
+      "descriptor": "(J)Ljava/lang/String;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwGetCurrentContext",
+      "descriptor": "()J",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwGetError",
+      "descriptor": "(Lorg/lwjgl/PointerBuffer;)I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwGetFramebufferSize",
+      "descriptor": "(J[I[I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwGetKey",
+      "descriptor": "(JI)I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwGetKeyName",
+      "descriptor": "(II)Ljava/lang/String;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwGetMonitorPos",
+      "descriptor": "(J[I[I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwGetMonitors",
+      "descriptor": "()Lorg/lwjgl/PointerBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwGetPlatform",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwGetPrimaryMonitor",
+      "descriptor": "()J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwGetTime",
+      "descriptor": "()D",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwGetVideoMode",
+      "descriptor": "(J)Lorg/lwjgl/glfw/GLFWVidMode;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwGetVideoModes",
+      "descriptor": "(J)Lorg/lwjgl/glfw/GLFWVidMode$Buffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwGetWindowMonitor",
+      "descriptor": "(J)J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwGetWindowPos",
+      "descriptor": "(J[I[I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwInit",
+      "descriptor": "()Z",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwMakeContextCurrent",
+      "descriptor": "(J)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwPollEvents",
+      "descriptor": "()V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetCharModsCallback",
+      "descriptor": "(JLorg/lwjgl/glfw/GLFWCharModsCallbackI;)Lorg/lwjgl/glfw/GLFWCharModsCallback;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetClipboardString",
+      "descriptor": "(JLjava/nio/ByteBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetCursorEnterCallback",
+      "descriptor": "(JLorg/lwjgl/glfw/GLFWCursorEnterCallbackI;)Lorg/lwjgl/glfw/GLFWCursorEnterCallback;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetCursorPos",
+      "descriptor": "(JDD)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetCursorPosCallback",
+      "descriptor": "(JLorg/lwjgl/glfw/GLFWCursorPosCallbackI;)Lorg/lwjgl/glfw/GLFWCursorPosCallback;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetDropCallback",
+      "descriptor": "(JLorg/lwjgl/glfw/GLFWDropCallbackI;)Lorg/lwjgl/glfw/GLFWDropCallback;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetErrorCallback",
+      "descriptor": "(Lorg/lwjgl/glfw/GLFWErrorCallbackI;)Lorg/lwjgl/glfw/GLFWErrorCallback;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetFramebufferSizeCallback",
+      "descriptor": "(JLorg/lwjgl/glfw/GLFWFramebufferSizeCallbackI;)Lorg/lwjgl/glfw/GLFWFramebufferSizeCallback;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetInputMode",
+      "descriptor": "(JII)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetKeyCallback",
+      "descriptor": "(JLorg/lwjgl/glfw/GLFWKeyCallbackI;)Lorg/lwjgl/glfw/GLFWKeyCallback;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetMonitorCallback",
+      "descriptor": "(Lorg/lwjgl/glfw/GLFWMonitorCallbackI;)Lorg/lwjgl/glfw/GLFWMonitorCallback;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetMouseButtonCallback",
+      "descriptor": "(JLorg/lwjgl/glfw/GLFWMouseButtonCallbackI;)Lorg/lwjgl/glfw/GLFWMouseButtonCallback;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetScrollCallback",
+      "descriptor": "(JLorg/lwjgl/glfw/GLFWScrollCallbackI;)Lorg/lwjgl/glfw/GLFWScrollCallback;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetWindowFocusCallback",
+      "descriptor": "(JLorg/lwjgl/glfw/GLFWWindowFocusCallbackI;)Lorg/lwjgl/glfw/GLFWWindowFocusCallback;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetWindowIcon",
+      "descriptor": "(JLorg/lwjgl/glfw/GLFWImage$Buffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetWindowMonitor",
+      "descriptor": "(JJIIIII)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetWindowPosCallback",
+      "descriptor": "(JLorg/lwjgl/glfw/GLFWWindowPosCallbackI;)Lorg/lwjgl/glfw/GLFWWindowPosCallback;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetWindowSizeCallback",
+      "descriptor": "(JLorg/lwjgl/glfw/GLFWWindowSizeCallbackI;)Lorg/lwjgl/glfw/GLFWWindowSizeCallback;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSetWindowTitle",
+      "descriptor": "(JLjava/lang/CharSequence;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSwapBuffers",
+      "descriptor": "(J)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwSwapInterval",
+      "descriptor": "(I)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwTerminate",
+      "descriptor": "()V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwWaitEventsTimeout",
+      "descriptor": "(D)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwWindowHint",
+      "descriptor": "(II)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFW",
+      "name": "glfwWindowShouldClose",
+      "descriptor": "(J)Z",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWDropCallback",
+      "name": "getName",
+      "descriptor": "(JI)Ljava/lang/String;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWErrorCallback",
+      "name": "close",
+      "descriptor": "()V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWErrorCallback",
+      "name": "create",
+      "descriptor": "(Lorg/lwjgl/glfw/GLFWErrorCallbackI;)Lorg/lwjgl/glfw/GLFWErrorCallback;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWErrorCallback",
+      "name": "free",
+      "descriptor": "()V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWImage",
+      "name": "malloc",
+      "descriptor": "(ILorg/lwjgl/system/MemoryStack;)Lorg/lwjgl/glfw/GLFWImage$Buffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWImage$Buffer",
+      "name": "height",
+      "descriptor": "(I)Lorg/lwjgl/glfw/GLFWImage$Buffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWImage$Buffer",
+      "name": "pixels",
+      "descriptor": "(Ljava/nio/ByteBuffer;)Lorg/lwjgl/glfw/GLFWImage$Buffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWImage$Buffer",
+      "name": "position",
+      "descriptor": "(I)Lorg/lwjgl/system/CustomBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWImage$Buffer",
+      "name": "width",
+      "descriptor": "(I)Lorg/lwjgl/glfw/GLFWImage$Buffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWMonitorCallback",
+      "name": "free",
+      "descriptor": "()V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWNativeCocoa",
+      "name": "glfwGetCocoaWindow",
+      "descriptor": "(J)J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWNativeGLX",
+      "name": "setPath",
+      "descriptor": "(Lorg/lwjgl/system/FunctionProvider;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWVidMode",
+      "name": "blueBits",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWVidMode",
+      "name": "greenBits",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWVidMode",
+      "name": "height",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWVidMode",
+      "name": "redBits",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWVidMode",
+      "name": "refreshRate",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWVidMode",
+      "name": "width",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWVidMode$Buffer",
+      "name": "blueBits",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWVidMode$Buffer",
+      "name": "greenBits",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWVidMode$Buffer",
+      "name": "height",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWVidMode$Buffer",
+      "name": "limit",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWVidMode$Buffer",
+      "name": "position",
+      "descriptor": "(I)Lorg/lwjgl/system/CustomBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWVidMode$Buffer",
+      "name": "redBits",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWVidMode$Buffer",
+      "name": "refreshRate",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/glfw/GLFWVidMode$Buffer",
+      "name": "width",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL",
+      "name": "createCapabilities",
+      "descriptor": "(Lorg/lwjgl/openal/ALCCapabilities;)Lorg/lwjgl/openal/ALCapabilities;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alBufferData",
+      "descriptor": "(IILjava/nio/ByteBuffer;I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alDeleteBuffers",
+      "descriptor": "([I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alDeleteSources",
+      "descriptor": "([I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alEnable",
+      "descriptor": "(I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alGenBuffers",
+      "descriptor": "([I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alGenSources",
+      "descriptor": "([I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alGetError",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alGetSourcei",
+      "descriptor": "(II)I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alListener3f",
+      "descriptor": "(IFFF)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alListenerf",
+      "descriptor": "(IF)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alListenerfv",
+      "descriptor": "(I[F)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alSourcePause",
+      "descriptor": "(I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alSourcePlay",
+      "descriptor": "(I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alSourceQueueBuffers",
+      "descriptor": "(I[I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alSourceStop",
+      "descriptor": "(I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alSourceUnqueueBuffers",
+      "descriptor": "(I[I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alSourcef",
+      "descriptor": "(IIF)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alSourcefv",
+      "descriptor": "(II[F)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/AL10",
+      "name": "alSourcei",
+      "descriptor": "(III)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/ALC",
+      "name": "createCapabilities",
+      "descriptor": "(J)Lorg/lwjgl/openal/ALCCapabilities;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/ALC10",
+      "name": "alcCloseDevice",
+      "descriptor": "(J)Z",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/ALC10",
+      "name": "alcCreateContext",
+      "descriptor": "(JLjava/nio/IntBuffer;)J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/ALC10",
+      "name": "alcDestroyContext",
+      "descriptor": "(J)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/ALC10",
+      "name": "alcGetError",
+      "descriptor": "(J)I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/ALC10",
+      "name": "alcGetInteger",
+      "descriptor": "(JI)I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/ALC10",
+      "name": "alcGetIntegerv",
+      "descriptor": "(JILjava/nio/IntBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/ALC10",
+      "name": "alcGetString",
+      "descriptor": "(JI)Ljava/lang/String;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/ALC10",
+      "name": "alcIsExtensionPresent",
+      "descriptor": "(JLjava/lang/CharSequence;)Z",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/ALC10",
+      "name": "alcMakeContextCurrent",
+      "descriptor": "(J)Z",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/ALC10",
+      "name": "alcOpenDevice",
+      "descriptor": "(Ljava/lang/CharSequence;)J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/ALC11",
+      "name": "alcGetInteger",
+      "descriptor": "(JI)I",
+      "declaration_present": false
+    },
+    {
+      "kind": "field",
+      "owner": "org/lwjgl/openal/ALCCapabilities",
+      "name": "ALC_SOFT_HRTF",
+      "descriptor": "Z",
+      "declaration_present": false
+    },
+    {
+      "kind": "field",
+      "owner": "org/lwjgl/openal/ALCCapabilities",
+      "name": "OpenALC11",
+      "descriptor": "Z",
+      "declaration_present": false
+    },
+    {
+      "kind": "field",
+      "owner": "org/lwjgl/openal/ALCapabilities",
+      "name": "AL_EXT_LINEAR_DISTANCE",
+      "descriptor": "Z",
+      "declaration_present": false
+    },
+    {
+      "kind": "field",
+      "owner": "org/lwjgl/openal/ALCapabilities",
+      "name": "AL_EXT_source_distance_model",
+      "descriptor": "Z",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/ALUtil",
+      "name": "getStringList",
+      "descriptor": "(JI)Ljava/util/List;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/openal/SOFTHRTF",
+      "name": "alcResetDeviceSOFT",
+      "descriptor": "(JLjava/nio/IntBuffer;)Z",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/ARBDebugOutput",
+      "name": "glDebugMessageCallbackARB",
+      "descriptor": "(Lorg/lwjgl/opengl/GLDebugMessageARBCallbackI;J)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/ARBDebugOutput",
+      "name": "glDebugMessageControlARB",
+      "descriptor": "(III[IZ)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/ARBTimerQuery",
+      "name": "glGetQueryObjecti64",
+      "descriptor": "(II)J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL",
+      "name": "createCapabilities",
+      "descriptor": "()Lorg/lwjgl/opengl/GLCapabilities;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL",
+      "name": "getCapabilities",
+      "descriptor": "()Lorg/lwjgl/opengl/GLCapabilities;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL",
+      "name": "getFunctionProvider",
+      "descriptor": "()Lorg/lwjgl/system/FunctionProvider;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glBindTexture",
+      "descriptor": "(II)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glBlendFunc",
+      "descriptor": "(II)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glClear",
+      "descriptor": "(I)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glClearColor",
+      "descriptor": "(FFFF)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glClearDepth",
+      "descriptor": "(D)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glClearStencil",
+      "descriptor": "(I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glColorMask",
+      "descriptor": "(ZZZZ)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glDeleteTextures",
+      "descriptor": "(I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glDeleteTextures",
+      "descriptor": "([I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glDepthFunc",
+      "descriptor": "(I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glDepthMask",
+      "descriptor": "(Z)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glDisable",
+      "descriptor": "(I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glDrawElements",
+      "descriptor": "(IIIJ)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glDrawPixels",
+      "descriptor": "(IIIIJ)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glEnable",
+      "descriptor": "(I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glGenTextures",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glGenTextures",
+      "descriptor": "([I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glGetError",
+      "descriptor": "()I",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glGetInteger",
+      "descriptor": "(I)I",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glGetString",
+      "descriptor": "(I)Ljava/lang/String;",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glGetTexImage",
+      "descriptor": "(IIIIJ)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glGetTexLevelParameteri",
+      "descriptor": "(III)I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glLogicOp",
+      "descriptor": "(I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glPixelStorei",
+      "descriptor": "(II)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glPolygonMode",
+      "descriptor": "(II)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glPolygonOffset",
+      "descriptor": "(FF)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glReadPixels",
+      "descriptor": "(IIIIIIJ)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glReadPixels",
+      "descriptor": "(IIIIIILjava/nio/ByteBuffer;)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glStencilFunc",
+      "descriptor": "(III)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glStencilMask",
+      "descriptor": "(I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glStencilOp",
+      "descriptor": "(III)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glTexImage2D",
+      "descriptor": "(IIIIIIIILjava/nio/IntBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glTexParameterf",
+      "descriptor": "(IIF)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glTexParameteri",
+      "descriptor": "(III)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glTexSubImage2D",
+      "descriptor": "(IIIIIIIIJ)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glTexSubImage2D",
+      "descriptor": "(IIIIIIIILjava/nio/IntBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL11",
+      "name": "glViewport",
+      "descriptor": "(IIII)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL13",
+      "name": "glActiveTexture",
+      "descriptor": "(I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL14",
+      "name": "glBlendEquation",
+      "descriptor": "(I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL14",
+      "name": "glBlendFuncSeparate",
+      "descriptor": "(IIII)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL15",
+      "name": "glBindBuffer",
+      "descriptor": "(II)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL15",
+      "name": "glBufferData",
+      "descriptor": "(IJI)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL15",
+      "name": "glBufferData",
+      "descriptor": "(ILjava/nio/ByteBuffer;I)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL15",
+      "name": "glDeleteBuffers",
+      "descriptor": "(I)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL15",
+      "name": "glGenBuffers",
+      "descriptor": "()I",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL15",
+      "name": "glMapBuffer",
+      "descriptor": "(II)Ljava/nio/ByteBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL15",
+      "name": "glUnmapBuffer",
+      "descriptor": "(I)Z",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glAttachShader",
+      "descriptor": "(II)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glBindAttribLocation",
+      "descriptor": "(IILjava/lang/CharSequence;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glCompileShader",
+      "descriptor": "(I)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glCopyTexSubImage2D",
+      "descriptor": "(IIIIIIII)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glCreateProgram",
+      "descriptor": "()I",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glCreateShader",
+      "descriptor": "(I)I",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glDeleteProgram",
+      "descriptor": "(I)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glDeleteShader",
+      "descriptor": "(I)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glDisableVertexAttribArray",
+      "descriptor": "(I)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glEnableVertexAttribArray",
+      "descriptor": "(I)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glGetAttribLocation",
+      "descriptor": "(ILjava/lang/CharSequence;)I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glGetProgramInfoLog",
+      "descriptor": "(II)Ljava/lang/String;",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glGetProgrami",
+      "descriptor": "(II)I",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glGetShaderInfoLog",
+      "descriptor": "(II)Ljava/lang/String;",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glGetShaderi",
+      "descriptor": "(II)I",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glGetUniformLocation",
+      "descriptor": "(ILjava/lang/CharSequence;)I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glLinkProgram",
+      "descriptor": "(I)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glScissor",
+      "descriptor": "(IIII)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glUniform1fv",
+      "descriptor": "(ILjava/nio/FloatBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glUniform1i",
+      "descriptor": "(II)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glUniform1iv",
+      "descriptor": "(ILjava/nio/IntBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glUniform2fv",
+      "descriptor": "(ILjava/nio/FloatBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glUniform2iv",
+      "descriptor": "(ILjava/nio/IntBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glUniform3fv",
+      "descriptor": "(ILjava/nio/FloatBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glUniform3iv",
+      "descriptor": "(ILjava/nio/IntBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glUniform4fv",
+      "descriptor": "(ILjava/nio/FloatBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glUniform4iv",
+      "descriptor": "(ILjava/nio/IntBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glUniformMatrix2fv",
+      "descriptor": "(IZLjava/nio/FloatBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glUniformMatrix3fv",
+      "descriptor": "(IZLjava/nio/FloatBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glUniformMatrix4fv",
+      "descriptor": "(IZLjava/nio/FloatBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glUseProgram",
+      "descriptor": "(I)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20",
+      "name": "glVertexAttribPointer",
+      "descriptor": "(IIIZIJ)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL20C",
+      "name": "nglShaderSource",
+      "descriptor": "(IIJJ)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL30",
+      "name": "glBindFramebuffer",
+      "descriptor": "(II)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL30",
+      "name": "glBindRenderbuffer",
+      "descriptor": "(II)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL30",
+      "name": "glBindVertexArray",
+      "descriptor": "(I)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL30",
+      "name": "glBlitFramebuffer",
+      "descriptor": "(IIIIIIIIII)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL30",
+      "name": "glCheckFramebufferStatus",
+      "descriptor": "(I)I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL30",
+      "name": "glDeleteFramebuffers",
+      "descriptor": "(I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL30",
+      "name": "glDeleteRenderbuffers",
+      "descriptor": "(I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL30",
+      "name": "glDeleteVertexArrays",
+      "descriptor": "(I)V",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL30",
+      "name": "glFramebufferRenderbuffer",
+      "descriptor": "(IIII)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL30",
+      "name": "glFramebufferTexture2D",
+      "descriptor": "(IIIII)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL30",
+      "name": "glGenFramebuffers",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL30",
+      "name": "glGenRenderbuffers",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL30",
+      "name": "glGenVertexArrays",
+      "descriptor": "()I",
+      "declaration_present": true
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL30",
+      "name": "glRenderbufferStorage",
+      "descriptor": "(IIII)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL30",
+      "name": "glVertexAttribIPointer",
+      "descriptor": "(IIIIJ)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL32C",
+      "name": "glBeginQuery",
+      "descriptor": "(II)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL32C",
+      "name": "glBindBuffer",
+      "descriptor": "(II)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL32C",
+      "name": "glBufferData",
+      "descriptor": "(IJI)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL32C",
+      "name": "glDeleteQueries",
+      "descriptor": "(I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL32C",
+      "name": "glEndQuery",
+      "descriptor": "(I)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL32C",
+      "name": "glGenQueries",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GL32C",
+      "name": "glGetQueryObjecti",
+      "descriptor": "(II)I",
+      "declaration_present": false
+    },
+    {
+      "kind": "field",
+      "owner": "org/lwjgl/opengl/GLCapabilities",
+      "name": "GL_ARB_debug_output",
+      "descriptor": "Z",
+      "declaration_present": false
+    },
+    {
+      "kind": "field",
+      "owner": "org/lwjgl/opengl/GLCapabilities",
+      "name": "GL_ARB_timer_query",
+      "descriptor": "Z",
+      "declaration_present": false
+    },
+    {
+      "kind": "field",
+      "owner": "org/lwjgl/opengl/GLCapabilities",
+      "name": "GL_KHR_debug",
+      "descriptor": "Z",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GLDebugMessageARBCallback",
+      "name": "create",
+      "descriptor": "(Lorg/lwjgl/opengl/GLDebugMessageARBCallbackI;)Lorg/lwjgl/opengl/GLDebugMessageARBCallback;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GLDebugMessageCallback",
+      "name": "create",
+      "descriptor": "(Lorg/lwjgl/opengl/GLDebugMessageCallbackI;)Lorg/lwjgl/opengl/GLDebugMessageCallback;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/GLDebugMessageCallback",
+      "name": "getMessage",
+      "descriptor": "(IJ)Ljava/lang/String;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/KHRDebug",
+      "name": "glDebugMessageCallback",
+      "descriptor": "(Lorg/lwjgl/opengl/GLDebugMessageCallbackI;J)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/opengl/KHRDebug",
+      "name": "glDebugMessageControl",
+      "descriptor": "(III[IZ)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBIWriteCallback",
+      "name": "<init>",
+      "descriptor": "()V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBImage",
+      "name": "nstbi_image_free",
+      "descriptor": "(J)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBImage",
+      "name": "stbi_failure_reason",
+      "descriptor": "()Ljava/lang/String;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBImage",
+      "name": "stbi_load_from_memory",
+      "descriptor": "(Ljava/nio/ByteBuffer;Ljava/nio/IntBuffer;Ljava/nio/IntBuffer;Ljava/nio/IntBuffer;I)Ljava/nio/ByteBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBImageResize",
+      "name": "nstbir_resize_uint8",
+      "descriptor": "(JIIIJIIII)I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBImageWrite",
+      "name": "nstbi_write_png_to_func",
+      "descriptor": "(JJIIIJI)I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBTTFontinfo",
+      "name": "address",
+      "descriptor": "()J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBTTFontinfo",
+      "name": "free",
+      "descriptor": "()V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBTTFontinfo",
+      "name": "malloc",
+      "descriptor": "()Lorg/lwjgl/stb/STBTTFontinfo;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBTruetype",
+      "name": "nstbtt_MakeGlyphBitmapSubpixel",
+      "descriptor": "(JJIIIFFFFI)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBTruetype",
+      "name": "stbtt_FindGlyphIndex",
+      "descriptor": "(Lorg/lwjgl/stb/STBTTFontinfo;I)I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBTruetype",
+      "name": "stbtt_GetFontVMetrics",
+      "descriptor": "(Lorg/lwjgl/stb/STBTTFontinfo;Ljava/nio/IntBuffer;Ljava/nio/IntBuffer;Ljava/nio/IntBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBTruetype",
+      "name": "stbtt_GetGlyphBitmapBoxSubpixel",
+      "descriptor": "(Lorg/lwjgl/stb/STBTTFontinfo;IFFFFLjava/nio/IntBuffer;Ljava/nio/IntBuffer;Ljava/nio/IntBuffer;Ljava/nio/IntBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBTruetype",
+      "name": "stbtt_GetGlyphHMetrics",
+      "descriptor": "(Lorg/lwjgl/stb/STBTTFontinfo;ILjava/nio/IntBuffer;Ljava/nio/IntBuffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBTruetype",
+      "name": "stbtt_InitFont",
+      "descriptor": "(Lorg/lwjgl/stb/STBTTFontinfo;Ljava/nio/ByteBuffer;)Z",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBTruetype",
+      "name": "stbtt_ScaleForPixelHeight",
+      "descriptor": "(Lorg/lwjgl/stb/STBTTFontinfo;F)F",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBVorbis",
+      "name": "stb_vorbis_close",
+      "descriptor": "(J)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBVorbis",
+      "name": "stb_vorbis_decode_frame_pushdata",
+      "descriptor": "(JLjava/nio/ByteBuffer;Ljava/nio/IntBuffer;Lorg/lwjgl/PointerBuffer;Ljava/nio/IntBuffer;)I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBVorbis",
+      "name": "stb_vorbis_get_error",
+      "descriptor": "(J)I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBVorbis",
+      "name": "stb_vorbis_get_info",
+      "descriptor": "(JLorg/lwjgl/stb/STBVorbisInfo;)Lorg/lwjgl/stb/STBVorbisInfo;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBVorbis",
+      "name": "stb_vorbis_open_pushdata",
+      "descriptor": "(Ljava/nio/ByteBuffer;Ljava/nio/IntBuffer;Ljava/nio/IntBuffer;Lorg/lwjgl/stb/STBVorbisAlloc;)J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBVorbisInfo",
+      "name": "channels",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBVorbisInfo",
+      "name": "mallocStack",
+      "descriptor": "(Lorg/lwjgl/system/MemoryStack;)Lorg/lwjgl/stb/STBVorbisInfo;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/stb/STBVorbisInfo",
+      "name": "sample_rate",
+      "descriptor": "()I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryStack",
+      "name": "callocInt",
+      "descriptor": "(I)Ljava/nio/IntBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryStack",
+      "name": "close",
+      "descriptor": "()V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryStack",
+      "name": "malloc",
+      "descriptor": "(I)Ljava/nio/ByteBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryStack",
+      "name": "mallocInt",
+      "descriptor": "(I)Ljava/nio/IntBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryStack",
+      "name": "mallocPointer",
+      "descriptor": "(I)Lorg/lwjgl/PointerBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryStack",
+      "name": "stackPush",
+      "descriptor": "()Lorg/lwjgl/system/MemoryStack;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "getAllocator",
+      "descriptor": "(Z)Lorg/lwjgl/system/MemoryUtil$MemoryAllocator;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "memAddress",
+      "descriptor": "(Ljava/nio/ByteBuffer;)J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "memAddress0",
+      "descriptor": "(Ljava/nio/Buffer;)J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "memAlloc",
+      "descriptor": "(I)Ljava/nio/ByteBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "memAllocFloat",
+      "descriptor": "(I)Ljava/nio/FloatBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "memAllocInt",
+      "descriptor": "(I)Ljava/nio/IntBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "memByteBuffer",
+      "descriptor": "(JI)Ljava/nio/ByteBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "memCopy",
+      "descriptor": "(JJJ)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "memFree",
+      "descriptor": "(Ljava/nio/Buffer;)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "memGetByte",
+      "descriptor": "(J)B",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "memGetInt",
+      "descriptor": "(J)I",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "memIntBuffer",
+      "descriptor": "(JI)Ljava/nio/IntBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "memPutByte",
+      "descriptor": "(JB)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "memPutInt",
+      "descriptor": "(JI)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "memRealloc",
+      "descriptor": "(Ljava/nio/ByteBuffer;I)Ljava/nio/ByteBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "memSet",
+      "descriptor": "(JIJ)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "memSlice",
+      "descriptor": "(Ljava/nio/ByteBuffer;II)Ljava/nio/ByteBuffer;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "memUTF8",
+      "descriptor": "(J)Ljava/lang/String;",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "nmemAlloc",
+      "descriptor": "(J)J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "nmemCalloc",
+      "descriptor": "(JJ)J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil",
+      "name": "nmemFree",
+      "descriptor": "(J)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil$MemoryAllocator",
+      "name": "free",
+      "descriptor": "(J)V",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil$MemoryAllocator",
+      "name": "malloc",
+      "descriptor": "(J)J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/MemoryUtil$MemoryAllocator",
+      "name": "realloc",
+      "descriptor": "(JJ)J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/system/Pointer",
+      "name": "address",
+      "descriptor": "()J",
+      "declaration_present": false
+    },
+    {
+      "kind": "method",
+      "owner": "org/lwjgl/util/tinyfd/TinyFileDialogs",
+      "name": "tinyfd_messageBox",
+      "descriptor": "(Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Z)Z",
+      "declaration_present": false
+    }
+  ],
+  "total": 292,
+  "missing_declarations": 249,
+  "limitation": "Declaration inventory only; bodies, inherited members, reflection and dynamic loading are not validated. A declaration match is not behavioral compatibility.",
+  "version": "1.20.4",
+  "official_client_sha1": "fd19469fed4a4b4c15b2d5133985f0e3e7816a8a",
+  "ownership_evidence": "ownership-client-s25.json",
+  "client_main_menu_reached": false
+}

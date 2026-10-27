@@ -26,3 +26,16 @@ world and save/reload. Back up worlds before future imports/upgrades; credential
 failed launches must never delete worlds. Device access and the own Microsoft registration
 are now available, and the owner reports Services approval. Validated ownership, owned-client
 inventory and remaining runtime/graphics engineering still block play.
+
+## Preserve the live account
+
+For the already signed-in app, build `:app:assembleDebug` and
+`:app:assembleDebugAndroidTest`, install with `adb install --user 0 -r` (test APK also `-t`),
+and run `am instrument --user 0` manually. Do not run Gradle connected app tests: their
+cleanup can uninstall the target and erase credentials. Do not uninstall, clear storage,
+or replace signing identity during these tests. Samsung's extra profile requires user 0.
+
+Opt-in test arguments: `ownershipAndDownload=true` checks the production ownership and
+original client download; `actualClientProbe=true` runs only when privately prepared,
+owned-client DEX is already present. Neither test bundles game bytes. The latter records
+a failure boundary; it is not a passing gameplay test. Keep translated content private.

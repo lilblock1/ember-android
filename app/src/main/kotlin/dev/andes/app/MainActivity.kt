@@ -15,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.core.content.edit
-import dev.andes.core.MinecraftInstallationService
 
 class MainActivity : ComponentActivity() {
     private val account get() = (application as PortApplication).account
@@ -64,9 +63,15 @@ class MainActivity : ComponentActivity() {
                         Card(Modifier.fillMaxWidth()) {
                             Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                                 Text("Minecraft installation", style = MaterialTheme.typography.titleLarge)
-                                Text(MinecraftInstallationService(account.servicesAccessEnabled).installationBlocker())
+                                Text(if (state.ownershipVerified) "Java purchase license verified. The research client download preserves the original JAR. Game execution is not available yet."
+                                    else "Verify Java ownership before downloading the official research client.")
+                                if (state.signedIn) OutlinedButton(onClick = account::verifyOwnership, enabled = !state.busy) { Text("Verify Java ownership") }
+                                Text(state.downloadProgress)
+                                if (!state.ownershipVerified) TextButton(onClick = {
+                                    startActivity(Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://www.minecraft.net/en-us/store/minecraft-java-bedrock-edition-pc")))
+                                }) { Text("Official Minecraft purchase / account website") }
                                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                                    Button(onClick = {}, enabled = false) { Text("Install") }
+                                    Button(onClick = account::downloadResearchClient, enabled = state.ownershipVerified && !state.busy) { Text(if (state.clientDownloaded) "Check client" else "Download client") }
                                     Button(onClick = {}, enabled = false) { Text("Play") }
                                 }
                             }

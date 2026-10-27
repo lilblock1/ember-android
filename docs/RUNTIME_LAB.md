@@ -28,3 +28,21 @@ It does not change any first-playable milestone status.
 No Microsoft account or Minecraft files are needed to run this isolated test. It makes no
 network requests and does not request game authentication permissions. Keep results separate
 from the actual-client device compatibility table.
+
+## Private actual-client experiment (0.3.0)
+
+After fresh ownership and client integrity checks, a private copy was converted with D8
+alongside six verified logging/parser JARs. Originals were preserved. The new
+`tools/prepare_owned_client_probe.py` repeats that conversion from already-owned inputs
+and public metadata. It refuses existing outputs or outputs inside the source tree.
+Use JDK 17, SDK/build-tools 35 and a new private directory.
+
+```
+python tools/prepare_owned_client_probe.py --client /private/1.20.4-client.jar --libraries /private/initialization-libraries --android-sdk /sdk --java /jdk17/bin/java --output /private/new-client-dex
+```
+
+The opt-in instrumentation probe loads private DEX only after fresh ownership checks.
+The real Main class initialized; its entry stack frame was observed before missing Guava
+Ticker stopped it. It receives no credentials/arguments. Passing this diagnostic means
+evidence collection succeeded, not game launch. This is managed ART/DEX, not native AOT;
+no production engine is selected and no translated game bytes are in source/APKs.
