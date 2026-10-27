@@ -16,7 +16,7 @@ import java.util.UUID
  * Every proprietary request, read and commit requires the current in-memory account grant.
  */
 class OfficialClientInstaller(private val directory: File) {
-    /** Only Java logging/argument-parser dependencies for the initialization experiment.
+    /** Rule-free Java dependencies for the startup experiment, including Guava and its helper.
      * Desktop natives, other libraries and game assets are intentionally unresolved.
      */
     fun downloadInitializationLibraries(grant: () -> InstallGrant?, session: UUID, active: () -> Boolean) {
@@ -27,18 +27,16 @@ class OfficialClientInstaller(private val directory: File) {
         val entry = (0 until versions.length()).map { versions.getJSONObject(it) }.single { it.getString("id") == "1.20.4" }
         val bytes = metadata(entry.getString("url"))
         require(digest(bytes) == entry.getString("sha1"))
-        val libraries = JSONObject(String(bytes, Charsets.UTF_8)).getJSONArray("libraries")
-        val selected = setOf("com.mojang:logging:1.1.1", "org.slf4j:slf4j-api:2.0.7", "org.apache.logging.log4j:log4j-api:2.19.0",
-            "org.apache.logging.log4j:log4j-core:2.19.0", "org.apache.logging.log4j:log4j-slf4j2-impl:2.19.0", "net.sf.jopt-simple:jopt-simple:5.0.4")
+        val libraries = JavaLibraryPlan.select(JSONObject(String(bytes, Charsets.UTF_8)))
         val records = org.json.JSONArray()
         val objects = File(directory, "initialization-libraries")
         check(objects.mkdirs() || objects.isDirectory)
-        for (library in (0 until libraries.length()).map { libraries.getJSONObject(it) }.filter { it.getString("name") in selected }) {
+        for (library in libraries) {
             require(!library.has("rules") && !library.has("natives"))
             val artifact = library.getJSONObject("downloads").getJSONObject("artifact")
             val hash = artifact.getString("sha1")
             val size = artifact.getLong("size")
-            require(hash.matches(Regex("[a-f0-9]{40}")) && size in 1..16L * 1024 * 1024)
+            require(hash.matches(Regex("[a-f0-9]{40}")) && size in 1..64L * 1024 * 1024)
             val uri = checkedUrl(artifact.getString("url"), "libraries.minecraft.net")
             require(uri.path.endsWith(".jar"))
             access()
@@ -66,7 +64,7 @@ class OfficialClientInstaller(private val directory: File) {
             }
             records.put(JSONObject().put("name", library.getString("name")).put("sha1", hash).put("size", size))
         }
-        require(records.length() == selected.size)
+        require(records.length() == libraries.size)
         access()
         File(objects, "verified.json").writeText(records.toString(2))
     }

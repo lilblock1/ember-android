@@ -7,3 +7,4 @@ rootProject.name = "AndroidJavaPort"
 include(":app", ":core", ":authentication", ":native-engine")
 include(":compatibility-lab")
 include(":lwjgl-compat")
+include(":bytecode-tools")

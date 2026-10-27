@@ -4,8 +4,9 @@ Independent, unofficial project. Not approved by or associated with Mojang or Mi
 
 **Research build, not a playable Minecraft port.** Microsoft/Minecraft account connection,
 signed purchased Java ownership verification and the official 1.20.4 client download passed
-on the physical S25+. Its real Java entry point was invoked in an isolated ART/DEX probe;
-it stopped at a missing Guava dependency. The main menu, worlds and gameplay do not work.
+on the physical S25+. Guava and the selected Java dependency set are now verified. Its real Java entry point
+passes that dependency failure and stops at an ART enum-array verifier boundary. An original
+translation fix passes host regression tests; its corrected physical test awaits USB access. The main menu, worlds and gameplay do not work.
 No game content, JVM or PojavLauncher code is bundled in APKs/source.
 
 ## Implemented
@@ -19,8 +20,10 @@ No game content, JVM or PojavLauncher code is bundled in APKs/source.
   local logout and protection against stale asynchronous session results.
 - Signed purchased-license verification, fresh nonce/account/profile binding and short-lived
   memory-only installation grants. [Contract and key provenance](docs/OWNERSHIP.md).
-- Ownership-gated official original client and six initialization-library downloads, metadata
+- Ownership-gated official original client and 36 selected Java-library downloads, metadata
   chaining, size/SHA-1 validation, private staging and atomic commit. This is not a full installer.
+- Original host-only Enum/interface array translation adapter with regression tests.
+  [Exact scope and current device boundary](docs/ART_ARRAY_COMPATIBILITY.md).
 - Read-only classfile/JNI audit and public version-metadata audit; tests and GitHub Actions.
 - Separate original Java 17 DEX/reflection/JNI instrumentation experiment for ARM64 devices.
   See [runtime lab](docs/RUNTIME_LAB.md); both tests passed on S25+ / Android 15.
@@ -52,7 +55,7 @@ an optional developer setup; Microsoft authentication alone cannot unlock downlo
 ## Tests and research tools
 
 ```
-./gradlew :core:test :authentication:testDebugUnitTest :lwjgl-compat:testDebugUnitTest
+./gradlew :bytecode-tools:test :core:test :authentication:testDebugUnitTest :lwjgl-compat:testDebugUnitTest
 python -m unittest discover -s tests -v
 cmake -S native-engine/src/main/cpp -B build/native-host
 cmake --build build/native-host

@@ -11,6 +11,19 @@
     ]
   },
   {
+    "suite": "dev.andes.core.JavaLibraryPlanTest",
+    "tests": 5,
+    "failures": 0,
+    "errors": 0,
+    "cases": [
+      "refusesMissingHelperAndUnknownVersion",
+      "actualOfficialMetadataSelects36JavaArtifacts",
+      "rejectsRedirectHostsTraversalMismatchesAndOversizeArtifacts",
+      "rejectsDuplicateCoordinatesAndUnruledNativeClassifier",
+      "selectsGuavaAndRequiredHelperWithoutDesktopClassifiers"
+    ]
+  },
+  {
     "suite": "dev.andes.core.JavaOwnershipVerifierTest",
     "tests": 12,
     "failures": 0,
@@ -28,6 +41,16 @@
       "tokenExpiryBoundsGrant",
       "rejectsBedrockAndIncompleteJavaLicenses",
       "rejectsUnvalidatedSubscriptionsAndUnknownSchema"
+    ]
+  },
+  {
+    "suite": "dev.andes.core.SecretRedactingOutputStreamTest",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "cases": [
+      "oversizedAndUnterminatedLinesAreWithheld",
+      "fragmentedWritesAndFlushesCannotLeakLaunchSecrets"
     ]
   },
   {

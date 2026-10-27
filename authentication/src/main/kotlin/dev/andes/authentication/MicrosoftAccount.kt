@@ -297,13 +297,13 @@ class MicrosoftAccount(context: Context) {
                     }
                 }
                 synchronized(this@MicrosoftAccount) {
-                    if (epoch.isCurrent(ticket)) mutable.value = status.value.copy(downloadProgress = "Verifying initialization dependencies from Mojang...")
+                    if (epoch.isCurrent(ticket)) mutable.value = status.value.copy(downloadProgress = "Verifying required Java dependencies from Mojang...")
                 }
                 OfficialClientInstaller(clientDirectory).downloadInitializationLibraries(
                     { synchronized(this@MicrosoftAccount) { installGrant } }, sessionId, { epoch.isCurrent(ticket) })
                 synchronized(this@MicrosoftAccount) {
                     if (epoch.isCurrent(ticket)) mutable.value = status.value.copy(busy = false, clientDownloaded = true,
-                        downloadProgress = "Original Minecraft 1.20.4 client downloaded and SHA-1 verified. Initialization dependencies verified. Other libraries, assets and execution support remain incomplete.")
+                        downloadProgress = "Original Minecraft 1.20.4 client downloaded and SHA-1 verified. Java dependencies verified. Native adapters, assets and execution support remain incomplete.")
                 }
             } catch (failure: Exception) {
                 synchronized(this@MicrosoftAccount) {

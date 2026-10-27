@@ -4,9 +4,36 @@ import hashlib
 import json
 import urllib.request
 import urllib.parse
+import re
 
 MANIFEST = "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json"
 MAX_JSON = 8 * 1024 * 1024
+
+
+def select_java_libraries(metadata):
+    """Rule-free Java artifacts only; Android is not desktop Linux. No LWJGL replacement."""
+    if metadata.get("id") != "1.20.4" or len(metadata.get("libraries", [])) > 256:
+        raise ValueError("Unsupported version/library metadata")
+    selected = [item for item in metadata["libraries"] if "rules" not in item and "natives" not in item
+                and not item["name"].startswith("org.lwjgl:")]
+    names = [item["name"] for item in selected]
+    if len(set(names)) != len(names):
+        raise ValueError("Duplicate library coordinate")
+    for item in selected:
+        if not re.fullmatch(r"[A-Za-z0-9_.-]+:[A-Za-z0-9_.-]+:[A-Za-z0-9_.-]+", item["name"]):
+            raise ValueError("Unsupported classifier or coordinate")
+        group, name, version = item["name"].split(":")
+        if any(part in (".", "..") for part in (group, name, version)):
+            raise ValueError("Invalid coordinate")
+        path = f"{group.replace('.', '/')}/{name}/{version}/{name}-{version}.jar"
+        artifact = item["downloads"]["artifact"]
+        if (artifact["path"] != path or artifact["url"] != "https://libraries.minecraft.net/" + path
+                or not re.fullmatch("[a-f0-9]{40}", artifact["sha1"])
+                or not 0 < artifact["size"] <= 64 * 1024 * 1024):
+            raise ValueError("Untrusted Java artifact descriptor")
+    if not {"com.google.guava:guava:32.1.2-jre", "com.google.guava:failureaccess:1.0.1"}.issubset(names):
+        raise ValueError("Guava runtime dependency is incomplete")
+    return selected
 
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):

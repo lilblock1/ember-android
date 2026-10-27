@@ -39,3 +39,10 @@ Opt-in test arguments: `ownershipAndDownload=true` checks the production ownersh
 original client download; `actualClientProbe=true` runs only when privately prepared,
 owned-client DEX is already present. Neither test bundles game bytes. The latter records
 a failure boundary; it is not a passing gameplay test. Keep translated content private.
+
+During a foreground debug test only, launch MainActivity with boolean intent extra
+`ember.keepScreenOnForTesting=true` to keep Ember's visible window awake. This does not
+change global phone settings or hold a background wake lock. Launch normally afterward
+to end that test option. USB disconnected twice during the 0.3.1 work; keep the phone
+unlocked and use a stable data cable/port. Reports must distinguish observed Guava fix,
+unmodified-conversion verifier failure and the still-pending corrected translation test.

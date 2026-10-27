@@ -1,0 +1,16 @@
+{
+  "observedLocalDate": "2026-10-26",
+  "device": "Samsung Galaxy S25+ SM-S936U",
+  "androidApi": 35,
+  "source": "Observed manual instrumentation output before USB disconnect",
+  "verifiedJavaLibraries": 36,
+  "guavaTickerClassPresent": true,
+  "guavaFailureAccessClassPresent": true,
+  "mainClassInitialized": true,
+  "mainEntryObserved": true,
+  "failureType": "VerifyError",
+  "failureSummary": "Enum[] argument rejected where interface array avk[] was expected",
+  "mainMenuReached": false,
+  "playable": false,
+  "correctedTranslationPhysicalTest": "pending"
+}

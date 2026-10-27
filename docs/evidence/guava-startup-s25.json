@@ -1,0 +1,61 @@
+{
+  "version": "1.20.4",
+  "originalClientSha1": "fd19469fed4a4b4c15b2d5133985f0e3e7816a8a",
+  "freshOwnershipVerified": true,
+  "translation": "D8 to DEX; ART runtime, not native AOT",
+  "dexFiles": [
+    {
+      "file": "classes.dex",
+      "bytes": 7938624,
+      "sha256": "60c662fbb607ac9324fef90442bdd60bcda053fee8e1995311b53684387b05a5"
+    },
+    {
+      "file": "classes2.dex",
+      "bytes": 7560580,
+      "sha256": "907211bb3fca5edbe8d595cbca16505bd321abb2fed301ac378770c19b2e9ffe"
+    },
+    {
+      "file": "classes3.dex",
+      "bytes": 1981816,
+      "sha256": "8274d02be04f8084beac700fd36a8446254fec38e9d3de735189821c7a08eb01"
+    },
+    {
+      "file": "dependency-0001.dex",
+      "bytes": 2546728,
+      "sha256": "4241542e0d8c9203dcd1e08476b442f0832a269b13c9b0633f7271fb45ccf169"
+    }
+  ],
+  "mainClassInitialized": true,
+  "failureType": "NoClassDefFoundError",
+  "missingClass": "com\/mojang\/serialization\/Codec",
+  "mainMethodInvoked": true,
+  "mainEntryObserved": true,
+  "failureFrames": [
+    "gjp.b",
+    "gjp.<clinit>",
+    "net.minecraft.client.main.Main.main",
+    "java.lang.reflect.Method.invoke",
+    "dev.andes.app.ActualClientInitializationProbeTest.recordsActualClientInitializationBoundary",
+    "java.lang.reflect.Method.invoke",
+    "org.junit.runners.model.FrameworkMethod$1.runReflectiveCall",
+    "org.junit.internal.runners.model.ReflectiveCallable.run",
+    "org.junit.runners.model.FrameworkMethod.invokeExplosively",
+    "org.junit.internal.runners.statements.InvokeMethod.evaluate",
+    "org.junit.runners.ParentRunner$3.evaluate",
+    "org.junit.runners.BlockJUnit4ClassRunner$1.evaluate",
+    "org.junit.runners.ParentRunner.runLeaf",
+    "org.junit.runners.BlockJUnit4ClassRunner.runChild",
+    "org.junit.runners.BlockJUnit4ClassRunner.runChild",
+    "org.junit.runners.ParentRunner$4.run",
+    "org.junit.runners.ParentRunner$1.schedule",
+    "org.junit.runners.ParentRunner.runChildren",
+    "org.junit.runners.ParentRunner.access$100",
+    "org.junit.runners.ParentRunner$2.evaluate",
+    "org.junit.runners.ParentRunner$3.evaluate",
+    "org.junit.runners.ParentRunner.run",
+    "org.junit.runners.Suite.runChild",
+    "org.junit.runners.Suite.runChild"
+  ],
+  "mainMenuReached": false,
+  "playable": false
+}

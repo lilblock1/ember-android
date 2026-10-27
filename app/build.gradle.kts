@@ -6,12 +6,12 @@ android {
         applicationId = "dev.andes.androidjavaport"
         minSdk = 29
         targetSdk = 35
-        versionCode = 6
-        versionName = "0.3.0-research"
+        versionCode = 7
+        versionName = "0.3.1-research"
         ndk { abiFilters += "arm64-v8a" }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-    buildFeatures { compose = true }
+    buildFeatures { compose = true; buildConfig = true }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
     kotlinOptions { jvmTarget = "17" }
     buildTypes { release { isMinifyEnabled = false } }

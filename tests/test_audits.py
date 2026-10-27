@@ -7,11 +7,23 @@ import unittest
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from classfile_audit import scan_class, scan_jar
-from metadata_audit import summarize, public_metadata
+from metadata_audit import summarize, public_metadata, select_java_libraries
+import json
+import copy
 from client_linkage_audit import key, linkage
 
 
 class AuditTests(unittest.TestCase):
+    def test_actual_metadata_selects_java_dependencies_and_guava_helper(self):
+        metadata = json.loads((ROOT / "core/src/test/resources/library-metadata-1.20.4.json").read_text(encoding="utf-8"))
+        selected = select_java_libraries(metadata)
+        self.assertEqual(36, len(selected))
+        self.assertEqual(55695981, sum(item["downloads"]["artifact"]["size"] for item in selected))
+        self.assertTrue(all(not item["name"].startswith("org.lwjgl:") for item in selected))
+        changed = copy.deepcopy(metadata)
+        next(item for item in changed["libraries"] if item["name"].startswith("com.google.guava:guava:"))["downloads"]["artifact"]["url"] = "https://attacker.example/guava.jar"
+        with self.assertRaises(ValueError): select_java_libraries(changed)
+
     def test_metadata_never_treats_linux_arm64_as_android(self):
         result = summarize({"id": "fixture", "libraries": [{"name": "org.lwjgl:lwjgl:3.3.2:natives-linux-arm64"}]})
         self.assertEqual([], result["android_native_candidates"])

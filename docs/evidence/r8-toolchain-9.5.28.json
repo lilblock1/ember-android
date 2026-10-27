@@ -1,0 +1,8 @@
+{
+  "version": "9.5.28",
+  "url": "https://dl.google.com/dl/android/maven2/com/android/tools/r8/9.5.28/r8-9.5.28.jar",
+  "publisherChecksumAlgorithm": "sha256",
+  "publisherChecksum": "38a9ffaaebbd17d1514e3ecbff5a85b989bb13c551b9e224c7409514eea84ff5",
+  "sha256": "38a9ffaaebbd17d1514e3ecbff5a85b989bb13c551b9e224c7409514eea84ff5",
+  "bytes": 21188744
+}

@@ -46,3 +46,12 @@ The real Main class initialized; its entry stack frame was observed before missi
 Ticker stopped it. It receives no credentials/arguments. Passing this diagnostic means
 evidence collection succeeded, not game launch. This is managed ART/DEX, not native AOT;
 no production engine is selected and no translated game bytes are in source/APKs.
+
+## 0.3.1 dependency and verifier work
+
+Guava/failureaccess now resolve on S25+, and all 36 rule-free Java artifacts download
+and verify against official metadata (55,695,981 bytes). Startup then exposed an ART
+intersection-array VerifyError. See ART_ARRAY_COMPATIBILITY.md for the original
+reproducer, four failing converter variants and the narrowly tested translation pass.
+The preparation command now also requires `--array-adapter-classpath` after building
+`:bytecode-tools:installDist`. Only private derivatives change; original JARs remain intact.

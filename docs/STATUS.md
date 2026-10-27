@@ -6,8 +6,8 @@
 | 2 Foundation | Partial physical validation | App installed/started and visible EGL readback passed on S25+; full lifecycle and inputs remain to test |
 | 3 Authentication | Partial physical validation | Microsoft and Xbox/XSTS/Minecraft profile connection observed on S25+; owner reports API approval; cancellation, refresh/revocation and process-death cases remain |
 | 4 Ownership | Purchased-account test passed | Signed license, fresh nonce, signer/profile and time checks passed on S25+; subscription and negative live account variants remain |
-| 5 Installer | Partial real download | Original 1.20.4 client + six initialization libraries downloaded after fresh ownership and integrity checked; full library/asset/runtime resolver absent |
-| 6 Execution | Isolated real-client entry probe | Real Main initialized and entry observed under ART/DEX, then missing Guava Ticker; 249/292 directly referenced LWJGL declarations absent; desktop GL translation and production runtime absent |
+| 5 Installer | Partial real download | Original 1.20.4 client + 36 selected Java artifacts downloaded after fresh ownership and integrity checked; full library/asset/runtime resolver absent |
+| 6 Execution | Isolated real-client entry probe | Real Main initialized and entry observed under ART/DEX, Guava fixed; ART Enum[]/interface-array VerifyError reproduced; original adapter passes host tests and awaits corrected physical test; 249/292 directly referenced LWJGL declarations absent; desktop GL translation and production runtime absent |
 | 7 Playability | Unimplemented | No real client, worlds, gameplay, audio or saving |
 | 8 Optimization | Unimplemented | Device information only; no game performance claims |
 | 9 Advanced compatibility | Unimplemented | Multiplayer, world I/O, packs not implemented |

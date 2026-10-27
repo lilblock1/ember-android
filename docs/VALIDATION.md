@@ -72,3 +72,18 @@ game launch. Main initialized and its stack frame was observed; it then threw
 NoClassDefFoundError for com/google/common/base/Ticker. No menu, world, save, performance,
 audio or actual-client rendering/input result is claimed. Source reports retain no raw
 service bodies, signed licenses, tokens, device serials or profile identity.
+
+## 0.3.1 validation update (October 26 CDT)
+
+- 27 core tests: prior ownership/security cases, five Java dependency-plan cases and two
+  fragmented/oversize log-redaction cases; all pass.
+- 3 host bytecode tests pass: original/adapted equivalence, idempotence/interface gating,
+  wide arguments and single evaluation. 11 auth and 5 LWJGL host tests still pass.
+- 6 Python audit/metadata tests pass, including selection of the actual 36-artifact plan.
+- APK/test APK assembly and Android lint pass. No main-menu claim is made.
+- S25+ physically confirmed Guava and failureaccess resolve. Full Java set then failed
+  at the ART enum-array boundary; corrected translation test awaits stable USB access.
+- Original non-game reproducer failed on S25+ with D8 8.6.2 and 9.5.28, debug/release.
+  Host adapter inserts explicit checked conversion. Its phone execution remains pending.
+- Full client plus dependencies converted to eight private DEX files. D8 emitted legacy
+  Commons Logging EnclosingMethod warnings; conversion success does not imply compatibility.

@@ -9,15 +9,8 @@ import hashlib
 import json
 import pathlib
 import subprocess
-from metadata_audit import MANIFEST, public_metadata
+from metadata_audit import MANIFEST, public_metadata, select_java_libraries
 
-COORDINATES = {
-    "com.mojang:logging:1.1.1", "org.slf4j:slf4j-api:2.0.7",
-    "org.apache.logging.log4j:log4j-api:2.19.0",
-    "org.apache.logging.log4j:log4j-core:2.19.0",
-    "org.apache.logging.log4j:log4j-slf4j2-impl:2.19.0",
-    "net.sf.jopt-simple:jopt-simple:5.0.4",
-}
 
 
 def checked(path, expected):
@@ -39,6 +32,7 @@ def main():
     parser.add_argument("--libraries", required=True, help="Private directory containing hash-named verified JARs")
     parser.add_argument("--android-sdk", required=True)
     parser.add_argument("--java", required=True, help="JDK 17 java executable")
+    parser.add_argument("--array-adapter-classpath", required=True, help="Built bytecode-tools host classpath; never contains game code")
     parser.add_argument("--output", required=True, help="New private output directory outside the source tree")
     args = parser.parse_args()
     output = pathlib.Path(args.output).resolve()
@@ -52,20 +46,26 @@ def main():
         raise ValueError("Metadata hash mismatch")
     metadata = json.loads(data)
     inputs = [checked(args.client, metadata["downloads"]["client"])]
-    selected = [value for value in metadata["libraries"] if value["name"] in COORDINATES]
-    if {value["name"] for value in selected} != COORDINATES:
-        raise ValueError("Unexpected dependency contract")
+    selected = select_java_libraries(metadata)
     for value in selected:
         artifact = value["downloads"]["artifact"]
         inputs.append(checked(pathlib.Path(args.libraries) / (artifact["sha1"] + ".jar"), artifact))
     sdk = pathlib.Path(args.android_sdk).resolve(strict=True)
     output.mkdir(parents=True)
+    private_classes = output / "adapted-classfiles"
+    subprocess.run([args.java, "-Xmx2g", "-cp", args.array_adapter_classpath,
+                    "dev.ember.bytecode.ArrayIntersectionAdapter", str(private_classes), *map(str, inputs)], check=True)
+    converted_inputs = []
+    for original in inputs:
+        derivative = private_classes / (hashlib.sha256(original.read_bytes()).hexdigest() + ".jar")
+        converted_inputs.append(derivative if derivative.is_file() else original)
     subprocess.run([args.java, "-Xmx3g", "-cp", str(sdk / "build-tools/35.0.0/lib/d8.jar"),
                     "com.android.tools.r8.D8", "--min-api", "29", "--lib",
                     str(sdk / "platforms/android-35/android.jar"), "--output", str(output),
-                    *map(str, inputs)], check=True)
+                    *map(str, converted_inputs)], check=True)
     report = {"version": "1.20.4", "inputsIntegrityVerified": True,
-              "nativeAot": False, "playable": False,
+              "nativeAot": False, "playable": False, "javaLibraryCount": len(selected),
+              "originalInputsPreserved": True, "enumInterfaceArrayAdapter": True,
               "dex": [{"file": path.name, "bytes": path.stat().st_size,
                        "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
                       for path in sorted(output.glob("*.dex"))]}

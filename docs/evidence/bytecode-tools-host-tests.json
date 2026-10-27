@@ -1,0 +1,13 @@
+[
+  {
+    "suite": "dev.ember.bytecode.ArrayIntersectionAdapterTest",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "cases": [
+      "originalAndAdaptedFixtureHaveSameJvmResult",
+      "preservesWideArgumentsAndEvaluatesSupplierOnce",
+      "transformIsIdempotentAndRequiresKnownInterface"
+    ]
+  }
+]
