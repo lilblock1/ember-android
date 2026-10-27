@@ -1,0 +1,22 @@
+[
+  {
+    "suite": "dev.ember.platform.ManagementFactoryTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "cases": [
+      "hostBridgeUsesActualRuntimeInformationWithoutPrintingArguments"
+    ]
+  },
+  {
+    "suite": "dev.ember.platform.ReadOnlyJarProviderTest",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "cases": [
+      "writeCreateAndClosedFilesystemOperationsFailExplicitly",
+      "rejectsTraversalAndKeepsNativeFileUrisOnTheirOwnProvider",
+      "readsListsSeeksAndRoundTripsUriWithoutExtraction"
+    ]
+  }
+]

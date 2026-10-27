@@ -1,0 +1,87 @@
+{
+  "probeRunId": "8472382e-35fe-4db4-a7f4-4edc3de3310d",
+  "authenticatedStartup": false,
+  "phase": "java36",
+  "verifiedJavaLibraries": 36,
+  "guavaTickerClassPresent": true,
+  "guavaFailureAccessClassPresent": true,
+  "version": "1.20.4",
+  "originalClientSha1": "fd19469fed4a4b4c15b2d5133985f0e3e7816a8a",
+  "freshOwnershipVerified": true,
+  "translation": "D8 to DEX; ART runtime, not native AOT",
+  "dexFiles": [
+    {
+      "file": "classes.dex",
+      "bytes": 9483400,
+      "sha256": "5105fcbf8b78f1cea91f04e0c2b5ee1c206ef81a6802a5415f42a2981f85c7ca"
+    },
+    {
+      "file": "classes2.dex",
+      "bytes": 6997244,
+      "sha256": "2f75d20dc77d6ff2186c9ba7cbdb74502f0de160feb9aecd8ae53ac6fdd25a4b"
+    },
+    {
+      "file": "classes3.dex",
+      "bytes": 6790948,
+      "sha256": "5cb03c79b22ec1702c2ec398717dc1ecb596efb9ebad3260fbfda5ba5eef3988"
+    },
+    {
+      "file": "classes4.dex",
+      "bytes": 6915804,
+      "sha256": "b48345dc40b84ede0c16227da462a32829a27756c4d6d6bf9e83a449f4352a4b"
+    },
+    {
+      "file": "classes5.dex",
+      "bytes": 6991924,
+      "sha256": "27a2e3469ee91cc6692611f0df431c7e488098ac13213cb7259ee6ef86fe3c74"
+    },
+    {
+      "file": "classes6.dex",
+      "bytes": 8356944,
+      "sha256": "1add9199601e14f244c2f7abbc756699284c70f275051868ce89dcf6edf42a58"
+    },
+    {
+      "file": "classes7.dex",
+      "bytes": 7766196,
+      "sha256": "144e5fdbc2438d07446ffe5c333de8f102c39e0657928b9040375578f2908f9b"
+    },
+    {
+      "file": "classes8.dex",
+      "bytes": 164668,
+      "sha256": "1d805944bf581098873dc0d3f40bbfa113b7a023b61aa270451f649ca09b116c"
+    }
+  ],
+  "mainClassInitialized": true,
+  "failureType": "ExceptionInInitializerError",
+  "missingClass": null,
+  "mainMethodInvoked": true,
+  "mainEntryObserved": true,
+  "failureFrames": [
+    "net.minecraft.client.main.Main.main",
+    "java.lang.reflect.Method.invoke",
+    "dev.andes.app.ActualClientInitializationProbeTest.recordsActualClientInitializationBoundary",
+    "java.lang.reflect.Method.invoke",
+    "org.junit.runners.model.FrameworkMethod$1.runReflectiveCall",
+    "org.junit.internal.runners.model.ReflectiveCallable.run",
+    "org.junit.runners.model.FrameworkMethod.invokeExplosively",
+    "org.junit.internal.runners.statements.InvokeMethod.evaluate",
+    "org.junit.runners.ParentRunner$3.evaluate",
+    "org.junit.runners.BlockJUnit4ClassRunner$1.evaluate",
+    "org.junit.runners.ParentRunner.runLeaf",
+    "org.junit.runners.BlockJUnit4ClassRunner.runChild",
+    "org.junit.runners.BlockJUnit4ClassRunner.runChild",
+    "org.junit.runners.ParentRunner$4.run",
+    "org.junit.runners.ParentRunner$1.schedule",
+    "org.junit.runners.ParentRunner.runChildren",
+    "org.junit.runners.ParentRunner.access$100",
+    "org.junit.runners.ParentRunner$2.evaluate",
+    "org.junit.runners.ParentRunner$3.evaluate",
+    "org.junit.runners.ParentRunner.run",
+    "org.junit.runners.Suite.runChild",
+    "org.junit.runners.Suite.runChild",
+    "org.junit.runners.ParentRunner$4.run",
+    "org.junit.runners.ParentRunner$1.schedule"
+  ],
+  "mainMenuReached": false,
+  "playable": false
+}

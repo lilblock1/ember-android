@@ -61,7 +61,7 @@
       "owner": "org/lwjgl/Version",
       "name": "getVersion",
       "descriptor": "()Ljava/lang/String;",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
@@ -1867,168 +1867,168 @@
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "getAllocator",
       "descriptor": "(Z)Lorg/lwjgl/system/MemoryUtil$MemoryAllocator;",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "memAddress",
       "descriptor": "(Ljava/nio/ByteBuffer;)J",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "memAddress0",
       "descriptor": "(Ljava/nio/Buffer;)J",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "memAlloc",
       "descriptor": "(I)Ljava/nio/ByteBuffer;",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "memAllocFloat",
       "descriptor": "(I)Ljava/nio/FloatBuffer;",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "memAllocInt",
       "descriptor": "(I)Ljava/nio/IntBuffer;",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "memByteBuffer",
       "descriptor": "(JI)Ljava/nio/ByteBuffer;",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "memCopy",
       "descriptor": "(JJJ)V",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "memFree",
       "descriptor": "(Ljava/nio/Buffer;)V",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "memGetByte",
       "descriptor": "(J)B",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "memGetInt",
       "descriptor": "(J)I",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "memIntBuffer",
       "descriptor": "(JI)Ljava/nio/IntBuffer;",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "memPutByte",
       "descriptor": "(JB)V",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "memPutInt",
       "descriptor": "(JI)V",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "memRealloc",
       "descriptor": "(Ljava/nio/ByteBuffer;I)Ljava/nio/ByteBuffer;",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "memSet",
       "descriptor": "(JIJ)V",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "memSlice",
       "descriptor": "(Ljava/nio/ByteBuffer;II)Ljava/nio/ByteBuffer;",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "memUTF8",
       "descriptor": "(J)Ljava/lang/String;",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "nmemAlloc",
       "descriptor": "(J)J",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "nmemCalloc",
       "descriptor": "(JJ)J",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil",
       "name": "nmemFree",
       "descriptor": "(J)V",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil$MemoryAllocator",
       "name": "free",
       "descriptor": "(J)V",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil$MemoryAllocator",
       "name": "malloc",
       "descriptor": "(J)J",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
       "owner": "org/lwjgl/system/MemoryUtil$MemoryAllocator",
       "name": "realloc",
       "descriptor": "(JJ)J",
-      "declaration_present": false
+      "declaration_present": true
     },
     {
       "kind": "method",
@@ -2046,10 +2046,12 @@
     }
   ],
   "total": 292,
-  "missing_declarations": 249,
+  "missing_declarations": 224,
   "limitation": "Declaration inventory only; bodies, inherited members, reflection and dynamic loading are not validated. A declaration match is not behavioral compatibility.",
   "version": "1.20.4",
   "official_client_sha1": "fd19469fed4a4b4c15b2d5133985f0e3e7816a8a",
-  "ownership_evidence": "ownership-client-s25.json",
-  "client_main_menu_reached": false
+  "ownership_verified": false,
+  "client_executed": false,
+  "proprietary_downloads_performed": false,
+  "ownership_note": "This read-only audit does not establish ownership. See separate device evidence when available."
 }

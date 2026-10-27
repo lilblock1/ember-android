@@ -6,6 +6,12 @@ import java.lang.reflect.InvocationTargetException
 import java.nio.ByteBuffer
 
 object AndroidGlfw {
+    fun runMemoryFixture(context: Context): Int {
+        val data = context.assets.open("lwjgl-fixture/classes.dex").use { it.readBytes() }
+        val loader = InMemoryDexClassLoader(ByteBuffer.wrap(data), javaClass.classLoader)
+        return try { loader.loadClass("fixture.NativeMemoryFixture").getMethod("exercise").invoke(null) as Int }
+        catch (failure: InvocationTargetException) { throw (failure.cause ?: failure) }
+    }
     fun runShaderFixture(context: Context): String {
         val data = context.assets.open("lwjgl-fixture/classes.dex").use { it.readBytes() }
         val loader = InMemoryDexClassLoader(ByteBuffer.wrap(data), javaClass.classLoader)

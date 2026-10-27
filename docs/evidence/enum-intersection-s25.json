@@ -1,0 +1,28 @@
+[
+  {
+    "variant": "old-debug",
+    "verifiedAndExecuted": false,
+    "failureType": "VerifyError"
+  },
+  {
+    "variant": "old-release",
+    "verifiedAndExecuted": false,
+    "failureType": "VerifyError"
+  },
+  {
+    "variant": "current-debug",
+    "verifiedAndExecuted": false,
+    "failureType": "VerifyError"
+  },
+  {
+    "variant": "current-release",
+    "verifiedAndExecuted": false,
+    "failureType": "VerifyError"
+  },
+  {
+    "variant": "adapted",
+    "result": 2,
+    "expectedResult": 2,
+    "verifiedAndExecuted": true
+  }
+]

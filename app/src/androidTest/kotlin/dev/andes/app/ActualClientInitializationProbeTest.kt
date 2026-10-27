@@ -69,6 +69,8 @@ class ActualClientInitializationProbeTest {
         val console = protected?.protectConsole()
         // Force a console-only logger configuration for this private probe; no credential-bearing file logs.
         val previousLogging = System.getProperty("log4j.configurationFile")
+        val previousJmx = System.getProperty("log4j2.disable.jmx")
+        System.setProperty("log4j2.disable.jmx", "true") // Android has no platform JMX server.
         val logging = File(context.cacheDir, "startup-log4j2.xml")
         logging.writeText("<Configuration status=\"OFF\"><Appenders><Console name=\"safe\" target=\"SYSTEM_ERR\"><PatternLayout pattern=\"%level %msg%n\"/></Console></Appenders><Loggers><Root level=\"warn\"><AppenderRef ref=\"safe\"/></Root></Loggers></Configuration>")
         System.setProperty("log4j.configurationFile", logging.toURI().toString())
@@ -78,6 +80,10 @@ class ActualClientInitializationProbeTest {
         var failureType = "none"
         var missingClass: String? = null
         var failureFrames = JSONArray()
+        var failureCauses = JSONArray()
+        File(context.cacheDir, "startup-probe-pending.json").writeText(JSONObject()
+            .put("probeRunId", InstrumentationRegistry.getArguments().getString("probeRunId") ?: "manual")
+            .put("startedAt", System.currentTimeMillis()).put("authenticatedStartup", authenticated).toString())
         try {
             val main = Class.forName("net.minecraft.client.main.Main", true, loader)
             loaded = true
@@ -89,7 +95,11 @@ class ActualClientInitializationProbeTest {
         } catch (reflection: InvocationTargetException) {
             val failure = reflection.targetException
             if (!authenticated && failure is VerifyError) File(context.cacheDir, "client-verifier-private.txt").writeText(failure.message.orEmpty())
+            if (!authenticated) File(context.cacheDir, "startup-private.txt").writeText(generateSequence<Throwable>(failure) { it.cause }.take(8).joinToString("\n") { it.javaClass.name + ": " + it.message.orEmpty() })
             failureType = failure.javaClass.simpleName
+            failureCauses = JSONArray(generateSequence<Throwable>(failure) { it.cause }.take(8).map { cause ->
+                JSONObject().put("type", cause.javaClass.simpleName).put("frames", JSONArray(cause.stackTrace.take(8).map { it.className + "." + it.methodName }))
+            }.toList())
             failureFrames = JSONArray(generateSequence<Throwable>(failure) { it.cause }.take(8).flatMap { it.stackTrace.asSequence() }.take(24).map {
                 it.className + "." + it.methodName
             }.filter { it.matches(Regex("[A-Za-z0-9_.$<>]+")) }.toList())
@@ -98,7 +108,11 @@ class ActualClientInitializationProbeTest {
             missingClass = Regex("(?:L|class \")((?:com[/.]mojang|org[/.]lwjgl|org[/.]apache|com[/.]google|joptsimple|java[/.]lang|javax[/.]management|sun[/.]misc|com[/.]sun)[A-Za-z0-9_$/.-]{1,180})")
                 .find(candidates)?.groupValues?.get(1)
         } catch (failure: LinkageError) {
+            if (!authenticated) File(context.cacheDir, "startup-private.txt").writeText(generateSequence<Throwable>(failure) { it.cause }.take(8).joinToString("\n") { it.javaClass.name + ": " + it.message.orEmpty() })
             failureType = failure.javaClass.simpleName
+            failureCauses = JSONArray(generateSequence<Throwable>(failure) { it.cause }.take(8).map { cause ->
+                JSONObject().put("type", cause.javaClass.simpleName).put("frames", JSONArray(cause.stackTrace.take(8).map { it.className + "." + it.methodName }))
+            }.toList())
             failureFrames = JSONArray(generateSequence<Throwable>(failure) { it.cause }.take(8).flatMap { it.stackTrace.asSequence() }.take(24).map {
                 it.className + "." + it.methodName
             }.filter { it.matches(Regex("[A-Za-z0-9_.$<>]+")) }.toList())
@@ -110,6 +124,7 @@ class ActualClientInitializationProbeTest {
         finally {
             console?.close()
             if (previousLogging == null) System.clearProperty("log4j.configurationFile") else System.setProperty("log4j.configurationFile", previousLogging)
+            if (previousJmx == null) System.clearProperty("log4j2.disable.jmx") else System.setProperty("log4j2.disable.jmx", previousJmx)
             Thread.currentThread().contextClassLoader = originalContextLoader
         }
         File(context.cacheDir, "actual-client-initialization.json").writeText(JSONObject()
@@ -121,6 +136,6 @@ class ActualClientInitializationProbeTest {
             .put("freshOwnershipVerified", true).put("translation", "D8 to DEX; ART runtime, not native AOT")
             .put("dexFiles", hashes).put("mainClassInitialized", loaded).put("failureType", failureType)
             .put("missingClass", missingClass ?: JSONObject.NULL).put("mainMethodInvoked", invoked).put("mainEntryObserved", entryObserved)
-            .put("failureFrames", failureFrames).put("mainMenuReached", false).put("playable", false).toString(2))
+            .put("failureCauses", failureCauses).put("failureFrames", failureFrames).put("mainMenuReached", false).put("playable", false).toString(2))
     }
 }

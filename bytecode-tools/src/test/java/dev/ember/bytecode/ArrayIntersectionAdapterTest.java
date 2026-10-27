@@ -69,4 +69,42 @@ public class ArrayIntersectionAdapterTest {
         assertEquals(2, loader.loadClass(name).getMethod("run", java.util.function.Supplier.class).invoke(null, source));
         assertEquals(1, calls.get());
     }
+    @Test public void archiveApiBridgeIsNarrowIdempotentAndPreservesNativePaths() throws Exception {
+        byte[] original;
+        try (InputStream input = getClass().getResourceAsStream("/fixture/ArchiveApiFixture.class")) { original = Objects.requireNonNull(input).readAllBytes(); }
+        var adapted = ArrayIntersectionAdapter.adaptClass(original, Set.of());
+        assertEquals(0, adapted.insertedCasts()); assertEquals(3, adapted.redirectedCalls());
+        assertEquals(0, ArrayIntersectionAdapter.adaptClass(adapted.bytes(), Set.of()).redirectedCalls());
+        ClassLoader loader = new ClassLoader(getClass().getClassLoader()) {
+            @Override protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
+                if (!name.equals("fixture.ArchiveApiFixture")) return super.loadClass(name, resolve);
+                Class<?> result=findLoadedClass(name);if(result==null)result=defineClass(name,adapted.bytes(),0,adapted.bytes().length);return result;
+            }
+        };
+        Class<?> type=loader.loadClass("fixture.ArchiveApiFixture");
+        assertEquals(java.nio.file.Paths.get("fixture"),type.getMethod("nativePath",String.class).invoke(null,"fixture"));
+        var path=java.nio.file.Files.createTempFile("bridge-native-", ".txt");
+        assertEquals(path,type.getMethod("uriPath",java.net.URI.class).invoke(null,path.toUri()));
+        assertTrue((Integer)type.getMethod("providerCount").invoke(null)>0);
+    }
+    @Test public void runtimeInformationTypesAndCallsRetargetWithoutInventingValues() throws Exception {
+        byte[] original;
+        try (InputStream input=getClass().getResourceAsStream("/fixture/ManagementApiFixture.class")){original=Objects.requireNonNull(input).readAllBytes();}
+        var adapted=ArrayIntersectionAdapter.adaptClass(original,Set.of());
+        assertTrue(adapted.redirectedCalls()>0);assertTrue(adapted.rewrittenTypes()>0);
+        var twice=ArrayIntersectionAdapter.adaptClass(adapted.bytes(),Set.of());
+        assertEquals(0,twice.redirectedCalls());assertEquals(0,twice.rewrittenTypes());
+        ClassLoader loader=new ClassLoader(getClass().getClassLoader()) {
+            @Override protected Class<?> loadClass(String name,boolean resolve)throws ClassNotFoundException {
+                if(!name.equals("fixture.ManagementApiFixture"))return super.loadClass(name,resolve);
+                Class<?> value=findLoadedClass(name);if(value==null)value=defineClass(name,adapted.bytes(),0,adapted.bytes().length);return value;
+            }
+        };
+        Class<?> type=loader.loadClass("fixture.ManagementApiFixture");
+        var runtime=java.lang.management.ManagementFactory.getRuntimeMXBean();
+        assertEquals(runtime.getInputArguments().size(),type.getMethod("argumentCount").invoke(null));
+        assertEquals(runtime.getStartTime(),type.getMethod("start").invoke(null));
+        assertTrue((Long)type.getMethod("uptime").invoke(null)>=0);
+        assertTrue((Long)type.getMethod("collections").invoke(null)>=-1);
+    }
 }

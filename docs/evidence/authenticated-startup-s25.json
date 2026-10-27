@@ -1,0 +1,114 @@
+{
+  "probeRunId": "aa4c8a21-6748-4397-942f-58da54075e4c",
+  "authenticatedStartup": true,
+  "phase": "java36",
+  "verifiedJavaLibraries": 36,
+  "guavaTickerClassPresent": true,
+  "guavaFailureAccessClassPresent": true,
+  "version": "1.20.4",
+  "originalClientSha1": "fd19469fed4a4b4c15b2d5133985f0e3e7816a8a",
+  "freshOwnershipVerified": true,
+  "translation": "D8 to DEX; ART runtime, not native AOT",
+  "dexFiles": [
+    {
+      "file": "classes.dex",
+      "bytes": 9483400,
+      "sha256": "5105fcbf8b78f1cea91f04e0c2b5ee1c206ef81a6802a5415f42a2981f85c7ca"
+    },
+    {
+      "file": "classes2.dex",
+      "bytes": 6997296,
+      "sha256": "e28fdf38da16586a701105e62298c5e473eb40f85ec06d1fd0a7c169e0415919"
+    },
+    {
+      "file": "classes3.dex",
+      "bytes": 6790992,
+      "sha256": "f64b00bc2adf01402f21b150ad2543067a1b04e2d2493013778a92a01e13d2a1"
+    },
+    {
+      "file": "classes4.dex",
+      "bytes": 6915848,
+      "sha256": "bf9b286b75ec6bfa9f6834901d0a3c6a82582d1fcbbf5ab70f138eeb70146611"
+    },
+    {
+      "file": "classes5.dex",
+      "bytes": 6991924,
+      "sha256": "27a2e3469ee91cc6692611f0df431c7e488098ac13213cb7259ee6ef86fe3c74"
+    },
+    {
+      "file": "classes6.dex",
+      "bytes": 8356988,
+      "sha256": "7784bacdda2900a8ef6bd71a0d1d5ddce7a47d9391f8f13d402601fa0489ed7f"
+    },
+    {
+      "file": "classes7.dex",
+      "bytes": 7766196,
+      "sha256": "144e5fdbc2438d07446ffe5c333de8f102c39e0657928b9040375578f2908f9b"
+    },
+    {
+      "file": "classes8.dex",
+      "bytes": 164668,
+      "sha256": "1d805944bf581098873dc0d3f40bbfa113b7a023b61aa270451f649ca09b116c"
+    }
+  ],
+  "mainClassInitialized": true,
+  "failureType": "NoClassDefFoundError",
+  "missingClass": "java\/lang\/management\/ManagementFactory",
+  "mainMethodInvoked": true,
+  "mainEntryObserved": true,
+  "failureCauses": [
+    {
+      "type": "NoClassDefFoundError",
+      "frames": [
+        "ac.k",
+        "ab.b",
+        "ab.$r8$lambda$zQJGuo3Mz36jE-o2sG7cMczW0cA",
+        "ab$$ExternalSyntheticLambda3.get",
+        "ab.a",
+        "ab.<init>",
+        "o.<init>",
+        "o.h"
+      ]
+    },
+    {
+      "type": "ClassNotFoundException",
+      "frames": [
+        "dalvik.system.BaseDexClassLoader.findClass",
+        "java.lang.ClassLoader.loadClass",
+        "java.lang.ClassLoader.loadClass",
+        "ac.k",
+        "ab.b",
+        "ab.$r8$lambda$zQJGuo3Mz36jE-o2sG7cMczW0cA",
+        "ab$$ExternalSyntheticLambda3.get",
+        "ab.a"
+      ]
+    }
+  ],
+  "failureFrames": [
+    "ac.k",
+    "ab.b",
+    "ab$$ExternalSyntheticLambda3.get",
+    "ab.a",
+    "ab.<init>",
+    "o.<init>",
+    "o.h",
+    "net.minecraft.client.main.Main.main",
+    "java.lang.reflect.Method.invoke",
+    "dev.andes.app.ActualClientInitializationProbeTest.recordsActualClientInitializationBoundary",
+    "java.lang.reflect.Method.invoke",
+    "org.junit.runners.model.FrameworkMethod$1.runReflectiveCall",
+    "org.junit.internal.runners.model.ReflectiveCallable.run",
+    "org.junit.runners.model.FrameworkMethod.invokeExplosively",
+    "org.junit.internal.runners.statements.InvokeMethod.evaluate",
+    "org.junit.runners.ParentRunner$3.evaluate",
+    "org.junit.runners.BlockJUnit4ClassRunner$1.evaluate",
+    "org.junit.runners.ParentRunner.runLeaf",
+    "org.junit.runners.BlockJUnit4ClassRunner.runChild",
+    "org.junit.runners.BlockJUnit4ClassRunner.runChild",
+    "org.junit.runners.ParentRunner$4.run",
+    "org.junit.runners.ParentRunner$1.schedule",
+    "org.junit.runners.ParentRunner.runChildren"
+  ],
+  "mainMenuReached": false,
+  "playable": false
+}

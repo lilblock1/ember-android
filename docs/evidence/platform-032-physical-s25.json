@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-27",
+  "device": "S25+ / SM-S936U",
+  "android": "15",
+  "tests": 3,
+  "failures": 0,
+  "cases": [
+    "androidCanReadAndWalkOriginalArchiveFixtureWithoutExtracting",
+    "comparePinnedCompilerArrayVerification",
+    "runtimeInformationUsesAndroidProcessAndGcCounters"
+  ],
+  "mainMenuReached": false
+}

@@ -1,0 +1,116 @@
+{
+  "probeRunId": "d68fe537-8475-45c9-9dd2-67cc7eb09d27",
+  "authenticatedStartup": true,
+  "phase": "java36",
+  "verifiedJavaLibraries": 36,
+  "guavaTickerClassPresent": true,
+  "guavaFailureAccessClassPresent": true,
+  "version": "1.20.4",
+  "originalClientSha1": "fd19469fed4a4b4c15b2d5133985f0e3e7816a8a",
+  "freshOwnershipVerified": true,
+  "translation": "D8 to DEX; ART runtime, not native AOT",
+  "dexFiles": [
+    {
+      "file": "classes.dex",
+      "bytes": 9483400,
+      "sha256": "5105fcbf8b78f1cea91f04e0c2b5ee1c206ef81a6802a5415f42a2981f85c7ca"
+    },
+    {
+      "file": "classes2.dex",
+      "bytes": 6997312,
+      "sha256": "4a4ba76aba47787d5cf2ddd133714d63d335fac92381801b5de4f293dde0f40a"
+    },
+    {
+      "file": "classes3.dex",
+      "bytes": 6790992,
+      "sha256": "f64b00bc2adf01402f21b150ad2543067a1b04e2d2493013778a92a01e13d2a1"
+    },
+    {
+      "file": "classes4.dex",
+      "bytes": 6915916,
+      "sha256": "b1f5cf0cfa4c6ba7d9a372332e7c302b8f916175a2df64fe1692e54fc2de8d94"
+    },
+    {
+      "file": "classes5.dex",
+      "bytes": 6991924,
+      "sha256": "27a2e3469ee91cc6692611f0df431c7e488098ac13213cb7259ee6ef86fe3c74"
+    },
+    {
+      "file": "classes6.dex",
+      "bytes": 8356988,
+      "sha256": "7784bacdda2900a8ef6bd71a0d1d5ddce7a47d9391f8f13d402601fa0489ed7f"
+    },
+    {
+      "file": "classes7.dex",
+      "bytes": 7766224,
+      "sha256": "8b57e6c8ae58a04c4ffcfe9a231ccfdb82c436dba17eee676d6b832dc57c13e3"
+    },
+    {
+      "file": "classes8.dex",
+      "bytes": 164668,
+      "sha256": "1d805944bf581098873dc0d3f40bbfa113b7a023b61aa270451f649ca09b116c"
+    }
+  ],
+  "mainClassInitialized": true,
+  "failureType": "NoClassDefFoundError",
+  "missingClass": "org/lwjgl/Version",
+  "mainMethodInvoked": true,
+  "mainEntryObserved": true,
+  "failureCauses": [
+    {
+      "type": "NoClassDefFoundError",
+      "frames": [
+        "com.mojang.blaze3d.platform.GLX._getLWJGLVersion",
+        "com.mojang.blaze3d.systems.RenderSystem.getBackendDescription",
+        "evi$$ExternalSyntheticLambda44.get",
+        "ab.a",
+        "evi.a",
+        "evi.a",
+        "net.minecraft.client.main.Main.main",
+        "java.lang.reflect.Method.invoke"
+      ]
+    },
+    {
+      "type": "ClassNotFoundException",
+      "frames": [
+        "dalvik.system.BaseDexClassLoader.findClass",
+        "java.lang.ClassLoader.loadClass",
+        "java.lang.ClassLoader.loadClass",
+        "com.mojang.blaze3d.platform.GLX._getLWJGLVersion",
+        "com.mojang.blaze3d.systems.RenderSystem.getBackendDescription",
+        "evi$$ExternalSyntheticLambda44.get",
+        "ab.a",
+        "evi.a"
+      ]
+    }
+  ],
+  "failureFrames": [
+    "com.mojang.blaze3d.platform.GLX._getLWJGLVersion",
+    "com.mojang.blaze3d.systems.RenderSystem.getBackendDescription",
+    "evi$$ExternalSyntheticLambda44.get",
+    "ab.a",
+    "evi.a",
+    "evi.a",
+    "net.minecraft.client.main.Main.main",
+    "java.lang.reflect.Method.invoke",
+    "dev.andes.app.ActualClientInitializationProbeTest.recordsActualClientInitializationBoundary",
+    "java.lang.reflect.Method.invoke",
+    "org.junit.runners.model.FrameworkMethod$1.runReflectiveCall",
+    "org.junit.internal.runners.model.ReflectiveCallable.run",
+    "org.junit.runners.model.FrameworkMethod.invokeExplosively",
+    "org.junit.internal.runners.statements.InvokeMethod.evaluate",
+    "org.junit.runners.ParentRunner$3.evaluate",
+    "org.junit.runners.BlockJUnit4ClassRunner$1.evaluate",
+    "org.junit.runners.ParentRunner.runLeaf",
+    "org.junit.runners.BlockJUnit4ClassRunner.runChild",
+    "org.junit.runners.BlockJUnit4ClassRunner.runChild",
+    "org.junit.runners.ParentRunner$4.run",
+    "org.junit.runners.ParentRunner$1.schedule",
+    "org.junit.runners.ParentRunner.runChildren",
+    "org.junit.runners.ParentRunner.access$100",
+    "org.junit.runners.ParentRunner$2.evaluate"
+  ],
+  "mainMenuReached": false,
+  "playable": false,
+  "observedDate": "2026-10-27"
+}

@@ -11,7 +11,7 @@ bounds-checked direct RGBA8 readback; owner-thread/stale-handle checks and resou
 Handles are validated IDs, not unchecked Java-supplied pointers.
 
 Desktop OpenGL fails explicitly. Unknown hints, monitors/shared contexts and event pumping
-are unsupported. Callbacks, most GLFW/LWJGL classes, native memory APIs, general shader/texture/buffer APIs, audio, Vulkan translation and AOT game compilation remain unimplemented. The new subset supports original GLSL ES 3.00 shader compilation/linking, VBO upload, VAO attributes and draw/readback; desktop GLSL is rejected. This
+are unsupported. Callbacks, most GLFW/LWJGL classes, borrowed/native callback pointer APIs, general shader/texture/buffer APIs, audio, Vulkan translation and AOT game compilation remain unimplemented. The subset supports original GLSL ES 3.00 shader compilation/linking, VBO upload, VAO attributes and draw/readback; desktop GLSL is rejected. This
 subset cannot launch Minecraft 1.20.4. ART/DEX is managed execution, not AOT compilation.
 
 ## Physical evidence
@@ -50,6 +50,27 @@ The real Main entry was separately observed under ART/DEX after six logging/pars
 were verified, then failed at an unresolved Guava Ticker. No graphics calls from the game
 were validated. Fixing dependencies does not implement desktop GL, GLFW callbacks or audio.
 See evidence/actual-client-initialization-s25.json and FEASIBILITY.md.
+
+## 0.3.2 native memory and current boundary
+
+Original MemoryUtil and MemoryAllocator subsets now provide owned ARM64 allocation,
+typed/direct views, realloc, copy/set, byte/int access, bounded standard UTF-8 and free.
+An original Java fixture compiled against upstream 3.3.2 executes against this adapter
+on S25+. Three memory device tests pass, including concurrent ownership, range/foreign
+pointer rejection, overflow/budget checks, stale addresses and explicit teardown. Pointer
+lifetime remains the caller's responsibility; no arbitrary/borrowed pointer access or
+C callback trampoline is implemented. See CLIENT_STARTUP.md for limits.
+
+Seven current device tests pass: three EGL, three native-memory and one selected Vulkan
+capability inspection. Actual Vulkan reports API 1.3.284 and the eight selected core
+flags, but this is not a complete translator profile or a Vulkan rendering result.
+
+The real authenticated client now passes its MemoryUtil initialization failure and
+reaches GLX._initGlfw, failing at missing org.lwjgl.opengl.GL. A new static inventory
+has 224 missing declarations out of 292 direct references, down from the historical
+249 count above. This does not establish behavior of the matched methods. No main-menu
+or game rendering result is claimed. Evidence: memory-version-startup-s25.json,
+lwjgl-032-physical-s25.json and vulkan-capabilities-s25.json.
 
 ```
 python tools/client_linkage_audit.py --client /owned/1.20.4.jar --version 1.20.4 --shim-classes lwjgl-compat/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes --output build/client-linkage.json

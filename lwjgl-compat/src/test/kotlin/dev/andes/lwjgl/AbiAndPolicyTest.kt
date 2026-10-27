@@ -13,13 +13,13 @@ class AbiAndPolicyTest {
     @Test fun publicLwjglMethodsMatchReal332Descriptors() {
         val paths = requireNotNull(System.getProperty("lwjgl.reference.classpath")).split(File.pathSeparator).map { File(it).toURI().toURL() }
         URLClassLoader(paths.toTypedArray(), ClassLoader.getSystemClassLoader().parent).use { upstream ->
-            for (name in listOf("org.lwjgl.glfw.GLFW", "org.lwjgl.opengl.GL11", "org.lwjgl.opengl.GL11C", "org.lwjgl.opengl.GL15", "org.lwjgl.opengl.GL20", "org.lwjgl.opengl.GL30")) {
+            for (name in listOf("org.lwjgl.glfw.GLFW", "org.lwjgl.opengl.GL11", "org.lwjgl.opengl.GL11C", "org.lwjgl.opengl.GL15", "org.lwjgl.opengl.GL20", "org.lwjgl.opengl.GL30", "org.lwjgl.system.MemoryUtil", "org.lwjgl.system.MemoryUtil\$MemoryAllocator", "org.lwjgl.Version")) {
                 val shim = Class.forName(name, false, javaClass.classLoader)
                 val reference = Class.forName(name, false, upstream)
                 for (method in shim.declaredMethods.filter { Modifier.isPublic(it.modifiers) && !it.name.startsWith("android") }) {
-                    val original = reference.getMethod(method.name, *method.parameterTypes)
-                    assertEquals("$name.${method.name}", original.returnType, method.returnType)
-                    assertTrue(Modifier.isStatic(original.modifiers))
+                    val original = reference.methods.single { it.name == method.name && it.parameterTypes.map { p -> p.name } == method.parameterTypes.map { p -> p.name } }
+                    assertEquals("$name.${method.name}", original.returnType.name, method.returnType.name)
+                    assertEquals(Modifier.isStatic(original.modifiers), Modifier.isStatic(method.modifiers))
                 }
             }
         }

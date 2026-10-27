@@ -22,7 +22,7 @@ and inserts CHECKCAST only when a statically erased Enum[] argument is passed to
 known one-dimensional interface-array parameter. It saves/reloads arguments in order,
 including wide primitives, and keeps the receiver and argument evaluation order intact.
 It adds no branches, preserves existing stack-map boundaries and is idempotent.
-Three host tests cover equivalent results, idempotence/known-interface gating, wide
+Host tests cover equivalent results, idempotence/known-interface gating, wide
 arguments and single supplier evaluation. The original fixture still returns 2 on JVM.
 The emitted DEX retains the explicit interface-array checkcast.
 
@@ -39,8 +39,10 @@ outputs, verifies official input hashes first and records DEX SHA-256 values. Th
 checks that manifest before loading the private DEX. Modified/translated game files are
 excluded from source, APKs and public artifacts.
 
-The corrected fixture/full-client physical test is pending stable USB access. The main
-menu has not been reached. Updating compiler version alone did not fix the reproducer.
+The corrected fixture passed on S25+: verified/executed with result 2. The real client
+passed the corresponding verifier boundary and reached subsequent platform API failures.
+See evidence/enum-intersection-s25.json. The main menu has not been reached. Updating
+compiler version alone did not fix the reproducer.
 
 ## Reproduce privately
 

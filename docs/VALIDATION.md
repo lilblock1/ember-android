@@ -1,5 +1,26 @@
 # Validation evidence
 
+## 0.3.2 current results — October 27, 2026
+
+- Local Android ARM64 app/test APK assembly and lint pass: 0 errors, 8 warnings
+  (six dependency update notices, ARM64-only ChromeOS warning and optional KTX style suggestion).
+- Host: 27 core, 11 authentication, 5 LWJGL ABI/policy, 5 bytecode-tool and 4 Java-platform
+  tests pass. Six Python audit/metadata tests pass.
+- S25+ / Android 15: seven LWJGL/native device tests pass: three EGL, three owned-memory
+  (upstream-compiled fixture, negative bounds/ownership, concurrency), one Vulkan inspection.
+- The adapted original enum fixture executes with result 2; read-only archive and Android
+  process/GC device checks pass. Authenticated real client passes those earlier failures.
+- Fresh owned-client startup now reaches GLX._initGlfw / RenderSystem.initBackendSystem,
+  then a private crash report identifies missing org.lwjgl.opengl.GL. The process exits;
+  the collector validates the run marker and exports only new structural error facts.
+- The Vulkan inspection reports 1.3.284, selected core flags and extension presence only.
+  No full Zink profile, graphics translator or Vulkan rendering test has passed.
+- Installed APK is replaced in place; account session retained. Main menu, world load/save,
+  real game graphics/input/audio and playability remain untested/unsuccessful.
+
+See CLIENT_STARTUP.md and the dated evidence files. The sections below are historical
+results for earlier releases; their pending boundaries were superseded by this update.
+
 Validated locally on Windows on 2026-10-24. This evidence applies to the research foundation,
 not to Minecraft game compatibility.
 

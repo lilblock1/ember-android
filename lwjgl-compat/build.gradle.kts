@@ -31,7 +31,7 @@ dependencies {
     androidTestImplementation("androidx.test:runner:1.6.2")
 }
 val compileLwjglFixture by tasks.registering(JavaCompile::class) {
-    source(rootProject.file("tests/fixtures/LwjglBoundaryFixture.java"))
+    source(rootProject.file("tests/fixtures/LwjglBoundaryFixture.java"), rootProject.file("tests/fixtures/NativeMemoryFixture.java"))
     classpath = upstreamReference // Reference jars are NEVER packaged in this Android module.
     options.release = 17
     destinationDirectory = layout.buildDirectory.dir("fixture-classes")
@@ -52,8 +52,9 @@ val dexLwjglFixture by tasks.registering(JavaExec::class) {
         args = listOf("--min-api", "29", "--lib",
             sdkDirectory.get().file("platforms/android-35/android.jar").asFile.path) +
             upstreamReference.files.flatMap { listOf("--classpath", it.path) } +
-            listOf("--output", fixtureAssets.get().asFile.path,
-                compileLwjglFixture.get().destinationDirectory.get().file("fixture/LwjglBoundaryFixture.class").asFile.path)
+            listOf("--output", fixtureAssets.get().asFile.path) +
+            compileLwjglFixture.get().destinationDirectory.get().asFile.walkTopDown()
+                .filter { it.isFile && it.extension == "class" }.map { it.path }.toList()
     }
 }
 tasks.matching { it.name == "mergeDebugAssets" || it.name == "mergeReleaseAssets" || it.name.contains("Lint", ignoreCase = true) }

@@ -6,8 +6,8 @@ android {
         applicationId = "dev.andes.androidjavaport"
         minSdk = 29
         targetSdk = 35
-        versionCode = 7
-        versionName = "0.3.1-research"
+        versionCode = 8
+        versionName = "0.3.2-research"
         ndk { abiFilters += "arm64-v8a" }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -18,6 +18,7 @@ android {
 }
 dependencies {
     implementation(project(":core"))
+    implementation(project(":java-platform"))
     implementation(project(":authentication"))
     implementation(project(":native-engine"))
     implementation(project(":lwjgl-compat"))

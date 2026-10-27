@@ -1,0 +1,45 @@
+{
+  "probeRunId": "7b4a0e87-c6f4-4958-a30b-74ca49786407",
+  "authenticatedStartup": true,
+  "terminatedBeforeProbeReport": true,
+  "exceptionTypes": [
+    "java.lang.NoClassDefFoundError",
+    "java.lang.ClassNotFoundException"
+  ],
+  "failureFrames": [
+    "com.mojang.blaze3d.platform.GLX._initGlfw",
+    "com.mojang.blaze3d.systems.RenderSystem.initBackendSystem",
+    "evi.<init>",
+    "net.minecraft.client.main.Main.main",
+    "java.lang.reflect.Method.invoke",
+    "dev.andes.app.ActualClientInitializationProbeTest.recordsActualClientInitializationBoundary",
+    "org.junit.runners.model.FrameworkMethod$1.runReflectiveCall",
+    "org.junit.internal.runners.model.ReflectiveCallable.run",
+    "org.junit.runners.model.FrameworkMethod.invokeExplosively",
+    "org.junit.internal.runners.statements.InvokeMethod.evaluate",
+    "org.junit.runners.ParentRunner$3.evaluate",
+    "org.junit.runners.BlockJUnit4ClassRunner$1.evaluate",
+    "org.junit.runners.ParentRunner.runLeaf",
+    "org.junit.runners.BlockJUnit4ClassRunner.runChild",
+    "org.junit.runners.ParentRunner$4.run",
+    "org.junit.runners.ParentRunner$1.schedule",
+    "org.junit.runners.ParentRunner.runChildren",
+    "org.junit.runners.ParentRunner.access$100",
+    "org.junit.runners.ParentRunner$2.evaluate",
+    "org.junit.runners.ParentRunner.run",
+    "org.junit.runners.Suite.runChild",
+    "org.junit.runner.JUnitCore.run",
+    "androidx.test.internal.runner.TestExecutor.execute",
+    "androidx.test.runner.AndroidJUnitRunner.onStart",
+    "android.app.Instrumentation$InstrumentationThread.run",
+    "dalvik.system.BaseDexClassLoader.findClass",
+    "java.lang.ClassLoader.loadClass",
+    "o.a"
+  ],
+  "missingClasses": [
+    "org/lwjgl/opengl/GL"
+  ],
+  "mainMenuReached": false,
+  "playable": false,
+  "observedDate": "2026-10-27"
+}

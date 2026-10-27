@@ -1,12 +1,14 @@
 [
   {
     "suite": "dev.ember.bytecode.ArrayIntersectionAdapterTest",
-    "tests": 3,
+    "tests": 5,
     "failures": 0,
     "errors": 0,
     "cases": [
       "originalAndAdaptedFixtureHaveSameJvmResult",
+      "archiveApiBridgeIsNarrowIdempotentAndPreservesNativePaths",
       "preservesWideArgumentsAndEvaluatesSupplierOnce",
+      "runtimeInformationTypesAndCallsRetargetWithoutInventingValues",
       "transformIsIdempotentAndRequiresKnownInterface"
     ]
   }

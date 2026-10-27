@@ -5,9 +5,11 @@ dependencies {
     implementation("org.ow2.asm:asm:9.7.1")
     implementation("org.ow2.asm:asm-tree:9.7.1")
     implementation("org.ow2.asm:asm-analysis:9.7.1")
+    implementation("org.ow2.asm:asm-commons:9.7.1")
     testImplementation("junit:junit:4.13.2")
+    testImplementation(project(":java-platform"))
 }
 sourceSets["test"].java {
     srcDir(rootProject.file("tests/fixtures"))
-    include("**/ArrayIntersectionAdapterTest.java", "**/EnumIntersectionFixture.java")
+    include("**/ArrayIntersectionAdapterTest.java", "**/EnumIntersectionFixture.java", "**/ArchiveApiFixture.java", "**/ManagementApiFixture.java")
 }

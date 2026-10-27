@@ -4,9 +4,11 @@ Independent, unofficial project. Not approved by or associated with Mojang or Mi
 
 **Research build, not a playable Minecraft port.** Microsoft/Minecraft account connection,
 signed purchased Java ownership verification and the official 1.20.4 client download passed
-on the physical S25+. Guava and the selected Java dependency set are now verified. Its real Java entry point
-passes that dependency failure and stops at an ART enum-array verifier boundary. An original
-translation fix passes host regression tests; its corrected physical test awaits USB access. The main menu, worlds and gameplay do not work.
+on the physical S25+. Guava and the selected Java dependency set are verified. Original
+adapters now pass the ART array-verifier, archive-filesystem, runtime-information and
+native-memory boundaries on that phone. Authenticated client startup reaches GLFW backend
+initialization, then stops at the missing desktop OpenGL loader. The main menu, worlds
+and gameplay do not work. [Current startup evidence and remaining work](docs/CLIENT_STARTUP.md).
 No game content, JVM or PojavLauncher code is bundled in APKs/source.
 
 ## Implemented
@@ -24,6 +26,10 @@ No game content, JVM or PojavLauncher code is bundled in APKs/source.
   chaining, size/SHA-1 validation, private staging and atomic commit. This is not a full installer.
 - Original host-only Enum/interface array translation adapter with regression tests.
   [Exact scope and current device boundary](docs/ART_ARRAY_COMPATIBILITY.md).
+- Original bounded read-only JAR filesystem and Android process/GC information bridge,
+  with narrow private-bytecode API/type retargeting and host/device tests.
+- ARM64 native allocation, buffer views and memory-access subset tested against an
+  original fixture compiled with upstream LWJGL 3.3.2. No arbitrary native-pointer access.
 - Read-only classfile/JNI audit and public version-metadata audit; tests and GitHub Actions.
 - Separate original Java 17 DEX/reflection/JNI instrumentation experiment for ARM64 devices.
   See [runtime lab](docs/RUNTIME_LAB.md); both tests passed on S25+ / Android 15.
@@ -55,7 +61,7 @@ an optional developer setup; Microsoft authentication alone cannot unlock downlo
 ## Tests and research tools
 
 ```
-./gradlew :bytecode-tools:test :core:test :authentication:testDebugUnitTest :lwjgl-compat:testDebugUnitTest
+./gradlew :java-platform:test :bytecode-tools:test :core:test :authentication:testDebugUnitTest :lwjgl-compat:testDebugUnitTest
 python -m unittest discover -s tests -v
 cmake -S native-engine/src/main/cpp -B build/native-host
 cmake --build build/native-host

@@ -22,7 +22,7 @@ Build toolchains under the task's work directory are not project deliverables.
 
 ## Host-only bytecode experiment
 
-`bytecode-tools` uses ASM 9.7.1 (`asm`, `asm-tree`, `asm-analysis`) under its
+`bytecode-tools` uses ASM 9.7.1 (`asm`, `asm-tree`, `asm-analysis`, `asm-commons`) under its
 [3-Clause BSD license](https://asm.ow2.io/license.html). These build-tool dependencies
 are fetched by Gradle and are not packaged in the Android APK. The adapter implementation
 and regression fixture are original project code, without copied game implementations.

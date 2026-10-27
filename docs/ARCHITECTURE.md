@@ -8,13 +8,16 @@
 | native-engine | Input queue, JNI entry points, GLES surface probe | C++ compiled to ARM64 ELF shared library |
 | tools | Public metadata inventory and local classfile inventory | Host Python/Java tools; not part of APK |
 | compatibility-lab | Isolated original fixture / dynamic DEX / reflection / registered JNI experiment | ART plus a small ARM64 bridge, separate test APK; both tests passed on S25+ |
+| bytecode-tools | Host-only narrow array/API/type translation for private owned inputs | Java 17 / ASM; never packaged as a game runtime |
+| java-platform | Original read-only archive filesystem and process/GC API subset | ART and Android platform APIs |
+| lwjgl-compat | Original LWJGL API subset, bounded owned native memory and EGL/GLES bridge | ART plus C++ ARM64; desktop OpenGL absent |
 
-The production app has no route to game installation. The core `InstallGrant` constructor
-is internal, no production code issues grants, and there is no game download or launch
-implementation. Kotlin visibility is an architectural guard, not a defense against a
-modified malicious APK. A future approved adapter must mint session-bound, expiring grants
-only after both current entitlement and profile validation. Network failures, expired
-subscriptions, restrictions and missing ownership must remain distinct outcomes.
+The production account service issues short-lived memory-only install grants after signed
+purchased-license and fresh profile validation. The installer uses them for original
+client/selected Java library downloads and checks metadata size/hashes before atomic commit.
+This is a partial installer, with no production game launch. Kotlin visibility is an
+architectural guard, not a defense against a modified malicious APK. Network failures,
+expired subscriptions, restrictions and missing ownership remain distinct outcomes.
 
 The selected research release is 1.20.4 (Java 17). This limits initial moving parts; it is
 not an advertised supported release. Other versions need their own dependency and API audits.
