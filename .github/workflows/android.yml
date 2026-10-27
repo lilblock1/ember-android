@@ -17,7 +17,7 @@ jobs:
       - uses: android-actions/setup-android@v3
         with:
           packages: platform-tools
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v6
       - run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0' 'ndk;27.2.12479018' 'cmake;3.22.1'
       - run: chmod +x gradlew
       - run: ./gradlew :java-platform:test :bytecode-tools:test :core:test :authentication:testDebugUnitTest :lwjgl-compat:testDebugUnitTest :app:assembleDebug :app:assembleDebugAndroidTest :authentication:assembleDebugAndroidTest :compatibility-lab:assembleDebugAndroidTest :lwjgl-compat:assembleDebugAndroidTest :app:lintDebug --no-daemon
